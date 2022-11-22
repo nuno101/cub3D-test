@@ -6,7 +6,7 @@
 
 
 --------------------------------------------------------------------------------------------
-#First step: -read a map and look if it is a vallid map
+#First step: -read a map and look if it is a vallid map  // look at src: < map_reader.c >
 
 #2th:		-save the valid map in our data struct.
 
