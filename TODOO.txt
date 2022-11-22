@@ -1,0 +1,13 @@
+
+#Implement struct only when u re using this struct and any value inside should be necessary and used.
+
+#Only push when gcc -Wall -Wextra -Werror is working without errors
+
+
+
+--------------------------------------------------------------------------------------------
+#First step: -read a map and look if it is a vallid map
+
+#2th:		-save the valid map in our data struct.
+
+#3th:		-...
