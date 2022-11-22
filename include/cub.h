@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/11/21 15:28:03 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2022/11/22 14:00:29 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,166 +103,12 @@ enum e_flag
 	CEIL_CHANGED,
 };
 
-typedef struct s_map
-{
-	char	*line;
-	int		len;
-}				t_map;
-
-typedef struct s_point
-{
-	float	x;
-	float	y;
-	int		i;
-	int		j;
-	float	angle;
-}				t_point;
-
-typedef struct s_flag
-{
-	int	empty_line;
-	int	dup_ceil;
-	int	dup_floor;
-};			t_flag;
-
-typedef	struct	s_map
-{
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		floor_clr;
-	int		ceil_clr;
-	char	**map;
-	t_list	head;
-	int		map_h;
-	int		map_w;
-	int		max_w;
-	int		zoom;
-	int		shift_x;
-	int		shift_y;
-}				t_map;
-
-typedef struct s_img
-{
-	void	*img;
-	int		*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_img;
-
-typedef struct s_xpm
-{
-	t_img	tx_img;
-	char	*path;
-	int		img_w;
-	int		img_h;
-}			t_xpm;
-
-typedef struct s_ray
-{
-	t_point	pos;
-	float	step_x;
-	float	step_y;
-	float	side_x;
-	float	side_y;
-	float	dir_x;
-	float	dir_y;
-	float	dist;
-	float	shade;
-	int		dx;
-	int		dy;
-	int		side;
-}				t_ray;
-
-typedef struct s_tex
-{
-	int		x;
-	int		y;
-	float	pos;
-	float	step;
-	int		clr;
-}			t_tex;
-
 typedef struct s_data
 {
 	int		argc;
 	char	**argv;
 	char	**map;
 }				t_data;
-
-typedef	struct	s_player
-{
-	t_map	*data;
-	struct	s_mlx	*mlx;
-	t_point	pos;
-	t_point	dir;
-	int		tex_flag;
-	int		rend_dist;
-	float	fov;
-}				t_player;
-
-typedef struct s_cub
-{
-	t_data			data;
-	t_player		player;
-	struct s_mlx	*mlx;
-	struct s_cub	*cub;
-	int				**map;
-	// int			map_width;
-	// int			map_height;
-	// int			map_width_max;
-	// int			map_height_max;
-	// int			map_width_min;
-	// int			map_height_min;
-	int				pos_x;
-	int				pos_y;
-	int				dir_x;
-	int				dir_y;
-	int				plane_x;
-	int				plane_y;
-	int				move_speed;
-	int				key;
-	int				key_w;
-	int				key_a;
-	int				key_s;
-	int				key_d;
-	int				key_left;
-	int				key_right;
-	int				key_esc;
-	struct s_cub	rot_speed;
-}				t_cub;
-
-typedef	struct	s_map
-{
-	char	*es;
-	char	*no;
-	char	*so;
-	char	*we;
-	int		floor;
-	int		ceiling;
-	char	**map;
-	t_list	*__head;
-	int		map_height;
-	int		map_weight;
-	int		max_weight;
-	int		shift_x;
-	int		shift_y;
-	int		zoom;
-	mlx_t	*mlx;
-}				t_map;
-
-typedef struct s_keys
-{
-	int		w;
-	int		a;
-	int		s;
-	int		d;
-	int		left;
-	int		right;
-	int		esc;
-}				t_keys;
 
 //src/init.c
 int	init_map(int argc, char **argv, t_data *data);
