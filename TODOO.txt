@@ -1,12 +1,14 @@
 
 #Implement struct only when u re using this struct and any value inside should be necessary and used.
 
-#Only push when gcc -Wall -Wextra -Werror is working without errors
+#Only push when gcc -Wall -Wextra is working without errors
 
 
 
 --------------------------------------------------------------------------------------------
 #First step: -read a map and look if it is a vallid map  // look at src: < map_reader.c >
+				How we know it is a valid map???
+				- dont know read subject
 
 #2th:		-save the valid map in our data struct.
 
