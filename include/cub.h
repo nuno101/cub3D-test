@@ -6,13 +6,14 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/11/22 14:00:29 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/11/22 14:12:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
 
+# include "structs.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "error.h"
@@ -25,6 +26,8 @@
 # include <string.h>
 # include <unistd.h>
 
+
+/*
 # define WIDTH 1024;
 # define HEIGHT 780;
 # define MINIMAP_W 300;
@@ -101,14 +104,7 @@ enum e_flag
 	FLOOR_CHANGED,
 	CEIL_NOT_CHANGED,
 	CEIL_CHANGED,
-};
-
-typedef struct s_data
-{
-	int		argc;
-	char	**argv;
-	char	**map;
-}				t_data;
+};*/
 
 //src/init.c
 int	init_map(int argc, char **argv, t_data *data);

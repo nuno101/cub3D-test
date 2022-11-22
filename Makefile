@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
+#    Updated: 2022/11/22 14:16:06 by jjesberg         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # NAME = cub3D
 # SRC = *.c
 # OBJ = $(SRC:.c=.o)
@@ -23,15 +35,15 @@
 
 # re: fclean all
 
-CC = gcc
-CFLAGS = -Wall -Werror -g #-Wextra
+CC = gcc -g
+CFLAGS = -Wall -Werror #-Wextra
 MLX_FLAGS = MLX42/libmlx42.a -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
 NAME = cub3D
 MLX_DIR = MLX42
 LIBFT_DIR = libft
 
-SRCS = 	*.c \
+SRCS = 	main.c \
 		src/error.c \
 		src/init.c \
 		src/map_reader.c \
