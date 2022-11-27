@@ -3,37 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2022/11/22 14:16:06 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/11/27 17:09:33 by ezpiro-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# NAME = cub3D
-# SRC = *.c
-# OBJ = $(SRC:.c=.o)
-# CC = gcc -Wall -Wextra -Werror
-# LIBS =  MLX42/libmlx42.a -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
-
-# $(NAME):
-#     make -C ./libft
-#     make -C ./MLX42
-#     $(CC) $(SRC) ./libft/libft.a $(LIBS) -o $(NAME)
-
-# clean:
-#     make -C ./libft clean
-#     make -C ./MLX42 clean
-#     rm -f $(OBJ)
-
-# fclean:
-#     make -C ./libft fclean
-#     make -C ./MLX42 fclean
-#     rm -f $(NAME)
-
-# all: $(NAME)
-
-# re: fclean all
 
 CC = gcc -g
 CFLAGS = -Wall -Werror #-Wextra
