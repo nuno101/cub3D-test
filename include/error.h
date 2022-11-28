@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_reader.c                                       :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 00:22:18 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/11/29 00:22:19 by jjesberg         ###   ########.fr       */
+/*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
+/*   Updated: 2022/11/21 15:13:56 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/cub.h"
+#ifndef ERROR_H
+# define ERROR_H
 
-int	map_reader(t_data *data)
-{
-	
-	return (0);
-}
+# include "cub.h"
+
+# define ARG_ERROR 11
+# define INVALID_MAP 12
+# define MALLOC_ERROR 13
+
+int	error(int err);
+
+#endif

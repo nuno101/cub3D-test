@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 00:22:12 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/11/29 00:22:14 by jjesberg         ###   ########.fr       */
+/*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
+/*   Updated: 2022/11/22 14:19:36 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/cub.h"
+#ifndef STRUCTS_H
+#define STRUCTS_H
 
-int	init_map(int argc, char **argv, t_data *data)
+typedef struct s_data
 {
-	if (argc < 2)
-		return (ARG_ERROR);
-	data = malloc(sizeof(t_data));
-	if (!data)
-		return (MALLOC_ERROR);
-	data->argc = argc;
-	data->argv = argv;
-	data->map = NULL; // 
-	if (data->map == NULL)
-		return (INVALID_MAP);
-	return (0);
-}
+	int		argc;
+	char	**argv;
+	char	**map;
+}				t_data;
+
+#endif
