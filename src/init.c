@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:22:12 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 07:09:21 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 07:24:22 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	init_map(int argc, char **argv, t_data *data)
 		}
 		i++;
 	}
+	close(fd);
 	return (0);
 }
 
@@ -144,5 +145,5 @@ int	save_param(t_data *data)
 		j = 0;
 		i++;
 	}
-	return (0);
+	return (check_params(data));
 }

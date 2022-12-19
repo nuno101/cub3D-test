@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/12/19 07:10:42 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 07:25:43 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	sp_dg_skipper(char *s, int *i);
 //src/init.c / is full 5 !!
 int	init_map(int argc, char **argv, t_data *data);
 int	save_param(t_data *data);
+
+//src/valid.c
+int	check_params(t_data *data);
 
 //src/map_reader.c
 int	map_reader(t_data *data);
