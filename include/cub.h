@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/12/19 03:17:57 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 06:48:18 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 //tools/utils.c
 void	free_data(t_data *data);
+void	sp_dg_skipper(char *s, int *i);
 
 //src/init.c
 int	init_map(int argc, char **argv, t_data *data);

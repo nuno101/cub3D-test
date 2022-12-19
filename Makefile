@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2022/12/19 03:17:04 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/12/19 06:56:33 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ CC = gcc -g -Wall -Wextra #-Werror
 
 LIBS =  MLX42/libmlx42.a -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
+all: $(NAME)
+
 $(NAME):
 	$(CC) $(SRC) ./libft/libft.a $(LIBS) -o $(NAME)
 
@@ -38,9 +40,7 @@ cleanlibs:
 clean:
 	rm -f $(OBJ)
 
-fclean:
+fclean: clean cleanlibs
 	rm -f $(NAME)
-
-all: $(NAME)
 
 re: fclean all
