@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 03:19:58 by jjesberg         ###   ########.fr       */
+/*   Created: 2022/12/19 03:16:21 by jjesberg          #+#    #+#             */
+/*   Updated: 2022/12/19 03:16:39 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-#define STRUCTS_H
+# include "../include/cub.h"
 
-typedef struct s_data
+void	free_data(t_data *data)
 {
-	int		argc;
-	char	**argv;
-	char	**map;
-}	t_data;
-
-#endif
+	int i = 0;
+	while (data->map[i])
+	{
+		printf("[%i]%s = \n", i, data->map[i]);
+		free(data->map[i]);
+		i++;
+	}
+	free(data->map);
+	free(data);
+}

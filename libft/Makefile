@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 01:27:51 by jjesberg          #+#    #+#              #
-#    Updated: 2022/10/21 14:59:03 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/12/19 05:17:12 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS = ft_memset.c		\
 	   ft_strdup.c		\
 	   ft_substr.c		\
 	   ft_strjoin.c 	\
+	   ft_strjoin_dl.c 	\
 	   ft_strtrim.c		\
 	   ft_split.c		\
 	   ft_itoa.c		\
@@ -47,6 +48,7 @@ SRCS = ft_memset.c		\
 	   ft_haschar.c		\
 	   ft_atoi_base.c	\
 	   get_next_line.c	\
+	   get_next_line_utils.c	\
 	   ft_linelen.c		\
 	   ft_positiv.c		\
 	   ft_max.c			\

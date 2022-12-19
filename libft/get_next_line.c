@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:18:25 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/18 07:12:04 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 05:15:41 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*read_buf(char *save, int fd, int *stop)
 	int		count;
 
 	count = 1;
-	if (save == NULL)
-		save = ft_strdup("");
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
@@ -36,12 +34,7 @@ char	*read_buf(char *save, int fd, int *stop)
 			}
 		}
 		buf[count] = '\0';
-		save = ft_strjoin(save, buf);
-		if (*stop != 1)
-		{
-			free(buf);
-			buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		}
+		save = ft_strjoin_dl(save, buf);
 	}
 	free(buf);
 	return (save);
@@ -76,57 +69,20 @@ char	*get_line(char *save)
 	return (line);
 }
 
-char	*cut_save(char *save)
+char	*cut_save(char *str)
 {
-	int		i;
-	int		j;
-	char	*new;
-	int		size;
+	char	*new_str;
+	int		newline_index;
 
-	i = 0;
-	j = 0;
-	new = NULL;
-	if (!save)
+	newline_index = find_newline(str);
+	if (newline_index == -1)
 	{
-		return (new);
+		free(str);
+		return (ft_strdup(""));
 	}
-	while (save[i] && save[i] != '\n')
-		i++;
-	if (!save[i])
-	{
-		free(save);
-		return (new);
-	}
-	if (save[i] && save[i] == '\n')
-	{
-		i++;
-		size = ft_strlen(save) - i;
-		if (size < 0)
-			return (new);
-		if (size == 0 && save[0] != '\n')
-		{
-			new = malloc(sizeof(char) * (2));
-			new[0] = '\n';
-			new[1] = '\0';
-			free(save);
-			return (new);
-		}
-		if (size == 0)
-		{
-			free(save);
-			return (NULL);
-		}
-		new = malloc(sizeof(char) * (size + 1));
-		while (save[i] && j < size)
-		{
-			new[j] = save[i];
-			j++;
-			i++;
-		}
-		new[j] = '\0';
-	}
-	free(save);
-	return (new);
+	new_str = copy_string(str, newline_index + 1);
+	free(str);
+	return (new_str);
 }
 
 char	*get_next_line(int fd)
@@ -139,6 +95,8 @@ char	*get_next_line(int fd)
 	if (fd <= 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483646 \
 	|| stop != 0 || fd > 10240)
 		return (NULL);
+	if (save == NULL)
+		save = ft_strdup("");
 	save = read_buf(save, fd, &stop);
 	line = get_line(save);
 	save = cut_save(save);
@@ -148,11 +106,11 @@ char	*get_next_line(int fd)
 }
 
 /*
-int main()
+int	main(void)
 {
-	char    *line;
-	int     fd;
-	int     i;
+	char	*line;
+	int		fd;
+	int		i;
 
 	i = 0;
 	fd = open("file1", O_RDONLY);
@@ -164,7 +122,8 @@ int main()
 		line = get_next_line(fd);
 		i++;
 	}
-	printf("no nl gj----------------------\nthis line is (null)?? ---> line[null] = %s", line);
+	printf("no nl gj----------------------\nthis line is \
+	(null)?? ---> line[null] = %s", line);
 	free(line);
 	return (0);
 }*/

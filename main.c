@@ -3,40 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/11/15 21:20:53 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2022/12/19 03:22:18 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub.h"
 
-/*
-initalazing Map
-*/
 int	main(int argc, char *argv[])
 {
 	t_data	*data;
 	int		ret;
 
-	data = NULL;
+	data = malloc(sizeof(t_data));
+	if (!data)
+		return (MALLOC_ERROR);
 	ret = init_map(argc, argv, data);
 	if (ret != 0)
 	{
 		if (data)
 			free(data);
-		system("leaks cub3D");
 		return (error(ret));
 	}
 	ret = map_reader(data);
 	if (ret != 0)
 	{
-		free(data);
-		system("leaks cub3D");
+		free_data(data);
 		return (error(ret));
 	}
-	free(data);
-	system("leaks cub3D");
+	free_data(data);
 	return (error(0));
 }
