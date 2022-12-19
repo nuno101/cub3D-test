@@ -6,13 +6,14 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2022/12/19 06:56:33 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/12/19 07:02:48 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 SRC =	main.c \
+		debugtools/print_all.c \
 		tools/utils.c	\
 		src/error.c \
 		src/init.c \

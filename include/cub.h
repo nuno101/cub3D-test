@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/12/19 06:48:18 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 07:10:42 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "error.h"
-# include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
@@ -26,12 +25,16 @@
 # include <string.h>
 # include <unistd.h>
 
+//debugtools/print_all.c
+void	print_map_param(t_data *data);
+
 //tools/utils.c
 void	free_data(t_data *data);
 void	sp_dg_skipper(char *s, int *i);
 
-//src/init.c
+//src/init.c / is full 5 !!
 int	init_map(int argc, char **argv, t_data *data);
+int	save_param(t_data *data);
 
 //src/map_reader.c
 int	map_reader(t_data *data);

@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_reader.c                                       :+:      :+:    :+:   */
+/*   print_all.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 00:22:18 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 07:08:51 by jjesberg         ###   ########.fr       */
+/*   Created: 2022/12/19 06:59:32 by jjesberg          #+#    #+#             */
+/*   Updated: 2022/12/19 07:03:01 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../include/cub.h"
 
-int	map_reader(t_data *data)
+void	print_map_param(t_data *data)
 {
-	int		i;
-	int		j;
-
-	j = 0;
-	i = 0;
-	while (data->map[i])
-	{
-		while (data->map[i][j])
-		{
-			j += write(1, &data->map[i][j], 1);
-		}
-		j = 0;
-		i++;
-	}
-	return (INVALID_MAP);
-	return (0);
+	printf("_NO =%s\n", data->_NO);
+	printf("_SO =%s\n", data->_SO);
+	printf("_WE =%s\n", data->_WE);
+	printf("_EA =%s\n", data->_EA);
+	printf("F1 = %i\n", data->F[0]);
+	printf("F2 = %i\n", data->F[1]);
+	printf("F3 = %i\n", data->F[2]);
+	printf("C1 = %i\n", data->C[0]);
+	printf("C2 = %i\n", data->C[1]);
+	printf("C3 = %i\n", data->C[2]);
 }
