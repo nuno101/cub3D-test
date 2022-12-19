@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:38:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 12:18:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:09:49 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	skip_to_path(char *s, int *j)
 		(*j)++;
 }
 
-void save_cardinal_direction(t_data* data, int i, int j, int dir) 
+void	save_cardinal_direction(t_data *data, int i, int j, int dir)
 {
-	char** 		dest;
+	char	**dest;
 
 	skip_to_path(data->map[i] + j, &j);
 	if (dir == NO)
@@ -32,27 +32,28 @@ void save_cardinal_direction(t_data* data, int i, int j, int dir)
 	else if (dir == EA)
 		dest = &(data->_EA);
 	else
-		return;
-	while (data->map[i][j] && !ft_isalpha(data->map[i][j]) && data->map[i][j] != '.')
+		return ;
+	while (data->map[i][j] && !ft_isalpha(data->map[i][j]) \
+	&& data->map[i][j] != '.')
 		j++;
 	*dest = ft_strdup(data->map[i] + j);
 }
 
-void save_map_val(t_data *data)
+void	save_map_val(t_data *data)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = find_map(data->map[i]);
-    while (j < 0)
-    {
-        i++;
-        j = find_map(data->map[i]);
-    }
-    data->map_start[0] = i;
-    data->map_start[1] = j;
-    data->map_values = ft_splitdup(data->map + i);
+	while (j < 0)
+	{
+		i++;
+		j = find_map(data->map[i]);
+	}
+	data->map_start[0] = i;
+	data->map_start[1] = j;
+	data->map_values = ft_splitdup(data->map + i);
 }
 
 int	save_param(t_data *data)

@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 03:16:21 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 10:13:58 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:10:23 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/cub.h"
+#include "../include/cub.h"
 
 int	sp_dg_skipper(char *s, int *i)
 {
@@ -25,7 +25,9 @@ int	sp_dg_skipper(char *s, int *i)
 
 void	free_data(t_data *data)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (data->map[i])
 	{
 		free(data->map[i]);

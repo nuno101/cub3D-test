@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:22:12 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 11:48:54 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:13:30 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	init_map(int argc, char **argv, t_data *data)
 	close(fd);
 	return (0);
 }
-
 
 static int	check(char *s)
 {

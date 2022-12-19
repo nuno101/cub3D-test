@@ -6,14 +6,12 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/12/19 12:59:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:15:21 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub.h"
 
-
-//Test
 int	main(int argc, char *argv[])
 {
 	t_data	*data;
@@ -32,7 +30,6 @@ int	main(int argc, char *argv[])
 		return (error(ret));
 	}
 	ret = save_param(data);
-	print_map_param(data);
 	if (ret != 0)
 	{
 		free_data(data);

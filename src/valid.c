@@ -6,34 +6,37 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 07:18:59 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 12:44:47 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:14:40 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void dl_nl(char **path)
+void	dl_nl(char **path)
 {
-    int len = strlen(*path);
-    if (len < 4) {
-        return;
-    }
+	int		j;
+	int		i;
 
-    int i = 0;
-    while ((*path)[i] != '\0') {
-        if ((*path)[i] == 'x' && (*path)[i + 1] == 'p' && (*path)[i + 2] == 'm') {
-            int j = i + 3;
-            while ((*path)[j] != '\0') {
-                if ((*path)[j] != ' ' && (*path)[j] != '\n' && (*path)[j] != '\t') {
-                    return;
-                }
-                j++;
-            }
-            ft_memset((*path) + i + 3, '\0', len - (i + 3));
-            return;
-        }
-        i++;
-    }
+	if (ft_strlen(*path) < 5)
+		return ;
+	i = 0;
+	while ((*path)[i] != '\0')
+	{
+		if ((*path)[i] == 'x' && (*path)[i + 1] == 'p' && (*path)[i + 2] == 'm')
+		{
+			j = i + 3;
+			while ((*path)[j] != '\0')
+			{
+				if ((*path)[j] != ' ' && (*path)[j] != \
+				'\n' && (*path)[j] != '\t')
+					return ;
+				j++;
+			}
+			ft_memset((*path) + i + 3, '\0', ft_strlen(*path) - (i + 3));
+			return ;
+		}
+		i++;
+	}
 }
 
 static int	check_valid_path(char *path)
@@ -66,10 +69,8 @@ static int	check_colour(t_data *data)
 
 static int	check_map(t_data *data)
 {
-	int		i;
-	int		j;
+	int	i;
 
-	j = 0;
 	i = 0;
 	while (data->map[i])
 	{
