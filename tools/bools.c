@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_reader.c                                       :+:      :+:    :+:   */
+/*   bools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 00:22:18 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 09:22:50 by jjesberg         ###   ########.fr       */
+/*   Created: 2022/12/19 09:35:11 by jjesberg          #+#    #+#             */
+/*   Updated: 2022/12/19 09:35:46 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-int	map_reader(t_data *data)
+int	is_cardinal_direction(char c, char *s)
 {
-	int		i;
-	int		j;
-
-	j = 0;
-	i = 0;
-	while (data->map[i])
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
-		while (data->map[i][j])
-		{
-			j += write(1, &data->map[i][j], 1);
-		}
-		j = 0;
-		i++;
+		if (c == 'N' && s[1] && s[1] == 'O')
+			return (NO);
+		if (c == 'S' && s[1] && s[1] == 'O')
+			return (SO);
+		if (c == 'W' && s[1] && s[1] == 'E')
+			return (WE);
+		if (c == 'E' && s[1] && s[1] == 'A')
+			return (EA);
 	}
-	return (INVALID_MAP);
 	return (0);
 }
