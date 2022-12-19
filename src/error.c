@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:22:04 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 07:46:08 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 07:50:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int	error(int err)
 		return (write(2, "ERROR Path not valid\n", 21));
 	if (err == COLOUR_ERROR)
 		return (write(2, "ERROR Colour not valid\n", 23));
+	if (err == MAP_ERROR)
+		return (write(2, "ERROR Map not valid\n", 22));
 	return (0);
 }

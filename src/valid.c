@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 07:18:59 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 07:44:40 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/19 07:49:41 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ static int	check_colour(t_data *data)
 	return (0);
 }
 
+static int	check_map(t_data *data)
+{
+	return (0);
+}
+
 int	check_params(t_data *data)
 {
 	if (!check_valid_path(data->_EA) || !check_valid_path(data->_NO) \
@@ -45,5 +50,7 @@ int	check_params(t_data *data)
 		return (DIR_ERROR);
 	if (check_colour(data))
 		return (COLOUR_ERROR);
+	if (check_map(data))
+		return (MAP_ERROR);
 	return (0);
 }
