@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 07:18:59 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 13:14:40 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/21 08:38:19 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,150 @@ static int	check_colour(t_data *data)
 	return (0);
 }
 
+static int	is_valid_mapchar(char c)
+{
+	if (c > ' ' && c != '0' && c != '1' && c != 'N' \
+	&& c != 'S' && c != 'E' && c != 'W' && c != '2')
+		return (1);
+	return (0);
+}
+
 static int	check_map(t_data *data)
 {
 	int	i;
+	int	j;
+	int	player;
 
+	player = 0;
 	i = 0;
-	while (data->map[i])
+	while (data->map_values[i])
 	{
+		j = 0;
+		while (data->map_values[i][j])
+		{
+			if (is_valid_mapchar(data->map_values[i][j]))
+				return (-1);
+			if (data->map_values[i][j] == 'N' || data->map_values[i][j] == 'S' \
+			|| data->map_values[i][j] == 'E' || data->map_values[i][j] == 'W')
+				player++;
+			j++;
+		}
 		i++;
 	}
+	if (!player || player > 1)
+		return (-1);
 	return (0);
+}
+
+bool is_surrounded(int i, int j, t_data *data)
+{
+    int rows;
+    int cols;
+
+	cols = ft_splitlen(data->map_values);
+	rows = ft_strlen(data->map_values[i]);
+    if (i > 0 && data->map_values[i - 1][j] != '1' && data->map_values[i - 1][j] != '2' && data->map_values[i - 1][j] != '0')
+    {
+		return (false);
+	}
+    if (j < cols - 1 && data->map_values[i][j + 1] != '1' && data->map_values[i][j + 1] != '2' && data->map_values[i - 1][j] != '0')
+    {
+		return (false);
+	}
+    if (i < rows - 1 && data->map_values[i + 1][j] != '1' && data->map_values[i + 1][j] != '2' && data->map_values[i - 1][j] != '0')
+    {
+		return (false);
+	}
+    if (j > 0 && data->map_values[i][j - 1] != '1' && data->map_values[i][j - 1] != '2' && data->map_values[i][j - 1] != '0')
+    {
+		return (false);
+	}
+    return true;
+}
+
+bool	is_player(char c)
+{
+	if (c == 'E' || c == 'S' || c == 'N' || c == 'W')
+		return (1);
+	return (0);
+}
+
+bool is_surrounded_num(int i, int j, t_data *data)
+{
+    int rows;
+    int cols;
+
+	cols = ft_splitlen(data->map_values);
+	rows = ft_strlen(data->map_values[i]);
+    if (i > 0 && data->map_values[i - 1][j] != '1' && data->map_values[i - 1][j] != '2' && data->map_values[i - 1][j] != '0' && !is_player(data->map_values[i - 1][j]))
+    {
+		printf("1hi \n");
+
+		return (false);
+	}
+    if (j < cols - 1 && data->map_values[i][j + 1] != '1' && data->map_values[i][j + 1] != '2' && data->map_values[i - 1][j] != '0' && !is_player(data->map_values[i - 1][j]))
+    {
+		printf("2hi \n");
+		return (false);
+	}
+    if (i < rows - 1 && data->map_values[i + 1][j] != '1' && data->map_values[i + 1][j] != '2' && data->map_values[i - 1][j] != '0' && !is_player(data->map_values[i - 1][j]))
+    {
+		printf("3hi \n");
+
+		return (false);
+	}
+    if (j > 0 && data->map_values[i][j - 1] != '1' && data->map_values[i][j - 1] != '2' && data->map_values[i][j - 1] != '0' && !is_player(data->map_values[i][j - 1]))
+    {
+		printf("4hi \n");
+
+		return (false);
+	}
+    return true;
+}
+
+bool check_surrounded_tiles(t_data *data)
+{
+    int i;
+    int j;
+
+	i = 0;
+	j = 0;
+    while (data->map_values[i]) 
+    {
+		while (data->map_values[i][j])
+		{
+			if ((data->map_values[i][j] == '0' || data->map_values[i][j] == '2') && !is_surrounded_num(i, j, data)) 
+			{
+
+				return false;
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+    }
+    return true;
+}
+
+bool check_surrounded_player(t_data *data)
+{
+    int i;
+    int j;
+
+	i = 0;
+	j = 0;
+    while (data->map_values[i]) 
+    {
+		while (data->map_values[i][j])
+		{
+			if (is_player(data->map_values[i][j]) && !is_surrounded(i, j, data)) 
+				return false;
+			j++;
+		}
+		i++;
+		j = 0;
+    }
+    return true;
 }
 
 int	check_params(t_data *data)
@@ -87,6 +221,10 @@ int	check_params(t_data *data)
 	if (check_colour(data))
 		return (COLOUR_ERROR);
 	if (check_map(data))
+		return (MAP_ERROR);
+	if (!check_surrounded_player(data))
+		return (MAP_ERROR);
+	if (!check_surrounded_tiles(data))
 		return (MAP_ERROR);
 	return (0);
 }

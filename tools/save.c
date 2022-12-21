@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:38:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 13:09:49 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/21 07:42:51 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,38 @@ void	save_cardinal_direction(t_data *data, int i, int j, int dir)
 	*dest = ft_strdup(data->map[i] + j);
 }
 
-void	save_map_val(t_data *data)
+int check_length(char **s) {
+    int i = 0;
+    int j;
+    int valid_lines = 0;
+
+    // Iterate through each line in the input string
+    while (s[i] != NULL) {
+        j = 0;
+        // Iterate through each character in the current line
+        while (s[i][j] != '\0') {
+            // Check if the current character is the third character in the line
+            if (j == 2) {
+                // Check if the current character is greater than 33
+                if (s[i][j] > 33) {
+                    valid_lines++;
+                    break;
+                }
+            }
+            j++;
+        }
+        i++;
+    }
+
+    // Check if there are at least three lines with at least three characters
+    if (valid_lines < 3) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+static int	save_map_val(t_data *data)
 {
 	int	i;
 	int	j;
@@ -51,9 +82,12 @@ void	save_map_val(t_data *data)
 		i++;
 		j = find_map(data->map[i]);
 	}
+	if (check_length(data->map + i))
+		return (1);
 	data->map_start[0] = i;
 	data->map_start[1] = j;
 	data->map_values = ft_splitdup(data->map + i);
+	return (0);
 }
 
 int	save_param(t_data *data)
@@ -79,6 +113,7 @@ int	save_param(t_data *data)
 		}
 		i++;
 	}
-	save_map_val(data);
+	if (save_map_val(data))
+		return (MAP_ERROR);
 	return (check_params(data));
 }
