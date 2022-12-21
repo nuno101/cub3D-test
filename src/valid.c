@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 07:18:59 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/21 08:38:19 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/21 08:49:09 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static int	check_map(t_data *data)
 
 	player = 0;
 	i = 0;
+	data->_split_len = ft_splitlen(data->map_values);
 	while (data->map_values[i])
 	{
 		j = 0;
@@ -107,7 +108,7 @@ bool is_surrounded(int i, int j, t_data *data)
     int rows;
     int cols;
 
-	cols = ft_splitlen(data->map_values);
+	cols = data->_split_len;
 	rows = ft_strlen(data->map_values[i]);
     if (i > 0 && data->map_values[i - 1][j] != '1' && data->map_values[i - 1][j] != '2' && data->map_values[i - 1][j] != '0')
     {

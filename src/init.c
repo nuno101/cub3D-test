@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:22:12 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/21 07:28:01 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/21 08:47:39 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	init_data(int argc, char **argv, t_data *data)
 	data->_SO = NULL;
 	data->_WE = NULL;
 	data->_EA = NULL;
+	data->_split_len = 0;
 	data->map_values = NULL;
 	data->map = malloc(sizeof(char *) * (80));
 	if (!data->map)

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 10:31:50 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/21 08:47:28 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_data
 	char	**argv;
 	char	**map;
 	char	**map_values;
+	int		_split_len;
 	int		map_start[2];
 	char	*_NO;
 	char	*_SO;

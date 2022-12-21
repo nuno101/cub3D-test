@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:38:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/21 07:42:51 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/21 08:49:30 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,23 @@ void	save_cardinal_direction(t_data *data, int i, int j, int dir)
 	*dest = ft_strdup(data->map[i] + j);
 }
 
-int check_length(char **s) {
-    int i = 0;
+int check_length(char **s)
+{
+    int i;
     int j;
-    int valid_lines = 0;
+    int valid_lines;
 
-    // Iterate through each line in the input string
-    while (s[i] != NULL) {
+	i = 0;
+	valid_lines = 0;
+    while (s[i] != NULL)
+	{
         j = 0;
-        // Iterate through each character in the current line
-        while (s[i][j] != '\0') {
-            // Check if the current character is the third character in the line
-            if (j == 2) {
-                // Check if the current character is greater than 33
-                if (s[i][j] > 33) {
+        while (s[i][j] != '\0')
+		{
+            if (j == 2)
+			{
+                if (s[i][j] > 33)
+				{
                     valid_lines++;
                     break;
                 }
@@ -61,13 +64,9 @@ int check_length(char **s) {
         }
         i++;
     }
-
-    // Check if there are at least three lines with at least three characters
-    if (valid_lines < 3) {
-        return 1;
-    } else {
-        return 0;
-    }
+    if (valid_lines < 3)
+		return 1;
+	return 0;
 }
 
 static int	save_map_val(t_data *data)
