@@ -1,10 +1,4 @@
-
-#Implement struct only when u re using this struct and any value inside should be necessary and used.
-
 #Only push when gcc -Wall -Wextra is working without errors
-
-
-
 --------------------------------------------------------------------------------------------
 
 Check edge cases for maps and overwork some functions optimizing...
