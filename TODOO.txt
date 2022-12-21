@@ -8,3 +8,4 @@
 --------------------------------------------------------------------------------------------
 
 Check edge cases for maps and overwork some functions optimizing...
+Switch all bool functions to tools/bools.c
