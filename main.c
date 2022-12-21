@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
     int ret;
 
     if (argc < 2)
-        return (ARG_ERROR);
+        return (error(ARG_ERROR));
     data = init_data(argc, argv);
     if (!data)
         return (error(1));
