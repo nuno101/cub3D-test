@@ -1,0 +1,41 @@
+CC = gcc -g -Wall -Wextra
+
+SRC_DIR = src
+OBJ_DIR = obj
+
+SRC = $(wildcard $(SRC_DIR)/*.c)
+OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
+
+LIBS = MLX42/libmlx42.a -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+
+NAME = cub3D
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@echo "\033[32mLinking object files...\033[0m"
+	@$(CC) $^ $(LIBS) -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@echo "\033[34mCompiling $<...\033[0m"
+	@$(CC) -c $< -o $@
+
+libs:
+	make -C ./MLX42
+	make -C ./libft
+
+cleanlibs:
+	make -C ./libft clean
+	#make -C ./MLX42 clean
+
+clean:
+	@echo "\033[33mCleaning object files...\033[0m"
+	@$(shell rm -f $(OBJ))
+
+fclean: clean cleanlibs
+	@echo "\033[33mCleaning executable...\033[0m"
+	@$(shell rm -f $(NAME))
+
+re: fclean all
+
+.PHONY: all clean fclean re libs cleanlibs
