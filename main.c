@@ -12,48 +12,6 @@
 
 #include "include/cub.h"
 
-/*
-int	main_helper(int argc, char *argv[], t_data *data)
-{
-	int ret;
-
-	ret = 0;
-	ret = init_map(argc, argv, data);
-	if (ret != 0)
-	{
-		if (ret != MALLOC_ERROR)
-			ft_cleansplit(data->map);
-		else
-			free(data->map);
-		if (data)
-			free(data);
-		return (error(ret));
-	}
-	ret = save_param(data);
-	if (ret != 0)
-	{
-		free_data(data);
-		return (error(ret));
-	}
-	print_map_param(data);
-	free_data(data);
-	return (error(0));
-}
-
-int	main(int argc, char *argv[])
-{
-	t_data	*data;
-
-	if (argc < 2)
-		return (ARG_ERROR);
-	data = malloc(sizeof(t_data));
-	if (!data)
-		return (error(MALLOC_ERROR));
-	if (main_helper(argc, argv, data))
-		return (main_helper(argc, argv, data));
-	return (0);
-}*/
-
 static t_data	*init_data(int argc, char *argv[])
 {
     t_data *data = malloc(sizeof(t_data));
@@ -85,7 +43,7 @@ int main(int argc, char *argv[])
         return (error(ARG_ERROR));
     data = init_data(argc, argv);
     if (!data)
-        return (error(1));
+        return (error(MALLOC_ERROR));
     ret = save_param(data);
     if (ret != 0)
     {
