@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/23 06:52:50 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/23 07:30:37 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_data
 typedef struct s_cub
 {
 	t_data	*d;
-	mlx_t	*mlx;
+	void	*mlx;
 	int32_t	s_width;
 	int32_t	s_height;
 }	t_cub;
