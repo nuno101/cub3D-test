@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/12/21 04:47:04 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/23 07:00:40 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,20 @@ int main(int argc, char *argv[])
     t_data *data;
     int ret;
 
+	ret = 105;
     if (argc < 2)
         return (error(ARG_ERROR));
     data = init_data(argc, argv);
     if (!data)
-        return (error(MALLOC_ERROR));
+		return (1);
     ret = save_param(data);
     if (ret != 0)
     {
         free_data(data);
         return (error(ret));
     }
-    print_map_param(data);
+	ret = start_cub(data);
+    //print_map_param(data);
     free_data(data);
-    return (error(0));
+    return (error(ret));
 }

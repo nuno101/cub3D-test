@@ -1,4 +1,4 @@
-WE ./maps/new.cub
+WE ./images/1.xpm
 EA ./maps/test.cub
 
 F  240,        240,      240

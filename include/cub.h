@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/12/19 10:27:55 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/23 06:28:13 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int		sp_dg_skipper(char *s, int *i);
 
 //tools/bools.c
 int		is_cardinal_direction(char c, char *s);
+bool	is_surrounded_num(int i, int j, t_data *data);
+bool	is_surrounded(int i, int j, t_data *data);
+bool	is_player(char c);
+bool 	check_surrounded_player(t_data *data);
 
 //tools/save.c
 void 	save_cardinal_direction(t_data *data, int i, int j, int ret);

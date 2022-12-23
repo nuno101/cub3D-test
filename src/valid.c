@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 07:18:59 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/21 08:49:09 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/12/23 06:27:55 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,20 @@
 
 void	dl_nl(char **path)
 {
-	int		j;
 	int		i;
+	int		len;
 
-	if (ft_strlen(*path) < 5)
+	len = ft_strlen(*path);
+	if (len < 5)
 		return ;
 	i = 0;
 	while ((*path)[i] != '\0')
 	{
-		if ((*path)[i] == 'x' && (*path)[i + 1] == 'p' && (*path)[i + 2] == 'm')
-		{
-			j = i + 3;
-			while ((*path)[j] != '\0')
-			{
-				if ((*path)[j] != ' ' && (*path)[j] != \
-				'\n' && (*path)[j] != '\t')
-					return ;
-				j++;
-			}
-			ft_memset((*path) + i + 3, '\0', ft_strlen(*path) - (i + 3));
-			return ;
-		}
+		if ((*path)[i] == ' ' || (*path)[i] == '\t' || (*path)[i] == '\n')
+        	break;
 		i++;
 	}
+	ft_memset((*path) + i, '\0', len - (i));
 }
 
 static int	check_valid_path(char *path)
@@ -103,73 +94,7 @@ static int	check_map(t_data *data)
 	return (0);
 }
 
-bool is_surrounded(int i, int j, t_data *data)
-{
-    int rows;
-    int cols;
-
-	cols = data->_split_len;
-	rows = ft_strlen(data->map_values[i]);
-    if (i > 0 && data->map_values[i - 1][j] != '1' && data->map_values[i - 1][j] != '2' && data->map_values[i - 1][j] != '0')
-    {
-		return (false);
-	}
-    if (j < cols - 1 && data->map_values[i][j + 1] != '1' && data->map_values[i][j + 1] != '2' && data->map_values[i - 1][j] != '0')
-    {
-		return (false);
-	}
-    if (i < rows - 1 && data->map_values[i + 1][j] != '1' && data->map_values[i + 1][j] != '2' && data->map_values[i - 1][j] != '0')
-    {
-		return (false);
-	}
-    if (j > 0 && data->map_values[i][j - 1] != '1' && data->map_values[i][j - 1] != '2' && data->map_values[i][j - 1] != '0')
-    {
-		return (false);
-	}
-    return true;
-}
-
-bool	is_player(char c)
-{
-	if (c == 'E' || c == 'S' || c == 'N' || c == 'W')
-		return (1);
-	return (0);
-}
-
-bool is_surrounded_num(int i, int j, t_data *data)
-{
-    int rows;
-    int cols;
-
-	cols = ft_splitlen(data->map_values);
-	rows = ft_strlen(data->map_values[i]);
-    if (i > 0 && data->map_values[i - 1][j] != '1' && data->map_values[i - 1][j] != '2' && data->map_values[i - 1][j] != '0' && !is_player(data->map_values[i - 1][j]))
-    {
-		printf("1hi \n");
-
-		return (false);
-	}
-    if (j < cols - 1 && data->map_values[i][j + 1] != '1' && data->map_values[i][j + 1] != '2' && data->map_values[i - 1][j] != '0' && !is_player(data->map_values[i - 1][j]))
-    {
-		printf("2hi \n");
-		return (false);
-	}
-    if (i < rows - 1 && data->map_values[i + 1][j] != '1' && data->map_values[i + 1][j] != '2' && data->map_values[i - 1][j] != '0' && !is_player(data->map_values[i - 1][j]))
-    {
-		printf("3hi \n");
-
-		return (false);
-	}
-    if (j > 0 && data->map_values[i][j - 1] != '1' && data->map_values[i][j - 1] != '2' && data->map_values[i][j - 1] != '0' && !is_player(data->map_values[i][j - 1]))
-    {
-		printf("4hi \n");
-
-		return (false);
-	}
-    return true;
-}
-
-bool check_surrounded_tiles(t_data *data)
+static bool check_surrounded_tiles(t_data *data)
 {
     int i;
     int j;
@@ -185,27 +110,6 @@ bool check_surrounded_tiles(t_data *data)
 
 				return false;
 			}
-			j++;
-		}
-		i++;
-		j = 0;
-    }
-    return true;
-}
-
-bool check_surrounded_player(t_data *data)
-{
-    int i;
-    int j;
-
-	i = 0;
-	j = 0;
-    while (data->map_values[i]) 
-    {
-		while (data->map_values[i][j])
-		{
-			if (is_player(data->map_values[i][j]) && !is_surrounded(i, j, data)) 
-				return false;
 			j++;
 		}
 		i++;

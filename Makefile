@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2022/12/21 08:01:01 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/12/23 06:37:15 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,13 @@ SRC =	main.c \
 		debugtools/print_all.c \
 		tools/utils.c	\
 		tools/bools.c	\
+		tools/bools_map.c	\
 		tools/save.c	\
 		src/error.c \
 		src/init.c \
 		src/valid.c	\
 		src/map_reader.c \
+		src/start_cub.c \
 
 OBJ = $(SRC:.c=.o)
 
