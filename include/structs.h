@@ -6,7 +6,7 @@
 /*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/03 17:25:28 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/03 19:12:58 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ typedef struct s_data
 
 typedef struct s_cub
 {
-	t_data	*d;
-	void	*mlx;
-	int32_t	s_width;
-	int32_t	s_height;
-	
+	t_data		*d;
+	void		*mlx;
+	int32_t		s_width;
+	int32_t		s_height;
+	mlx_image_t	*image;
+	xpm_t	*xpm;
 }	t_cub;
 
 #endif

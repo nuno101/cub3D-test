@@ -6,7 +6,7 @@
 #    By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/03 17:01:34 by ezpiro-m         ###   ########.fr        #
+#    Updated: 2023/01/03 20:01:41 by ezpiro-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ libs:
 	make -C ./libft
 
 cleanlibs:
-	make -C ./libft clean
-	make -C ./MLX42 clean
+	make -C ./libft fclean
+	make -C ./MLX42 fclean
 
 clean:
 	rm -f $(OBJ)
