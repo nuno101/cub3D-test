@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 06:37:19 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/23 07:38:01 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:48:06 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,34 @@ static int	screensize(t_cub *m)
 	return 0;
 }
 
+void	key_press(mlx_key_data_t key, void *param)
+{
+	t_cub	*tmp;
+
+	printf("key = %i\n", key.key);
+	if (key.key == 256)
+	{
+		tmp = (t_cub*)param;
+		mlx_terminate(tmp->mlx);
+		free_data(tmp->d);
+		free(tmp);
+		system("leaks cub3D");
+		exit(0);
+	}
+
+}
+
+
 void	x_button(void *param)
 {
 	t_cub	*tmp;
 
 	tmp = (t_cub*)param;
-
+	mlx_terminate(tmp->mlx);
+	free_data(tmp->d);
+	free(tmp);
+	system("leaks cub3D");
+	exit(0);
 }
 
 int	start_cub(t_data *data)
@@ -37,6 +59,9 @@ int	start_cub(t_data *data)
 	if (!m->mlx)
 		return (MALLOC_ERROR);
 	screensize(m);
+	mlx_terminate(m->mlx);
+	m->mlx = mlx_init(m->s_width, m->s_height, "Cub3D", true);
+	mlx_key_hook(m->mlx, &key_press, m);
 	mlx_loop(m->mlx);
 	mlx_terminate(m->mlx);
 	free(m);

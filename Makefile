@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2022/12/23 06:37:15 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/03 17:01:34 by ezpiro-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ libs:
 
 cleanlibs:
 	make -C ./libft clean
-	#make -C ./MLX42 clean
+	make -C ./MLX42 clean
 
 clean:
 	rm -f $(OBJ)

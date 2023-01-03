@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/12/23 07:00:40 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:17:29 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int main(int argc, char *argv[])
         return (error(ret));
     }
 	ret = start_cub(data);
-    //print_map_param(data);
+    print_map_param(data);
     free_data(data);
+    system("leaks cub3D");
     return (error(ret));
 }
