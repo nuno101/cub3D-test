@@ -6,11 +6,34 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 22:03:20 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/04 22:19:16 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/04 23:05:23 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
+
+t_cub	*init_cub(t_data *data)
+{
+	t_cub	*m;
+
+	m = malloc(sizeof(t_cub));
+	m->d = data;
+	m->mlx = mlx_init(100, 100, "MLX", true);
+	if (!m->mlx)
+		exit(error(MLX_ERROR));
+	screensize(m);
+	if (!m->mlx)
+		exit(error(MLX_ERROR));
+	m->texture = mlx_load_png("./png_textures/lava_1024.png");
+	if (!m->texture)
+		exit(error(PNG_ERROR));
+	m->image = mlx_texture_to_image(m->mlx, m->texture);
+	if (!m->image)
+		exit(error(MLX_ERROR));
+	if (mlx_image_to_window(m->mlx, m->image, 0, 0) < 0)
+		exit(error(MLX_ERROR));
+	return (m);
+}
 
 static void	set_data(int argc, char **argv, t_data *data)
 {

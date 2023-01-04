@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/04 22:47:10 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/04 23:05:58 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC =	main.c \
 		debugtools/print_all.c \
 		init/save_map.c	\
 		init/save_map_data.c	\
-		init/init_data.c \
+		init/init.c \
 		init/bools_map.c	\
 		init/valid_map.c	\
 		init/valid_map_helper.c	\

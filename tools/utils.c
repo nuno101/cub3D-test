@@ -6,11 +6,18 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 03:16:21 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 13:10:23 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/04 23:07:36 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
+
+void	screensize(t_cub *m)
+{
+	mlx_get_monitor_size(0, &m->s_width, &m->s_height);
+	mlx_terminate(m->mlx);
+	m->mlx = mlx_init(m->s_width, m->s_height, "Cub3D", true);
+}
 
 int	sp_dg_skipper(char *s, int *i)
 {
@@ -21,6 +28,15 @@ int	sp_dg_skipper(char *s, int *i)
 	while (s[*i] && (s[*i] <= 32 || s[*i] == ','))
 		(*i)++;
 	return (0);
+}
+
+void	clean_mlx(t_cub *m)
+{
+	free_data(m->d);
+	mlx_delete_image(m->mlx, m->image);
+	mlx_delete_texture(m->texture);
+	mlx_terminate(m->mlx);
+	free(m);
 }
 
 void	free_data(t_data *data)
