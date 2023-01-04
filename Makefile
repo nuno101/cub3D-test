@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/04 23:05:58 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/04 23:11:26 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,12 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc -g -Wall -Wextra #-Werror
 
-LIBS =  MLX42/libmlx42.a -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+LIBS =  MLX42/libmlx42.a ./libft/libft.a -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(SRC) ./libft/libft.a $(LIBS) -o $(NAME)
+	$(CC) $(SRC) $(LIBS) -o $(NAME)
 
 libs:
 	make -C ./MLX42
