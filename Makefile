@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+         #
+#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/03 20:01:41 by ezpiro-m         ###   ########.fr        #
+#    Updated: 2023/01/04 16:55:06 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ cleanlibs:
 clean:
 	rm -f $(OBJ)
 
-fclean: clean cleanlibs
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all

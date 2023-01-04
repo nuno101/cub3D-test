@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2022/12/19 07:49:13 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:55:26 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include "cub.h"
 
-# define ARG_ERROR 11
-# define INVALID_MAP 12
-# define MALLOC_ERROR 13
-# define DIR_ERROR	14
+# define ARG_ERROR      11
+# define INVALID_MAP    12
+# define MALLOC_ERROR   13
+# define DIR_ERROR      14
 # define COLOUR_ERROR	15
-# define MAP_ERROR	16
+# define MAP_ERROR      16
 
 int	error(int err);
 
