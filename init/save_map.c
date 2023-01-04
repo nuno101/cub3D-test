@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   save.c                                             :+:      :+:    :+:   */
+/*   save_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:38:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/04 21:31:40 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/04 22:43:15 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	save_cardinal_direction(t_data *data, int i, int j, int dir)
 	*dest = ft_strdup(data->map[i] + j);
 }
 
-int	check_length(char **s)
+static int	check_length(char **s)
 {
 	int	i;
 	int	j;
