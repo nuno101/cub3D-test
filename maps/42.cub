@@ -1,7 +1,9 @@
 WE images/1.xpm
 EA images/2.xpm
 
-F  141,        111,      126 	
+F  141    111,      126
+
+#more vals? splitting ',' | ' '  Maps Lines dynamicly
 
 C     0        ,183      ,183
 
@@ -9,5 +11,5 @@ SO                   images/3.xpm
 NO images/4.xpm
 
  111111
-1100W011
+1100N011
 11111111

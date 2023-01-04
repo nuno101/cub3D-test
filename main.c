@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/03 17:17:29 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:43:10 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub.h"
+
+/*
+hex = (r << 24 | g << 16 | b << 8 | t);
+*/
 
 static t_data	*init_data(int argc, char *argv[])
 {
@@ -44,7 +48,7 @@ int main(int argc, char *argv[])
         return (error(ARG_ERROR));
     data = init_data(argc, argv);
     if (!data)
-		return (1);
+		return (MALLOC_ERROR);
     ret = save_param(data);
     if (ret != 0)
     {
@@ -52,8 +56,9 @@ int main(int argc, char *argv[])
         return (error(ret));
     }
 	ret = start_cub(data);
+    
     print_map_param(data);
     free_data(data);
-    system("leaks cub3D");
+    //system("leaks cub3D");
     return (error(ret));
 }
