@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/04 17:43:07 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/04 21:33:23 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_data
 	char	**map;
 	char	**map_values;
 	int		_split_len;
-	int		map_start[2];
 	char	*_NO;
 	char	*_SO;
 	char	*_WE;
@@ -39,7 +38,7 @@ typedef struct s_data
 typedef struct s_cub
 {
 	t_data			*d;
-	void			*mlx;
+	mlx_t			*mlx;
 	int32_t			s_width;
 	int32_t			s_height;
 	mlx_image_t		*image;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 06:37:19 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/04 18:09:17 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/04 21:34:37 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	key_press(mlx_key_data_t key, void *param)
 	{
 		tmp = (t_cub*)param;
 		clean_mlx(tmp);
-		system("leaks cub3D");
 		exit(0);
 	}
 }
