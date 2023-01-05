@@ -6,15 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/04 23:03:47 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/05 05:26:03 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub.h"
-
-/*
-hex = (r << 24 | g << 16 | b << 8 | t);
-*/
 
 int main(int argc, char *argv[])
 {
