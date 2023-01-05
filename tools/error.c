@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:22:04 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/04 23:00:56 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/05 03:29:34 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/error.h"
+#include "../include/cub.h"
 
 int	error(int err)
 {
@@ -31,5 +31,7 @@ int	error(int err)
 	if (err == PNG_ERROR)
 		return (write(2, "ERROR PNG path not valid \
 	| MLX malloc\n", 38));
+	if (err == EXIT_SUCCESS)
+		return (write(2, "Exit cub3D\n", 11));
 	return (0);
 }

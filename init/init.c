@@ -1,16 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 22:03:20 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/04 23:05:23 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/05 05:22:04 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
+
+static	void	init_colour(t_cub *m)
+{
+	m->f = (m->d->F[0] << 24 | m->d->F[1] << 16 | m->d->F[2] << 8 | 255);
+	m->c = (m->d->C[0] << 24 | m->d->C[1] << 16 | m->d->C[2] << 8 | 255);
+}
+
+static void	load_textures(t_cub *m)
+{
+	m->_NO = mlx_load_png(m->d->_NO);
+	if (!m->_NO)
+		exit(error(PNG_ERROR));
+	m->_SO = mlx_load_png(m->d->_SO);
+	if (!m->_SO)
+		exit(error(PNG_ERROR));
+	m->_WE = mlx_load_png(m->d->_WE);
+	if (!m->_WE)
+		exit(error(PNG_ERROR));
+	m->_EA = mlx_load_png(m->d->_EA);
+	if (!m->_EA)
+		exit(error(PNG_ERROR));
+}
 
 t_cub	*init_cub(t_data *data)
 {
@@ -24,14 +46,14 @@ t_cub	*init_cub(t_data *data)
 	screensize(m);
 	if (!m->mlx)
 		exit(error(MLX_ERROR));
-	m->texture = mlx_load_png("./png_textures/lava_1024.png");
-	if (!m->texture)
-		exit(error(PNG_ERROR));
-	m->image = mlx_texture_to_image(m->mlx, m->texture);
+	load_textures(m);
+	m->image = mlx_new_image(m->mlx, m->s_width, m->s_height);
 	if (!m->image)
 		exit(error(MLX_ERROR));
+	mlx_set_cursor_mode(m->mlx, MLX_MOUSE_HIDDEN);
 	if (mlx_image_to_window(m->mlx, m->image, 0, 0) < 0)
 		exit(error(MLX_ERROR));
+	init_colour(m);
 	return (m);
 }
 

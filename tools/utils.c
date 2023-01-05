@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 03:16:21 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/04 23:07:36 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/05 05:17:54 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	clean_mlx(t_cub *m)
 {
 	free_data(m->d);
 	mlx_delete_image(m->mlx, m->image);
-	mlx_delete_texture(m->texture);
+	mlx_delete_texture(m->_NO);
+	mlx_delete_texture(m->_SO);
+	mlx_delete_texture(m->_WE);
+	mlx_delete_texture(m->_EA);
 	mlx_terminate(m->mlx);
 	free(m);
 }

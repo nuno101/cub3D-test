@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/04 23:08:00 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/05 04:55:16 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "structs.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
-# include "error.h"
+# include "macros.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
@@ -62,7 +62,14 @@ void	free_data(t_data *data);
 //tools/error.c
 int		error(int err);
 
+//tools/render.c
+void	skyline(t_cub *m);
+void	render_map(void	*param);
+
 //src/start_cub.c
 void	start_cub(t_data *data);
+
+//src/keys.c
+void	cub_keys(mlx_key_data_t key, void *param);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/04 23:11:26 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/05 04:47:16 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRC =	main.c \
 		init/valid_map_helper.c	\
 		tools/utils.c	\
 		tools/error.c \
+		tools/render.c \
 		src/start_cub.c \
+		src/keys.c \
 
 OBJ = $(SRC:.c=.o)
 
