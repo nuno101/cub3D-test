@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 03:16:21 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/05 05:17:54 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/05 08:09:01 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	screensize(t_cub *m)
 {
+	if (!m->mlx)
+		exit(error(MLX_ERROR));
 	mlx_get_monitor_size(0, &m->s_width, &m->s_height);
 	mlx_terminate(m->mlx);
 	m->mlx = mlx_init(m->s_width, m->s_height, "Cub3D", true);

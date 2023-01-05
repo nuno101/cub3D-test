@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 22:03:20 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/05 05:22:04 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/05 08:45:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ static void	load_textures(t_cub *m)
 		exit(error(PNG_ERROR));
 }
 
+static t_coords	find_player(char **map)
+{
+	t_coords	pos;
+
+	pos.x = 0;
+	pos.y = 0;
+	while (map[pos.x])
+	{
+		while (map[pos.x][pos.y])
+		{
+			if (is_player(map[pos.x][pos.y]))
+				return (pos);
+			pos.y++;
+		}
+		pos.y = 0;
+		pos.x++;
+	}
+	return (pos);
+}
+
 t_cub	*init_cub(t_data *data)
 {
 	t_cub	*m;
@@ -41,19 +61,22 @@ t_cub	*init_cub(t_data *data)
 	m = malloc(sizeof(t_cub));
 	m->d = data;
 	m->mlx = mlx_init(100, 100, "MLX", true);
-	if (!m->mlx)
-		exit(error(MLX_ERROR));
 	screensize(m);
 	if (!m->mlx)
 		exit(error(MLX_ERROR));
-	load_textures(m);
 	m->image = mlx_new_image(m->mlx, m->s_width, m->s_height);
 	if (!m->image)
 		exit(error(MLX_ERROR));
-	mlx_set_cursor_mode(m->mlx, MLX_MOUSE_HIDDEN);
+	load_textures(m);
+	init_colour(m);
+	m->player_angle = 11;
+	m->player_pos = find_player(m->d->map_values);
+	//printf("player pos x = %i\nplayer pos y = %i\n", m->player_pos.x, m->player_pos.y);
+	m->fov = 0;
+	m->ray = NULL;
 	if (mlx_image_to_window(m->mlx, m->image, 0, 0) < 0)
 		exit(error(MLX_ERROR));
-	init_colour(m);
+	mlx_set_cursor_mode(m->mlx, MLX_MOUSE_HIDDEN);
 	return (m);
 }
 
