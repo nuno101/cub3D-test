@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 03:15:39 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/07 21:15:18 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static mlx_texture_t	*save_text(char *s)
 	int				i;
 
 	i = 0;
+	tmp = NULL;
 	while (s[i])
 	{
 		if (s[i] == '.')
