@@ -3,6 +3,7 @@
 
 Data leaks:
 -write a free function, (on every exit point? or is exit enough?)
+Nuno - comment: when exiting the program it's not needed to call free. The OS will take care of freeing the memory used by the program.
 
 Treestructure:
 -in main.c are functions which should be in other file/folder
