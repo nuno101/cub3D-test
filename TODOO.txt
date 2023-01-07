@@ -4,17 +4,17 @@
 Data leaks:
 -write a free function, (on every exit point? or is exit enough?)
 Nuno - comment: when exiting the program it's not needed to call free. The OS will take care of freeing the memory used by the program.
-
-Treestructure:
--in main.c are functions which should be in other file/folder
--create the files add them to cub.h Makefile and so on
+JJ - Nice 
 
 Map checks:
 -If map is closed/surrounded with walls
--if One player is inside
+-if One (only one) player is inside
+-We need to find the player position and save it in t_cub struct
+-of course check if player is surrounded by valid objects!
 
 Mlx:
 -we have the skyline/background for the window, raycasting/drawing/rendering objects is next step
+-textures are saved in struct data->textures[0] - data->textures[1] - data->textures[2] - data->textures[3]
 
 -Need to set up keys for movement and settings, when map is rendered.
 -Bonus stuff...

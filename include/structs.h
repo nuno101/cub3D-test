@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 03:40:30 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/07 21:31:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ typedef	struct s_ray
 
 typedef struct s_cub
 {
-	t_data			*d; //t_data *
+	t_data			*d;
 	mlx_t			*mlx;
-	int32_t			s_width;
-	int32_t			s_height;
+	int32_t			s_width; //window width its dynamic
+	int32_t			s_height; //window height its dynamic
 	mlx_image_t		*image;
 	uint32_t		f;
 	uint32_t		c;
 	float			player_angle;
-	t_coords		player_pos;
+	t_coords		player_pos; // player pos not set yet
 	float			fov;
 	t_ray			**ray;
 }	t_cub;
