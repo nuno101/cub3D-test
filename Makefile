@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/07 17:39:25 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/07 21:16:55 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ SRC =	main.c \
 		parser/init_data_helper.c \
 		parser/bools.c \
 		parser/colours_texture.c \
+		src/start_cub.c \
+		src/hooks.c \
+		src/keys.c \
 
 OBJ := $(SRC:.c=.o)
 

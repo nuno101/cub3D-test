@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/07 21:13:38 by jjesberg         ###   ########.fr       */
+/*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/07 21:21:05 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub.h"
+#include "../include/cub.h"
 
-int main(int argc, char **argv)
+void	resize_screen(int32_t x, int32_t y, void *param)
 {
-    t_data *data;
+	t_cub 			*m;
 
-    if (argc < 2 || check_arg(argv[1]))
-        return (cub_error(ARG_ERROR));
-    data = init_data(argv);
-	start_cub(data);
-    return (cub_error(0));
+	m = (t_cub*)param;
+	m->s_width = x;
+	m->s_height = y;
+	skyline(m);
+}
+
+void	cub_keys(mlx_key_data_t key, void *param)
+{
+	t_cub	*tmp;
+
+	(void)key;
+	tmp = (t_cub*)param;
+	if (mlx_is_key_down(tmp->mlx, MLX_KEY_ESCAPE))
+	{
+		clean_mlx(tmp);
+		exit (cub_error(EXIT_SUCCESS));
+	}
 }

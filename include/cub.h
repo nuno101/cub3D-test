@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/07 20:52:10 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/07 21:21:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,18 @@ bool	is_player(char c);
 //parser/colours_texture.c (FULL)
 void	check_colours(t_data *data, char *s);
 void	init_texture(t_data *data, char *s, int mod);
+
+//src/start_cub.c
+void	start_cub(t_data *data);
+void	skyline(t_cub *m);
+void	clean_mlx(t_cub *m);
+
+//src/hooks.c
+void	hooks(t_cub *m);
+void	screensize(t_cub *m);
+
+//src/keys.c
+void	cub_keys(mlx_key_data_t key, void *param);
+void	resize_screen(int32_t x, int32_t y, void *param);
 
 #endif
