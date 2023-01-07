@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_all.c                                        :+:      :+:    :+:   */
+/*   ft_print_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 06:59:32 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 01:42:25 by jjesberg         ###   ########.fr       */
+/*   Created: 2023/01/05 09:00:47 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/07 01:51:36 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "libft.h"
 
-void	print_map_param(t_data *data)
+void	ft_print_split(char **s)
 {
-	printf("path =%s\n", data->map_path);
-	printf("f_colour = %x\n", data->f_colour);
-	printf("c_colour = %x\n", data->c_colour);
-	ft_print_split(data->map_data);
-	printf("\n");
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		while (s[i][j])
+			j += write(1, &s[i][j], 1);
+		write(1, " ", 1);
+		j = 0;
+		i++;
+	}
 }

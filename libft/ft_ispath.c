@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   ft_ispath.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 02:34:32 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/05 05:22:30 by jjesberg         ###   ########.fr       */
+/*   Created: 2023/01/07 03:16:26 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/07 03:17:17 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/cub.h"
+#include "libft.h"
 
-void	cub_keys(mlx_key_data_t key, void *param)
+int	ft_ispath(char *path)
 {
-	t_cub	*tmp;
+	int	fd;
 
-	(void)key;
-	tmp = (t_cub*)param;
-	if (mlx_is_key_down(tmp->mlx, MLX_KEY_ESCAPE))
-	{
-		clean_mlx(tmp);
-		exit (error(EXIT_SUCCESS));
-	}
+	fd = open(path, O_RDONLY);
+	if (fd >= 0)
+		close(fd);
+	else
+		return (0);
+	return (1);
 }
