@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:18:25 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 05:15:41 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:41:41 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,14 @@ char	*cut_save(char *str)
 	return (new_str);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int reset)
 {
 	char		*line;
 	static char	*save;
 	static int	stop;
 
+	if (reset == 1)
+		stop = 0;
 	line = NULL;
 	if (fd <= 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483646 \
 	|| stop != 0 || fd > 10240)

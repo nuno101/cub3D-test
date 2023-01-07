@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 01:13:54 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/18 07:09:51 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:43:06 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_linelen(int fd2)
 	int		i;
 
 	i = 0;
-	line = get_next_line(fd2);
+	line = get_next_line(fd2, 0);
 	if (!line)
 		return (-1);
 	else
@@ -26,7 +26,7 @@ int	ft_linelen(int fd2)
 	while (line)
 	{
 		free(line);
-		line = get_next_line(fd2);
+		line = get_next_line(fd2, 0);
 		if (line == NULL)
 		{
 			if (i > 1)

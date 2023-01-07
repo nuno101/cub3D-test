@@ -5,17 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 00:22:04 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/05 03:29:34 by jjesberg         ###   ########.fr       */
+/*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/07 02:37:44 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-int	error(int err)
+int	cub_error(int err)
 {
 	if (err == ARG_ERROR)
 		return (write(2, "ERROR ARGS\n", 11));
+	if (err == FILE_ERROR)
+		return (write(2, "ERROR FILE invalid\n", 11));
 	if (err == MALLOC_ERROR)
 		return (write(2, "ERROR Malloc\n", 13));
 	if (err == INVALID_MAP)
@@ -28,6 +30,8 @@ int	error(int err)
 		return (write(2, "ERROR Map not valid\n", 20));
 	if (err == MLX_ERROR)
 		return (write(2, "ERROR MLX Malloc\n", 10));
+	if (err == TEX_PATH_ERROR)
+		return (write(2, "ERROR put ONE of each path NO/SO/EA/WE ./path\n", 46));
 	if (err == PNG_ERROR)
 		return (write(2, "ERROR PNG path not valid \
 	| MLX malloc\n", 38));
