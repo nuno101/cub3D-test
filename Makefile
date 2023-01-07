@@ -6,14 +6,13 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/07 03:54:58 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/07 17:39:25 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
 
 FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
-#FLAGS = -Wall -Wextra -Werror
 MINILIBX_DIR = MLX42
 MINILIBX = $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR = libft

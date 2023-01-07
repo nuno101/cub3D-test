@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/07 03:17:23 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/07 20:52:10 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <features.h>
 
 //debugtools/print_all.c
 void	print_map_param(t_data *data);

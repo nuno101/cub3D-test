@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/07 03:51:31 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:45:15 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	resize_screen(int32_t x, int32_t y, void *param)
 	skyline(m); //maybe leaks because we overwrite old images
 }
 
-void	render_map(void	*param)
+void	render_ray(void	*param)
 {
 	t_cub	*m;
 	int		i;
@@ -111,7 +111,7 @@ static void	hooks(t_cub *m)
 {
 	mlx_key_hook(m->mlx, &cub_keys, m);
 	mlx_resize_hook(m->mlx, &resize_screen, m);
-	mlx_loop_hook(m->mlx, &render_map, m);
+	mlx_loop_hook(m->mlx, &render_ray, m);
 	mlx_loop(m->mlx);
 }
 
