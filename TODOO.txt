@@ -1,5 +1,22 @@
 #Only push when gcc -Wall -Wextra is working without errors
 --------------------------------------------------------------------------------------------
 
-Check edge cases for maps and overwork some functions optimizing...
-Switch all bool functions to tools/bools.c
+Data leaks:
+-write a free function, (on every exit point? or is exit enough?)
+
+Treestructure:
+-in main.c are functions which should be in other file/folder
+-create the files add them to cub.h Makefile and so on
+
+Map checks:
+-If map is closed/surrounded with walls
+-if One player is inside
+
+Mlx:
+-we have the skyline/background for the window, raycasting and drawing/rendering objects is next step
+
+-Need to set up keys for movement and settings, when map is rendered.
+-Bonus stuff...
+
+Edgecases:
+search and fix edgecases!
