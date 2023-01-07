@@ -14,7 +14,7 @@ Map checks:
 -if One player is inside
 
 Mlx:
--we have the skyline/background for the window, raycasting and drawing/rendering objects is next step
+-we have the skyline/background for the window, raycasting/drawing/rendering objects is next step
 
 -Need to set up keys for movement and settings, when map is rendered.
 -Bonus stuff...
