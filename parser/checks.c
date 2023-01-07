@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 02:50:24 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/07 23:51:46 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ int	find_path_type(char *s)
 	return (0);
 }
 
+/*
+ * validate filename s ends with ".cub"
+ * filename may include a dir: maps/42.cub
+ */
 int	check_arg(char *s)
 {
 	int		i;

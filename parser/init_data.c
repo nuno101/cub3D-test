@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 03:16:09 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/07 23:46:19 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ static void	save_param(t_data *data)
 	find_map(data);
 }
 
+/*
+ * validate filename is valid by checking open returns a valid fd
+ * TODO
+ */
 static void	map_data(t_data *data)
 {
 	if (!ft_ispath(data->map_path))
@@ -86,6 +90,11 @@ static char	*get_path(char *s)
 	return (s + i);
 }
 
+/*
+ * initialise empty t_data structure
+ * set map_path with map filename
+ * call map_data() to fill t_data
+ */
 t_data	*init_data(char **argv)
 {
 	t_data	*data;
