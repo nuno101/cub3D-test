@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/07 23:33:26 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/08 16:28:02 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,10 @@ t_cub	*init_cub(t_data *data)
 	return (cub);
 }
 
+/*
+ * open the mlx window
+ * set the skyline and the hooks
+ */
 void	start_cub(t_data *data)
 {
 	t_cub	*cub;
@@ -147,7 +151,9 @@ void	start_cub(t_data *data)
 	skyline(cub);
 	hooks(cub);
 	clean_mlx(cub);
-	exit(cub_error(EXIT_SUCCESS));
+	// TOD: Julian to check: 
+	// why call exit here? if all is fine the program should return to main and exit
+	//exit(cub_error(EXIT_SUCCESS));
 }
 
 /*
@@ -157,12 +163,13 @@ void	start_cub(t_data *data)
  */
 int main(int argc, char **argv)
 {
-    t_data *data;
+	t_data *data;
 
-    if (argc != 2 || check_arg(argv[1]))
-        return (cub_error(ARG_ERROR));
-    data = init_data(argv);
+	if (argc != 2 || check_arg(argv[1]))
+		return (cub_error(ARG_ERROR));
+	data = init_data(argv);
 	start_cub(data);
 	free(data);
-    return (cub_error(0));
+	write(1, "Exit cub3D\n", 11);
+	return (0);
 }
