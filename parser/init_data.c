@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 03:16:09 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/07 21:43:19 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	save_param(t_data *data)
 		ret = find_path_type(data->map_data[i]);
 		if (ret)
 			init_texture(data, data->map_data[i], ret);
-		else if (ft_haschar(data->map_data[i], 'F') || ft_haschar(data->map_data[i], 'C')) //not save!
+		else if (ft_haschar(data->map_data[i], 'F') || ft_haschar(data->map_data[i], 'C')) //not save! to use ft_haschar strncmp is stronger
 			check_colours(data, data->map_data[i]);
 		i++;
 	}
