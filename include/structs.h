@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 21:31:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:11:05 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct s_data
 {
-	char			*map_path;
-	char			**map_data;
-	char			**map;
+	char			*map_path; // map path
+	char			**map_data; //map data
+	char			**map; //map
 	mlx_texture_t	*textures[4];
 	uint32_t		f_colour;
 	uint32_t		c_colour;
