@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:11:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 21:20:59 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:02:05 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ float	ray_angle_fix(t_cub *m, int i)
 	return (atanf(seg_len * i - screen_halflen));
 }
 
-void	render_ray(void	*param)
+void	render_ray(void	*param) // bu kod bitmedi, burada duzeltmeler ve fare hareketleri lazim.
 {
 	t_cub	*m;
 	int		i;
@@ -57,7 +57,7 @@ void	render_ray(void	*param)
 	while (i < m->s_width)
 	{
 		r_angle = m->player_angle + ray_angle_fix(m, i);
-		m->ray[i] = init_ray(m, r_angle, m->player_pos);
+		m->ray[i] = init_ray(m, r_angle, m->player_pos); 
 		i++;
 	}
 	m->ray[i] = NULL;
