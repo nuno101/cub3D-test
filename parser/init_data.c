@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/10 18:10:39 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/11 06:43:20 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,5 @@ t_data	*init_data(char **argv)
 	data->f_colour = 0;
 	data->c_colour = 0;
 	map_data(data);
-	printf("map = %s \n", data->map[2]);
 	return (data);
 }

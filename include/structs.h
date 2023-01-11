@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/10 18:11:05 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/11 06:49:59 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct s_data
 {
-	char			*map_path; // map path
-	char			**map_data; //map data
-	char			**map; //map
+	char			*map_path;
+	char			**map_data;
+	char			**map;
 	mlx_texture_t	*textures[4];
 	uint32_t		f_colour;
 	uint32_t		c_colour;
@@ -35,13 +35,18 @@ typedef struct s_coords
 
 typedef	struct s_ray
 {
-	t_coords	pos;
-	t_coords	wall_pos;
-	float		len;
-	float		eye_len;
-	char		wall_face;
-	float		pos_on_wall;
-	char		wall_type;
+	float		cam;
+	int			hit;
+	int			side;
+	float		wall;
+	t_coords	c_ray;
+	t_coords	c_map;
+	t_coords	c_side;
+	t_coords	c_delta;
+	t_coords	c_step;
+	t_coords	c_p;
+	t_coords	c_d;
+	t_coords	c_w;
 }	t_ray;
 
 typedef struct s_cub
@@ -56,7 +61,7 @@ typedef struct s_cub
 	float			player_angle;
 	t_coords		player_pos; // player pos not set yet
 	float			fov;
-	t_ray			**ray;
+	t_ray			*ray;
 }	t_cub;
 
 #endif

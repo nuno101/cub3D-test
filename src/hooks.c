@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:11:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/10 19:02:05 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/11 07:38:50 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,52 +21,33 @@ void	screensize(t_cub *m)
 	m->mlx = mlx_init(m->s_width, m->s_height, "Cub3D", true);
 }
 
-static t_ray	*init_ray(t_cub *m, float r_angle, t_coords pos)
+void	init_ray(t_ray *ray, int x, t_cub *cub)
 {
-	t_ray	*ray;
-
-	(void)pos;
-	(void)r_angle;
-	(void)m;
 	ray = malloc(sizeof(t_ray));
-
-	return (ray);
-}
-
-float	ray_angle_fix(t_cub *m, int i)
-{
-	float	screen_halflen;
-	float	seg_len;
-
-	screen_halflen = tanf(m->fov / 2);
-	seg_len = screen_halflen / (m->s_width / 2);
-	return (atanf(seg_len * i - screen_halflen));
-}
-
-void	render_ray(void	*param) // bu kod bitmedi, burada duzeltmeler ve fare hareketleri lazim.
-{
-	t_cub	*m;
-	int		i;
-	float	r_angle;
-
-	m = (t_cub*)param;
-	i = 0;
-	m->ray = malloc(sizeof(t_ray) * (m->s_width + 1));
-	if (!m->ray)
+	if (!ray)
 		exit(cub_error(MALLOC_ERROR));
-	while (i < m->s_width)
+	ray->cam = 2 * x / cub->s_width - 1;
+}
+
+void	render_ray(void	*param)
+{
+	t_cub	*cub;
+	int		x;
+
+	x = 0;
+	cub = (t_cub *)param;
+	skyline(cub);
+	while (x < cub->s_width)
 	{
-		r_angle = m->player_angle + ray_angle_fix(m, i);
-		m->ray[i] = init_ray(m, r_angle, m->player_pos); 
-		i++;
-	}
-	m->ray[i] = NULL;
+		init_ray(cub->ray, x, cub);
+		x++;
+	}	
 }
 
 void	hooks(t_cub *m)
 {
+	mlx_loop_hook(m->mlx, &render_ray, m);
 	mlx_key_hook(m->mlx, &cub_keys, m);
 	mlx_resize_hook(m->mlx, &resize_screen, m);
-	mlx_loop_hook(m->mlx, &render_ray, m);
 	mlx_loop(m->mlx);
 }
