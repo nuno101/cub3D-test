@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+         #
+#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/12 13:00:04 by ezpiro-m         ###   ########.fr        #
+#    Updated: 2023/01/12 13:30:21 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
 
-FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
+FLAGS := -g -Wall -Wextra -Werror #-fsanitize=address
 MINILIBX_DIR = MLX42
 MINILIBX = $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR = libft
