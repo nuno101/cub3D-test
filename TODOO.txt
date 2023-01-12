@@ -1,15 +1,7 @@
 #Only push when gcc -Wall -Wextra is working without errors
 --------------------------------------------------------------------------------------------
 
-Data leaks:
--write a free function, (on every exit point? or is exit enough?)
-Nuno - comment: when exiting the program it's not needed to call free. The OS will take care of freeing the memory used by the program.
-JJ - Nice 
-
 Map checks:
--If map is closed/surrounded with walls
--if One (only one) player is inside
--of course check if player is surrounded by valid objects!
 - 'data->map' is not perect because it will not identify the end of the map and it saved all rest inside like empty lines etc.
 
 Mlx:
