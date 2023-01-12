@@ -6,7 +6,7 @@
 /*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/10 18:11:05 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:47:15 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
+typedef struct s_coords
+{
+	int		x;
+	int		y;
+}	t_coords;
+
 typedef struct s_data
 {
+	t_coords		player_pos;
 	char			*map_path; // map path
 	char			**map_data; //map data
 	char			**map; //map
@@ -26,12 +33,6 @@ typedef struct s_data
 	int				tmp[4];
 }	t_data;
 
-
-typedef struct s_coords
-{
-	int		x;
-	int		y;
-}	t_coords;
 
 typedef	struct s_ray
 {

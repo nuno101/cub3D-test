@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/07 21:21:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:58:02 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,9 @@ void	screensize(t_cub *m);
 //src/keys.c
 void	cub_keys(mlx_key_data_t key, void *param);
 void	resize_screen(int32_t x, int32_t y, void *param);
+
+//src/player_pos.c
+int		player_pos(t_data *data);
+
 
 #endif

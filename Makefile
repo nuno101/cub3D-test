@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/07 21:16:55 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/12 13:00:04 by ezpiro-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC =	main.c \
 		src/start_cub.c \
 		src/hooks.c \
 		src/keys.c \
-
+		src/player_pos.c \
+		
 OBJ := $(SRC:.c=.o)
 
 ifeq ($(USER), nlouro)

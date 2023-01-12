@@ -6,7 +6,7 @@
 /*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:06:10 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/10 18:40:06 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:55:52 by ezpiro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ static t_cub	*init_cub(t_data *data)
 	if (!cub->image)
 		exit(cub_error(MLX_ERROR));
 	cub->player_angle = 11;
-	cub->player_pos.x = 2; // buralari degistirecegim. bunlar su an 42.cub haritasina gore yapildi.
-	cub->player_pos.y = 2;
+	cub->player_pos.x = 0; // buralari degistirecegim. bunlar su an 42.cub haritasina gore yapildi.
+	cub->player_pos.y = 0;
 	cub->fov = 2 * atan(0.66 / 1.0);
 	cub->ray = NULL;
 	mlx_set_cursor_mode(cub->mlx, MLX_MOUSE_HIDDEN);
+	player_pos(cub->d);
 	return (cub);
 }
 
