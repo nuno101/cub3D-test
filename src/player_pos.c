@@ -6,13 +6,13 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:22:18 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 13:32:21 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:04:19 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-int	player_pos(t_data *data)
+void	player_pos(t_cub *cub, t_data *data)
 {
 	int		i;
 	int		j;
@@ -25,14 +25,15 @@ int	player_pos(t_data *data)
 		{
 			if (is_player(data->map[i][j]))
 			{
-				data->player_pos.x = i;
-				data->player_pos.y = j;
-				return (0);
+				cub->player_pos.x = j;
+				cub->player_pos.y = i;
+				return ;
 			}
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	return (INVALID_MAP);
+	cub->player_pos.x = 0;
+	cub->player_pos.y = 0;
 }

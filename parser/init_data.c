@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/11 06:43:20 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:06:22 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	save_param(t_data *data)
 		ret = find_path_type(data->map_data[i]);
 		if (ret)
 			init_texture(data, data->map_data[i], ret);
-		else if (ft_haschar(data->map_data[i], 'F') || ft_haschar(data->map_data[i], 'C')) //not save! to use ft_haschar strncmp is stronger
+		else if (ft_haschar(data->map_data[i], 'F') || ft_haschar(data->map_data[i], 'C'))
 			check_colours(data, data->map_data[i]);
 		i++;
 	}
@@ -72,7 +72,7 @@ static void	map_data(t_data *data)
 	save_param(data);
 	if (ft_splitlen(data->map) < 3 || validate_mapchars(data->map))
 		exit(cub_error(MAP_ERROR));
-	//map need still validation for corners/walls...
+	player_checks(data);
 }
 
 static char	*get_path(char *s)

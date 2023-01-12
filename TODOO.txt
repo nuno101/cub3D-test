@@ -9,8 +9,8 @@ JJ - Nice
 Map checks:
 -If map is closed/surrounded with walls
 -if One (only one) player is inside
--We need to find the player position and save it in t_cub struct
 -of course check if player is surrounded by valid objects!
+- 'data->map' is not perect because it will not identify the end of the map and it saved all rest inside like empty lines etc.
 
 Mlx:
 -we have the skyline/background for the window, raycasting/drawing/rendering objects is next step

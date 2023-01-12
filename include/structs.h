@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/11 06:49:59 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:02:56 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,22 @@
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
-typedef struct s_coords
-{
-	int		x;
-	int		y;
-}	t_coords;
-
 typedef struct s_data
 {
-	t_coords		player_pos;
-	char			*map_path; // map path
-	char			**map_data; //map data
-	char			**map; //map
+	char			*map_path;
+	char			**map_data;
+	char			**map;
 	mlx_texture_t	*textures[4];
 	uint32_t		f_colour;
 	uint32_t		c_colour;
 	int				tmp[4];
 }	t_data;
 
+typedef struct s_coords
+{
+	int		x;
+	int		y;
+}	t_coords;
 
 typedef	struct s_ray
 {
@@ -54,13 +52,13 @@ typedef struct s_cub
 {
 	t_data			*d;
 	mlx_t			*mlx;
-	int32_t			s_width; //window width its dynamic
-	int32_t			s_height; //window height its dynamic
+	int32_t			s_width;
+	int32_t			s_height;
 	mlx_image_t		*image;
 	uint32_t		f;
 	uint32_t		c;
 	float			player_angle;
-	t_coords		player_pos; // player pos not set yet
+	t_coords		player_pos;
 	float			fov;
 	t_ray			*ray;
 }	t_cub;

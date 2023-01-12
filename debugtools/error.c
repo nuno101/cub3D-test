@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 02:37:44 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:57:06 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	cub_error(int err)
 {
 	if (err == ARG_ERROR)
-		return (write(2, "ERROR ARGS\n", 11));
+		return (write(STDERR_FILENO, "ERROR ARGS\n", 11));
 	if (err == FILE_ERROR)
 		return (write(2, "ERROR FILE invalid\n", 11));
 	if (err == MALLOC_ERROR)
@@ -32,6 +32,8 @@ int	cub_error(int err)
 		return (write(2, "ERROR MLX Malloc\n", 10));
 	if (err == TEX_PATH_ERROR)
 		return (write(2, "ERROR put ONE of each path NO/SO/EA/WE ./path\n", 46));
+	if (err == PLAYER_ERROR)
+		return (write(2, "ERROR Player\n", 13));
 	if (err == PNG_ERROR)
 		return (write(2, "ERROR PNG path not valid \
 	| MLX malloc\n", 38));

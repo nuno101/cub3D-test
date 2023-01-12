@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:06:10 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 12:55:52 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:10:41 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,14 @@ static t_cub	*init_cub(t_data *data)
 	t_cub	*cub;
 
 	cub = malloc(sizeof(t_cub));
+	if (!cub)
+		exit(cub_error(MALLOC_ERROR));
 	cub->d = data;
+	cub->c = data->c_colour;
+	cub->f = data->f_colour;
+	player_pos(cub, data);
+	if (!cub->player_pos.x || !cub->player_pos.y)
+		exit(cub_error(PLAYER_ERROR));
 	cub->mlx = mlx_init(100, 100, "MLX", true);
 	screensize(cub);
 	if (!cub->mlx)
@@ -53,13 +60,11 @@ static t_cub	*init_cub(t_data *data)
 	cub->image = mlx_new_image(cub->mlx, cub->s_width, cub->s_height);
 	if (!cub->image)
 		exit(cub_error(MLX_ERROR));
-	cub->player_angle = 11;
-	cub->player_pos.x = 0; // buralari degistirecegim. bunlar su an 42.cub haritasina gore yapildi.
-	cub->player_pos.y = 0;
+	cub->player_angle = 11;	
 	cub->fov = 2 * atan(0.66 / 1.0);
 	cub->ray = NULL;
 	mlx_set_cursor_mode(cub->mlx, MLX_MOUSE_HIDDEN);
-	player_pos(cub->d);
+	//print_cub(cub);
 	return (cub);
 }
 

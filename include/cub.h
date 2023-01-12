@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezpiro-m <ezpiro-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/12 12:58:02 by ezpiro-m         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:10:21 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@
 # include <unistd.h>
 
 //debugtools/print_all.c
-void	print_map_param(t_data *data);
+void	print_data(t_data *data);
+void	print_cub(t_cub *cub);
 int		cub_error(int err);
 
 //parser/checks.c
 int		check_text(char **map, int *tx);
 int		find_path_type(char *s);
 int		check_arg(char *s);
+void	player_checks(t_data *data);
 
 //parser/init_data.c (FULL)
 t_data	*init_data(char **argv);
@@ -64,7 +66,6 @@ void	cub_keys(mlx_key_data_t key, void *param);
 void	resize_screen(int32_t x, int32_t y, void *param);
 
 //src/player_pos.c
-int		player_pos(t_data *data);
-
+void	player_pos(t_cub *cub, t_data *data);
 
 #endif
