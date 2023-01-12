@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 22:03:41 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:26:47 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,19 @@ static void	find_map(t_data *data)
 	j = 0;
 	flag = 0;
 	i = 0;
-	while (data->map_data[i])
+	while (data->map_data[i] && flag != 1)
 	{
 		len = ft_strlen(data->map_data[i]);
 		while (data->map_data[i][j] && check_map(data->map_data[i]) && len > 2)
 		{
 			flag = 1;
-			if (data->map_data[i][j] != '1' && data->map_data[i][j] != ' ' && data->map_data[i][j] != 9)
+			if (data->map_data[i][j] != '1' && data->map_data[i][j] != ' ' \
+			&& data->map_data[i][j] != 9)
 				exit(cub_error(INVALID_MAP));
 			j++;
 		}
 		if (flag == 1)
-		{
 			data->map = data->map_data + i;
-			break ;
-		}
 		j = 0;
 		i++;
 	}
@@ -55,7 +53,8 @@ static void	save_param(t_data *data)
 		ret = find_path_type(data->map_data[i]);
 		if (ret)
 			init_texture(data, data->map_data[i], ret);
-		else if (ft_haschar(data->map_data[i], 'F') || ft_haschar(data->map_data[i], 'C'))
+		else if (ft_haschar(data->map_data[i], 'F') \
+		|| ft_haschar(data->map_data[i], 'C'))
 			check_colours(data, data->map_data[i]);
 		i++;
 	}

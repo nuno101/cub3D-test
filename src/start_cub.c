@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:06:10 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 22:15:04 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:27:51 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static t_cub	*init_cub(t_data *data)
 	cub->image = mlx_new_image(cub->mlx, cub->s_width, cub->s_height);
 	if (!cub->image)
 		exit(cub_error(MLX_ERROR));
-	cub->player_angle = 11;	
+	cub->player_angle = 11;
 	cub->fov = 2 * atan(0.66 / 1.0);
 	cub->ray = NULL;
 	mlx_set_cursor_mode(cub->mlx, MLX_MOUSE_HIDDEN);

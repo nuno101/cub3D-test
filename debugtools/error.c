@@ -6,12 +6,13 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 22:05:41 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:29:16 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
+/*too many lines atm!!*/
 int	cub_error(int err)
 {
 	if (err == ARG_ERROR)
