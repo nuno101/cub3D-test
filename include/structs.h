@@ -15,23 +15,24 @@
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
+typedef struct s_coords
+{
+	int		x;
+	int		y;
+}	t_coords;
+
 typedef struct s_data
 {
-	char			*map_path;
-	char			**map_data;
-	char			**map;
+	t_coords		player_pos;
+	char			*map_path; // map path
+	char			**map_data; //map data
+	char			**map; //map
 	mlx_texture_t	*textures[4];
 	uint32_t		f_colour;
 	uint32_t		c_colour;
 	int				tmp[4];
 }	t_data;
 
-
-typedef struct s_coords
-{
-	int		x;
-	int		y;
-}	t_coords;
 
 typedef	struct s_ray
 {
