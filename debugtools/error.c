@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 14:57:06 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:05:41 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int	cub_error(int err)
 	if (err == TEX_PATH_ERROR)
 		return (write(2, "ERROR put ONE of each path NO/SO/EA/WE ./path\n", 46));
 	if (err == PLAYER_ERROR)
-		return (write(2, "ERROR Player\n", 13));
+		return (write(2, "ERROR only one Player needed\n", 29));
+	if (err == P_SURROUNDED_ERROR)
+		return (write(2, "ERROR Player not surrounded\n", 28));
+	if (err == W_SURROUNDED_ERROR)
+		return (write(2, "ERROR Wall not surrounded\n", 26));
 	if (err == PNG_ERROR)
 		return (write(2, "ERROR PNG path not valid \
 	| MLX malloc\n", 38));

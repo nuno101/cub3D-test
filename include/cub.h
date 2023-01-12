@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/12 15:10:21 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:06:47 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ int		cub_error(int err);
 int		check_text(char **map, int *tx);
 int		find_path_type(char *s);
 int		check_arg(char *s);
+
+//parser/player_check.c
 void	player_checks(t_data *data);
+
+//parser/wall_check.c
+void	wall_check(t_data *data);
 
 //parser/init_data.c (FULL)
 t_data	*init_data(char **argv);

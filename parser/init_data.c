@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 15:06:22 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:03:41 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static void	map_data(t_data *data)
 	if (ft_splitlen(data->map) < 3 || validate_mapchars(data->map))
 		exit(cub_error(MAP_ERROR));
 	player_checks(data);
+	wall_check(data);
 }
 
 static char	*get_path(char *s)

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 16:18:32 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:42:16 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,72 +81,4 @@ int	check_arg(char *s)
 		}
 	}
 	return (1);
-}
-
-static int	player_top_surrounded(char *map, int j)
-{
-	int	k;
-	int	count;
-
-	k = 0;
-	count = 0;
-	while (map[k])
-	{
-		if (k == j - 1)
-		{
-			if (map[k] != '0' || map[k] != '1')
-				return (0);
-			count++;
-		}
-		if (k == j + 1)
-		{
-			if (map[k] != '0' || map[k] != '1')
-				return (0);
-			count++;
-		}
-		if (k == j)
-		{
-			if (map[k] != '0' || map[k] != '1')
-				return (0);
-			count++;
-		}
-		k++;
-	}
-	if (count != 3)
-		return (0);
-	return (1);
-}
-
-static int	player_surrounded(char **map, int i, int j)
-{
-	player_top_surrounded(map[i - 1], j);
-	return (1);
-}
-
-void	player_checks(t_data *data)
-{
-	int	i;
-	int	j;
-	int	count;
-
-	count = 0;
-	i = 0;
-	j = 0;
-	while (data->map[i])
-	{
-		while (data->map[i][j])
-		{
-			if (is_player(data->map[i][j]))
-			{
-				if (i == 0 || j == 0 || !player_surrounded(data->map, i, j))
-					exit(cub_error(PLAYER_ERROR));
-				count++;
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	if (count != 1)
-		exit(cub_error(PLAYER_ERROR));
 }

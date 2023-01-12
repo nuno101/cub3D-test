@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/12 13:30:21 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/12 22:05:56 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SRC =	main.c \
 		debugtools/print_all.c \
 		debugtools/error.c \
 		parser/checks.c \
+		parser/player_check.c \
+		parser/wall_check.c \
 		parser/init_data.c \
 		parser/init_data_helper.c \
 		parser/bools.c \
