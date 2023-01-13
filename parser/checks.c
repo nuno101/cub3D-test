@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 23:51:46 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/13 18:06:04 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	check_arg(char *s)
 		if (s[i] == '.' && s[i + 1])
 		{
 			i++;
-			if (!ft_strncmp(s + i, "cub", 5))
+			if (!ft_strncmp(s + i, ".cub", 6))
 				return (0);
 		}
 	}

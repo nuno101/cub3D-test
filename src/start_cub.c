@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:06:10 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 22:27:51 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/13 17:48:36 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,4 @@ void	start_cub(t_data *data)
 		exit(cub_error(MLX_ERROR));
 	hooks(cub);
 	clean_mlx(cub);
-	exit(cub_error(EXIT_SUCCESS));
 }
