@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_all.c                                        :+:      :+:    :+:   */
+/*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 06:59:32 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 15:04:21 by jjesberg         ###   ########.fr       */
+/*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/12 22:27:29 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-void	print_data(t_data *data)
+void	resize_screen(int32_t x, int32_t y, void *param)
 {
-	printf("path =%s\n", data->map_path);
-	printf("f_colour = %x\n", data->f_colour);
-	printf("c_colour = %x\nthe whole file:\n", data->c_colour);
-	ft_print_split(data->map_data);
-	printf("\n");
+	t_cub	*m;
+
+	m = (t_cub *)param;
+	m->s_width = x;
+	m->s_height = y;
+	skyline(m);
 }
 
-void	print_cub(t_cub *cub)
+void	cub_keys(mlx_key_data_t key, void *param)
 {
-	printf("c colour = %x\n", cub->c);
-	printf("f colour = %x\n", cub->f);
-	printf("player_pos = x(%i)y(%i)\n", cub->player_pos.x, cub->player_pos.y);
+	t_cub	*tmp;
+
+	(void)key;
+	tmp = (t_cub *)param;
+	if (mlx_is_key_down(tmp->mlx, MLX_KEY_ESCAPE))
+	{
+		clean_mlx(tmp);
+		exit (cub_error(EXIT_SUCCESS));
+	}
 }

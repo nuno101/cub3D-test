@@ -16,7 +16,8 @@
  * global error handling
  * print an error message according to err
  * return err value to be re-used as program exiting value
- */
+ * FIXME too many lines atm!!
+*/
 int	cub_error(int err)
 {
 	if (err == ARG_ERROR)
@@ -38,9 +39,14 @@ int	cub_error(int err)
 	else if (err == TEX_PATH_ERROR)
 		write(2, "ERROR put ONE of each path NO/SO/EA/WE ./path\n", 46);
 	else if (err == PNG_ERROR)
-		write(2, "ERROR PNG path not valid \
-	| MLX malloc\n", 38);
-	else
-		write(2, "ERROR FIXME - unsupported error\n", 32);
+		write(2, "ERROR PNG path not valid | MLX malloc\n", 38);
+	else if (err == PLAYER_ERROR)
+		write(2, "ERROR only one Player needed\n", 29);
+	else if (err == P_SURROUNDED_ERROR)
+		write(2, "ERROR Player not surrounded\n", 28);
+	else if (err == W_SURROUNDED_ERROR)
+		write(2, "ERROR Wall not surrounded\n", 26);
+  else
+    write(2, "ERROR FIXME - unsupported error\n", 32);
 	return (err);
 }

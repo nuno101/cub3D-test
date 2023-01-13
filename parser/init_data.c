@@ -12,7 +12,6 @@
 
 #include "../include/cub.h"
 
-
 static void	find_map(t_data *data)
 {
 	int		i;
@@ -23,21 +22,19 @@ static void	find_map(t_data *data)
 	j = 0;
 	flag = 0;
 	i = 0;
-	while (data->map_data[i])
+	while (data->map_data[i] && flag != 1)
 	{
 		len = ft_strlen(data->map_data[i]);
 		while (data->map_data[i][j] && check_map(data->map_data[i]) && len > 2)
 		{
 			flag = 1;
-			if (data->map_data[i][j] != '1' && data->map_data[i][j] != ' ' && data->map_data[i][j] != 9)
+			if (data->map_data[i][j] != '1' && data->map_data[i][j] != ' ' \
+			&& data->map_data[i][j] != 9)
 				exit(cub_error(INVALID_MAP));
 			j++;
 		}
 		if (flag == 1)
-		{
 			data->map = data->map_data + i;
-			break ;
-		}
 		j = 0;
 		i++;
 	}
@@ -56,7 +53,8 @@ static void	save_param(t_data *data)
 		ret = find_path_type(data->map_data[i]);
 		if (ret)
 			init_texture(data, data->map_data[i], ret);
-		else if (ft_haschar(data->map_data[i], 'F') || ft_haschar(data->map_data[i], 'C')) //not save!
+		else if (ft_haschar(data->map_data[i], 'F') \
+		|| ft_haschar(data->map_data[i], 'C'))
 			check_colours(data, data->map_data[i]);
 		i++;
 	}
@@ -77,7 +75,8 @@ static void	map_data(t_data *data)
 	save_param(data);
 	if (ft_splitlen(data->map) < 3 || validate_mapchars(data->map))
 		exit(cub_error(MAP_ERROR));
-	//map need still validation for corners/walls...
+	player_checks(data);
+	wall_check(data);
 }
 
 static char	*get_path(char *s)

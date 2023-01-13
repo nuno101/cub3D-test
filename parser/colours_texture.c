@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 21:15:18 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:45:17 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,25 @@ void	init_texture(t_data *data, char *s, int mod)
 	if (mod == NO)
 		data->textures[0] = save_text(s);
 	if (mod == SO)
-		data->textures[0] = save_text(s);
+		data->textures[1] = save_text(s);
 	if (mod == WE)
-		data->textures[0] = save_text(s);
+		data->textures[2] = save_text(s);
 	if (mod == EA)
-		data->textures[0] = save_text(s);
+		data->textures[3] = save_text(s);
 }
 
 static bool	valid_colour(char *s)
 {
 	int		i;
 	int		tmp;
+	int		count;
 
+	count = 0;
 	i = 1;
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]) && s[i] != ',' && s[i] != ' ' && s[i] != 9)
-		{
 			return (0);
-		}
 		if (ft_isdigit(s[i]))
 		{
 			tmp = ft_atoi(s + i);
@@ -69,11 +69,14 @@ static bool	valid_colour(char *s)
 				return (0);
 			while (s[i] && ft_isdigit(s[i]))
 				i++;
+			count++;
 			i--;
 		}
 		i++;
 	}
-	return (1);	
+	if (count != 3)
+		return (0);
+	return (1);
 }
 
 static uint32_t	get_colour(char *s)

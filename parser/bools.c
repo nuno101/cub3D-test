@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:39:05 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 02:48:20 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:26:03 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ bool	validate_mapchars(char **map)
 	{
 		while (map[i][j])
 		{
-			
 			if (!is_mapchar(map[i][j]))
 				return (1);
 			j++;

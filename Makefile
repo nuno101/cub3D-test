@@ -6,13 +6,13 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/07 17:39:25 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/12 22:05:56 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
 
-FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
+FLAGS := -g -Wall -Wextra -Werror #-fsanitize=address
 MINILIBX_DIR = MLX42
 MINILIBX = $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR = libft
@@ -22,11 +22,17 @@ SRC =	main.c \
 		debugtools/print_all.c \
 		debugtools/error.c \
 		parser/checks.c \
+		parser/player_check.c \
+		parser/wall_check.c \
 		parser/init_data.c \
 		parser/init_data_helper.c \
 		parser/bools.c \
 		parser/colours_texture.c \
-
+		src/start_cub.c \
+		src/hooks.c \
+		src/keys.c \
+		src/player_pos.c \
+		
 OBJ := $(SRC:.c=.o)
 
 ifeq ($(USER), nlouro)

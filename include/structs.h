@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 03:40:30 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:02:56 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_data
 	int				tmp[4];
 }	t_data;
 
-
 typedef struct s_coords
 {
 	int		x;
@@ -35,18 +34,23 @@ typedef struct s_coords
 
 typedef	struct s_ray
 {
-	t_coords	pos;
-	t_coords	wall_pos;
-	float		len;
-	float		eye_len;
-	char		wall_face;
-	float		pos_on_wall;
-	char		wall_type;
+	float		cam;
+	int			hit;
+	int			side;
+	float		wall;
+	t_coords	c_ray;
+	t_coords	c_map;
+	t_coords	c_side;
+	t_coords	c_delta;
+	t_coords	c_step;
+	t_coords	c_p;
+	t_coords	c_d;
+	t_coords	c_w;
 }	t_ray;
 
 typedef struct s_cub
 {
-	t_data			*d; //t_data *
+	t_data			*d;
 	mlx_t			*mlx;
 	int32_t			s_width;
 	int32_t			s_height;
@@ -56,7 +60,7 @@ typedef struct s_cub
 	float			player_angle;
 	t_coords		player_pos;
 	float			fov;
-	t_ray			**ray;
+	t_ray			*ray;
 }	t_cub;
 
 #endif

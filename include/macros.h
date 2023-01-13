@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/06 21:57:13 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:05:16 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define MLX_ERROR			18
 # define PNG_ERROR      	19
 # define TEX_PATH_ERROR		20
+# define PLAYER_ERROR		21
+# define P_SURROUNDED_ERROR	22
+# define W_SURROUNDED_ERROR	23
 
 #define NO 101
 #define SO 102
