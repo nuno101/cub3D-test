@@ -1,7 +1,8 @@
+.DS_Store
 *.swp
 *.o
 *.a
 
 cub3D
+cub3D_tester
 cub3D.dSYM
-

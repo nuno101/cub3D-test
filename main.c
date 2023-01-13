@@ -6,13 +6,18 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/12 22:28:44 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:28:02 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub.h"
 
-int	main(int argc, char **argv)
+/*
+ * verify a single map filename is passed as parameter
+ * initialise data from filename
+ * TODO: Julian, I added free(data) which I think was missing. Pls check!  
+ */
+int main(int argc, char **argv)
 {
 	t_data	*data;
 
@@ -20,5 +25,7 @@ int	main(int argc, char **argv)
 		return (cub_error(ARG_ERROR));
 	data = init_data(argv);
 	start_cub(data);
-	return (cub_error(0));
+  free(data);
+  write(1, "Exit cub3D\n", 11);
+	return (0);
 }
