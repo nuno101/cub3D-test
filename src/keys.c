@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 22:27:29 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/13 17:54:20 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	cub_keys(mlx_key_data_t key, void *param)
 	tmp = (t_cub *)param;
 	if (mlx_is_key_down(tmp->mlx, MLX_KEY_ESCAPE))
 	{
-		clean_mlx(tmp);
-		exit (cub_error(EXIT_SUCCESS));
+		clean_mlx(tmp); 
+		write(1, "Exit cub3D\n", 11);
+		exit (0);
 	}
 }
