@@ -6,32 +6,32 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 10:45:48 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 10:50:40 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub.h"
 
 /*
- * validate filename s ends with ".cub"
+ * validate filename ends with ".cub"
  * filename may include a dir: maps/42.cub
  */
-int check_arg(char *s)
+int validate_map_filename(char *filename)
 {
     int     i;
     int     len;
 
-    len = ft_strlen(s);
+    len = ft_strlen(filename);
     i = 0;
     if (len < 4)
         return (1);
-    while (s[i])
+    while (filename[i])
     {
         i++;
-        if (s[i] == '.' && s[i + 1])
+        if (filename[i] == '.' && filename[i + 1])
         {
             i++;
-            if (!ft_strncmp(s + i, "cub", 5))
+            if (!ft_strncmp(filename + i, "cub", 5))
                 return (0);
         }
     }
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 {
 	t_data	*data;
 
-	if (argc != 2 || check_arg(argv[1]))
+	if (argc != 2 || validate_map_filename(argv[1]))
 		return (cub_error(ARG_ERROR));
 	data = init_data(argv);
 	start_cub(data);
