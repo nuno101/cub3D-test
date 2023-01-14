@@ -6,33 +6,27 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:06:10 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 14:48:44 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:55:41 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-void	clean_mlx(t_cub *m)
-{
-	mlx_delete_image(m->mlx, m->image);
-	mlx_terminate(m->mlx);
-}
-
-void	skyline(t_cub *m)
+void	skyline(t_cub *cub)
 {
 	int32_t			i;
 	int32_t			j;
 
 	i = 0;
-	while (i < m->s_height)
+	while (i < cub->s_height)
 	{
 		j = 0;
-		while (j < m->s_width)
+		while (j < cub->s_width)
 		{
-			if (i < m->s_height / 2)
-				mlx_put_pixel(m->image, j, i, m->d->c_colour);
+			if (i < cub->s_height / 2)
+				mlx_put_pixel(cub->image, j, i, cub->d->c_colour);
 			else
-				mlx_put_pixel(m->image, j, i, m->d->f_colour);
+				mlx_put_pixel(cub->image, j, i, cub->d->f_colour);
 			j++;
 		}
 		i++;
