@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/12 22:06:47 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:05:07 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	player_checks(t_data *data);
 void	wall_check(t_data *data);
 
 //parser/init_data.c (FULL)
-t_data	*init_data(char **argv);
+t_data	*init_data(char *map_path);
 
 //parser/init_data_helper.c
 char	**get_map(char *path);

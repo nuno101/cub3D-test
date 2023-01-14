@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/07 23:46:19 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 11:04:22 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,11 @@ static void	save_param(t_data *data)
 }
 
 /*
- * validate filename is valid by checking open returns a valid fd
  * TODO
  */
-static void	map_data(t_data *data)
+static void	map_data(char *map_path, t_data *data)
 {
-	if (!ft_ispath(data->map_path))
-		exit(cub_error(DIR_ERROR));
-	data->map_data = get_map(data->map_path);
+	data->map_data = get_map(map_path);
 	save_param(data);
 	if (ft_splitlen(data->map) < 3 || validate_mapchars(data->map))
 		exit(cub_error(MAP_ERROR));
@@ -79,29 +76,17 @@ static void	map_data(t_data *data)
 	wall_check(data);
 }
 
-static char	*get_path(char *s)
-{
-	int		i;
-
-	i = 0;
-	while (s[i] && s[i] <= 32)
-		i++;
-	return (s + i);
-}
-
 /*
  * initialise empty t_data structure
- * set map_path with map filename
  * call map_data() to fill t_data
  */
-t_data	*init_data(char **argv)
+t_data	*init_data(char *map_path)
 {
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
 	if (data == NULL)
 		exit(cub_error(MALLOC_ERROR));
-	data->map_path = get_path(argv[1]);
 	data->map_data = NULL;
 	data->map = NULL;
 	data->textures[0] = NULL;
@@ -114,6 +99,6 @@ t_data	*init_data(char **argv)
 	data->tmp[3] = 0;
 	data->f_colour = 0;
 	data->c_colour = 0;
-	map_data(data);
+	map_data(map_path, data);
 	return (data);
 }
