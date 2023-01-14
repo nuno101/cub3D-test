@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/12 22:05:56 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/14 10:43:39 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MINILIBX = $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRC =	main.c \
+SRC =	cub3d.c \
 		debugtools/print_all.c \
 		debugtools/error.c \
 		parser/checks.c \
