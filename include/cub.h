@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 11:05:07 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 14:55:25 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	init_texture(t_data *data, char *s, int mod);
 
 //src/start_cub.c
 void	start_cub(t_data *data);
-void	skyline(t_cub *m);
-void	clean_mlx(t_cub *m);
+void	skyline(t_cub *cub);
+void	clean_mlx(t_cub *cub);
 
 //src/hooks.c
-void	hooks(t_cub *m);
-void	screensize(t_cub *m);
+void	hooks(t_cub *cub);
+void	screensize(t_cub *cub);
 
 //src/keys.c
 void	cub_keys(mlx_key_data_t key, void *param);
@@ -72,5 +72,10 @@ void	resize_screen(int32_t x, int32_t y, void *param);
 
 //src/player_pos.c
 void	player_pos(t_cub *cub, t_data *data);
+
+//src/cleaner.c
+void	free_data(t_data *data);
+void	clean_mlx(t_cub *cub);
+void	free_cub(t_cub *cub);
 
 #endif

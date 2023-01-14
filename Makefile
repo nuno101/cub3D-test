@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/14 10:43:39 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/14 14:21:53 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,11 @@ SRC =	cub3d.c \
 		parser/init_data_helper.c \
 		parser/bools.c \
 		parser/colours_texture.c \
+		parser/player_pos.c \
 		src/start_cub.c \
 		src/hooks.c \
 		src/keys.c \
-		src/player_pos.c \
+		src/cleaner.c \
 		
 OBJ := $(SRC:.c=.o)
 

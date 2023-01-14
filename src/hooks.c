@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:11:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 22:28:03 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:46:59 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	screensize(t_cub *m)
 
 void	init_ray(t_ray *ray, int x, t_cub *cub)
 {
-	ray = malloc(sizeof(t_ray));
-	if (!ray)
-		exit(cub_error(MALLOC_ERROR));
+
 	ray->cam = 2 * x / cub->s_width - 1;
 }
 

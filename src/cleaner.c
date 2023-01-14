@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   cleaner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 14:42:47 by jjesberg         ###   ########.fr       */
+/*   Created: 2023/01/14 14:19:44 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/14 14:56:20 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-void	resize_screen(int32_t x, int32_t y, void *param)
+void	free_data(t_data *data)
 {
-	t_cub	*m;
-
-	m = (t_cub *)param;
-	m->s_width = x;
-	m->s_height = y;
-	skyline(m);
+	ft_cleansplit(data->map);
+	ft_cleansplit(data->map_data);
+	free(data);
 }
 
-void	cub_keys(mlx_key_data_t key, void *param)
+void	clean_mlx(t_cub *m)
 {
-	t_cub	*tmp;
+	mlx_delete_image(m->mlx, m->image);
+	mlx_delete_texture(m->d->textures[0]);
+	mlx_delete_texture(m->d->textures[1]);
+	mlx_delete_texture(m->d->textures[2]);
+	mlx_delete_texture(m->d->textures[3]);
+	mlx_terminate(m->mlx);
+}
 
-	(void)key;
-	tmp = (t_cub *)param;
-	if (mlx_is_key_down(tmp->mlx, MLX_KEY_ESCAPE))
-	{
-		clean_mlx(tmp); 
-		free_cub(tmp);
-		write(1, "Exit cub3D\n", 11);
-		exit (0);
-	}
+void	free_cub(t_cub *cub)
+{
+	free(cub->ray);
+	free(cub);
 }
