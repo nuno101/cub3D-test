@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 23:00:52 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 23:09:08 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
  * global error handling
  * print an error message according to err
  * return err value to be re-used as program exiting value
- * FIXME too many lines atm!!
 */
 int	cub_error(int err)
 {
 	printf("Error\n");
-	if (err == ARG_ERROR)
+	if (err >= PNG_ERROR)
+		return(cub_error_2(err));
+	else if (err == ARG_ERROR)
 		printf("ARGS\n");
 	else if (err == FILE_ERROR)
 		printf("FILE invalid\n");
@@ -37,7 +38,17 @@ int	cub_error(int err)
 		printf("Map not valid\n");
 	else if (err == MLX_ERROR)
 		printf("MLX Malloc\n");
-	else if (err == PNG_ERROR)
+  	else
+		printf("ERROR FIXME - unsupported error\n");
+	return (err);
+}
+
+/*
+ * continuation of cub_error for norminette compliance
+ */
+int	cub_error_2(int err)
+{
+	if (err == PNG_ERROR)
 		printf("PNG path not valid | MLX malloc\n");
 	else if (err == TEX_PATH_ERROR)
 		printf("Put ONE of each path NO/SO/EA/WE ./path\n");

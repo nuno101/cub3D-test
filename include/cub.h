@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 14:55:25 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:10:09 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 void	print_data(t_data *data);
 void	print_cub(t_cub *cub);
 int		cub_error(int err);
+int		cub_error_2(int err);
 
 //parser/checks.c
 int		check_text(char **map, int *tx);
