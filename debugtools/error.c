@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/13 17:45:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:00:52 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,34 @@
 */
 int	cub_error(int err)
 {
+	printf("Error\n");
 	if (err == ARG_ERROR)
-		write(2, "ERROR ARGS\n", 11);
+		printf("ARGS\n");
 	else if (err == FILE_ERROR)
-		write(2, "ERROR FILE invalid\n", 11);
+		printf("FILE invalid\n");
 	else if (err == INVALID_MAP)
-		write(2, "ERROR MAP broken\n", 17);
+		printf("MAP broken\n");
 	else if (err == MALLOC_ERROR)
-		write(2, "ERROR Malloc\n", 13);
+		printf("Malloc\n");
 	else if (err == DIR_ERROR)
-		write(2, "ERROR Path not valid\n", 21);
+		printf("Path not valid\n");
 	else if (err == COLOUR_ERROR)
-		write(2, "ERROR Colour not valid\n", 23);
+		printf("Colour not valid\n");
 	else if (err == MAP_ERROR)
-		write(2, "ERROR Map not valid\n", 20);
+		printf("Map not valid\n");
 	else if (err == MLX_ERROR)
-		write(2, "ERROR MLX Malloc\n", 10);
+		printf("MLX Malloc\n");
 	else if (err == PNG_ERROR)
-		write(2, "ERROR PNG path not valid | MLX malloc\n", 38);
+		printf("PNG path not valid | MLX malloc\n");
 	else if (err == TEX_PATH_ERROR)
-		write(2, "ERROR put ONE of each path NO/SO/EA/WE ./path\n", 46);
+		printf("Put ONE of each path NO/SO/EA/WE ./path\n");
 	else if (err == PLAYER_ERROR)
-		write(2, "ERROR only one Player needed\n", 29);
+		printf("Only one Player needed\n");
 	else if (err == P_SURROUNDED_ERROR)
-		write(2, "ERROR Player not surrounded\n", 28);
+		printf("Player not surrounded\n");
 	else if (err == W_SURROUNDED_ERROR)
-		write(2, "ERROR Wall not surrounded\n", 26);
+		printf("Wall not surrounded\n");
   	else
-    	write(2, "ERROR FIXME - unsupported error\n", 32);
+		printf("ERROR FIXME - unsupported error\n");
 	return (err);
 }
