@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 23:37:29 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 23:50:28 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ enum	e_cub3d_errors
  */
 #ifndef t_texture
 # define t_error
-enum	e_textures { NO, SO, WE, EA } t_texture;
+enum	e_textures { NO = 1, SO, WE, EA } t_texture;
 #endif
 
 #endif
