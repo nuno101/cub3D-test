@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 14:09:58 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:27:03 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,16 @@ enum	e_cub3d_errors
 }	t_error;
 #endif
 
-#define NO 101
-#define SO 102
-#define WE 103
-#define EA 104
+/*
+ * define cub3d texture codes starting at 1 
+ * NO - North texture
+ * SO - South texture
+ * WE - West texture
+ * EA - East texture
+ */
+#ifndef t_texture
+# define t_error
+enum	e_textures { NO = 1, SO, WE, EA } t_texture;
+#endif
 
 #endif
