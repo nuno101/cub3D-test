@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:06:10 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/13 17:48:36 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:48:44 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	clean_mlx(t_cub *m)
 {
 	mlx_delete_image(m->mlx, m->image);
 	mlx_terminate(m->mlx);
-	free(m);
 }
 
 void	skyline(t_cub *m)
@@ -52,7 +51,7 @@ static t_cub	*init_cub(t_data *data)
 	cub->f = data->f_colour;
 	player_pos(cub, data);
 	if (!cub->player_pos.x || !cub->player_pos.y)
-		exit(cub_error(PLAYER_ERROR));
+		exit(cub_error(P_SURROUNDED_ERROR));
 	cub->mlx = mlx_init(100, 100, "MLX", true);
 	screensize(cub);
 	if (!cub->mlx)
@@ -74,6 +73,10 @@ void	start_cub(t_data *data)
 	cub = init_cub(data);
 	if (mlx_image_to_window(cub->mlx, cub->image, 0, 0) < 0)
 		exit(cub_error(MLX_ERROR));
+	cub->ray = malloc(sizeof(t_ray));
+	if (!cub->ray)
+		exit(cub_error(MALLOC_ERROR));
 	hooks(cub);
 	clean_mlx(cub);
+	free_cub(cub);
 }

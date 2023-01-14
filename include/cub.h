@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 11:05:07 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 14:25:13 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,9 @@ void	resize_screen(int32_t x, int32_t y, void *param);
 
 //src/player_pos.c
 void	player_pos(t_cub *cub, t_data *data);
+
+//src/cleaner.c
+void	free_data(t_data *data);
+void	free_cub(t_cub *cub);
 
 #endif

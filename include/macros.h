@@ -6,19 +6,20 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 10:41:39 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 14:09:58 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACROS_H
 # define MACROS_H
 
-# include "cub.h"
-
 /*
  * define cub3d specific errors
  * start at 256 to not overwrite OS error codes
+ * need include guard for compiling in linux, because multiple definition if not.
  */
+#ifndef t_error
+# define t_error
 enum	e_cub3d_errors
 {
 	ARG_ERROR = 256,
@@ -35,6 +36,7 @@ enum	e_cub3d_errors
 	P_SURROUNDED_ERROR,
 	W_SURROUNDED_ERROR,
 }	t_error;
+#endif
 
 #define NO 101
 #define SO 102
