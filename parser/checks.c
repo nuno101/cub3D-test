@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 10:45:33 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 23:40:32 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ int	find_path_type(char *s)
 			return (WE);
 		i++;
 	}
-	return (0);
+	return (NO - 1);
 }
