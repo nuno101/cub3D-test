@@ -1,4 +1,4 @@
 # cub3D
-My first RayCaster with miniLibX
+My first RayCaster with MLX42
 
 ( ͡° ͜ʖ ͡°) 
