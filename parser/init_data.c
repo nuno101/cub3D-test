@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 23:27:30 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 23:56:53 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ static void	find_map(t_data *data)
 static void	save_param(t_data *data)
 {
 	int		i;
-	int		ret;
+	int		texture;
 
 	i = 0;
 	if (check_text(data->map_data, data->tmp))
 		exit(cub_error(TEX_PATH_ERROR));
 	while (data->map_data[i])
 	{
-		ret = find_path_type(data->map_data[i]);
-		if (ret >= NO)
-			init_texture(data, data->map_data[i], ret);
+		texture = find_path_type(data->map_data[i]);
+		if (texture != NONE)
+			init_texture(data, data->map_data[i], texture);
 		else if (ft_haschar(data->map_data[i], 'F') \
 		|| ft_haschar(data->map_data[i], 'C'))
 			check_colours(data, data->map_data[i]);
