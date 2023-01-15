@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 23:09:08 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:09:18 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ int	cub_error_2(int err)
 	if (err == PNG_ERROR)
 		printf("PNG path not valid | MLX malloc\n");
 	else if (err == TEX_PATH_ERROR)
-		printf("Put ONE of each path NO/SO/EA/WE ./path\n");
+	{
+		printf("Specify exactly ONE texture file for each direction as:\n");
+		printf("NO/SO/EA/WE ./filename\n");
+	}
 	else if (err == PLAYER_ERROR)
 		printf("Only one Player needed\n");
 	else if (err == P_SURROUNDED_ERROR)

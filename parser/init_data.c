@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/15 00:45:30 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:26:48 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,29 @@ static void	find_map(t_data *data)
 	}
 }
 
+/*
+ * validates and initiliase texture filenames definition
+ * validate Floor and Ceiling coulours are defined
+ * call find_map()
+ */
 static void	save_param(t_data *data)
 {
 	int		i;
 	int		texture;
 
 	i = 0;
-	if (check_text(data->raw_data, data->tmp))
+	if (check_textures(data->raw_data, data->tmp))
 		exit(cub_error(TEX_PATH_ERROR));
 	while (data->raw_data[i])
 	{
 		texture = find_path_type(data->raw_data[i]);
 		if (texture != NONE)
 			init_texture(data, data->raw_data[i], texture);
-		else if (ft_haschar(data->raw_data[i], 'F') \
-		|| ft_haschar(data->raw_data[i], 'C'))
+		else if (ft_strchr(data->raw_data[i], 'F') != NULL \
+		|| ft_strchr(data->raw_data[i], 'C') != NULL)
 			check_colours(data, data->raw_data[i]);
+		if (data->c_colour > 0 && data->f_colour > 0)
+			break;
 		i++;
 	}
 	if (data->c_colour == 0 || data->f_colour == 0)

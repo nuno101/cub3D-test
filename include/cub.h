@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 23:10:09 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:07:46 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		cub_error(int err);
 int		cub_error_2(int err);
 
 //parser/checks.c
-int		check_text(char **map, int *tx);
+int		check_textures(char **map, int *tx);
 int		find_path_type(char *s);
 int		check_arg(char *s);
 

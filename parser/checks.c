@@ -6,13 +6,16 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 23:56:07 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/15 01:28:53 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-int	check_text(char **map, int *tx)
+/*
+ * verify each texture file is present and defined exactly once
+ */
+int	check_textures(char **map, int *tx)
 {
 	int		i;
 	int		j;
@@ -41,6 +44,9 @@ int	check_text(char **map, int *tx)
 	return (0);
 }
 
+/*
+ * find texture code
+ */
 int	find_path_type(char *s)
 {
 	int		i;
