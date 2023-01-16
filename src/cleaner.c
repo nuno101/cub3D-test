@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:19:44 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 14:56:20 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/15 00:44:04 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_data(t_data *data)
 {
 	ft_cleansplit(data->map);
-	ft_cleansplit(data->map_data);
+	ft_cleansplit(data->raw_data);
 	free(data);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:51:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 14:30:20 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/15 00:34:02 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ static int	count_lines(char *path)
 	return (count);
 }
 
+/*
+ * read the user filename and return an array of strings representing each line of the file
+ */
 char	**get_map(char *path)
 {
 	char	**map;

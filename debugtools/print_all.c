@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 06:59:32 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 11:02:38 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/15 00:44:23 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_data(t_data *data)
 {
 	printf("f_colour = %x\n", data->f_colour);
 	printf("c_colour = %x\nthe whole file:\n", data->c_colour);
-	ft_print_split(data->map_data);
+	ft_print_split(data->raw_data);
 	printf("\n");
 }
 

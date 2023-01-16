@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/13 17:45:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/15 01:09:18 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,52 @@
  * global error handling
  * print an error message according to err
  * return err value to be re-used as program exiting value
- * FIXME too many lines atm!!
 */
 int	cub_error(int err)
 {
-	if (err == ARG_ERROR)
-		write(2, "ERROR ARGS\n", 11);
+	printf("Error\n");
+	if (err >= PNG_ERROR)
+		return(cub_error_2(err));
+	else if (err == ARG_ERROR)
+		printf("ARGS\n");
 	else if (err == FILE_ERROR)
-		write(2, "ERROR FILE invalid\n", 11);
+		printf("FILE invalid\n");
 	else if (err == INVALID_MAP)
-		write(2, "ERROR MAP broken\n", 17);
+		printf("MAP broken\n");
 	else if (err == MALLOC_ERROR)
-		write(2, "ERROR Malloc\n", 13);
+		printf("Malloc\n");
 	else if (err == DIR_ERROR)
-		write(2, "ERROR Path not valid\n", 21);
+		printf("Path not valid\n");
 	else if (err == COLOUR_ERROR)
-		write(2, "ERROR Colour not valid\n", 23);
+		printf("Colour not valid\n");
 	else if (err == MAP_ERROR)
-		write(2, "ERROR Map not valid\n", 20);
+		printf("Map not valid\n");
 	else if (err == MLX_ERROR)
-		write(2, "ERROR MLX Malloc\n", 10);
-	else if (err == PNG_ERROR)
-		write(2, "ERROR PNG path not valid | MLX malloc\n", 38);
-	else if (err == TEX_PATH_ERROR)
-		write(2, "ERROR put ONE of each path NO/SO/EA/WE ./path\n", 46);
-	else if (err == PLAYER_ERROR)
-		write(2, "ERROR only one Player needed\n", 29);
-	else if (err == P_SURROUNDED_ERROR)
-		write(2, "ERROR Player not surrounded\n", 28);
-	else if (err == W_SURROUNDED_ERROR)
-		write(2, "ERROR Wall not surrounded\n", 26);
+		printf("MLX Malloc\n");
   	else
-    	write(2, "ERROR FIXME - unsupported error\n", 32);
+		printf("ERROR FIXME - unsupported error\n");
+	return (err);
+}
+
+/*
+ * continuation of cub_error for norminette compliance
+ */
+int	cub_error_2(int err)
+{
+	if (err == PNG_ERROR)
+		printf("PNG path not valid | MLX malloc\n");
+	else if (err == TEX_PATH_ERROR)
+	{
+		printf("Specify exactly ONE texture file for each direction as:\n");
+		printf("NO/SO/EA/WE ./filename\n");
+	}
+	else if (err == PLAYER_ERROR)
+		printf("Only one Player needed\n");
+	else if (err == P_SURROUNDED_ERROR)
+		printf("Player not surrounded\n");
+	else if (err == W_SURROUNDED_ERROR)
+		printf("Wall not surrounded\n");
+  	else
+		printf("ERROR FIXME - unsupported error\n");
 	return (err);
 }
