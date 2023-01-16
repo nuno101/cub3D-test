@@ -6,19 +6,21 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/14 14:21:53 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/17 00:27:45 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
 
+#FIXME: use basic flags for final submission!
+#FLAGS := -Wall -Wextra -Werror
 FLAGS := -g -Wall -Wextra -Werror #-fsanitize=address
-MINILIBX_DIR = MLX42
-MINILIBX = $(MINILIBX_DIR)/libmlx42.a
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
+MINILIBX_DIR := MLX42
+MINILIBX := $(MINILIBX_DIR)/libmlx42.a
+LIBFT_DIR := libft
+LIBFT := $(LIBFT_DIR)/libft.a
 
-SRC =	cub3d.c \
+SRC :=	cub3d.c \
 		debugtools/print_all.c \
 		debugtools/error.c \
 		parser/checks.c \
@@ -32,9 +34,10 @@ SRC =	cub3d.c \
 		src/start_cub.c \
 		src/hooks.c \
 		src/keys.c \
-		src/cleaner.c \
-		
-OBJ := $(SRC:.c=.o)
+		src/cleaner.c
+
+OBJ_DIR := objs
+OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))
 
 ifeq ($(USER), nlouro)
 	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/usr/local/Cellar/glfw/3.3.8/lib"
@@ -46,8 +49,15 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(MINILIBX) $(LIBFT)
-	gcc $(FLAGS) $(SRC) $(LIBS) -o $@
+$(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
+	gcc $(FLAGS) $(OBJS) $(LIBS) -o $@
+
+$(OBJS): $(SRC) $(OBJ_DIR)
+	gcc -c $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
+	mv *.o $(OBJ_DIR)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 libs: $(MINILIBX) $(LIBFT)
 
@@ -62,7 +72,8 @@ $(LIBFT):
 	make -C ./libft
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
+	rmdir $(OBJ_DIR)
 
 fclean: clean
 	rm -rf $(NAME) $(NAME).dSYM
