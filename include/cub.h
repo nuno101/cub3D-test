@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/17 15:34:07 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:47:37 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	is_player(char c);
 
 //parser/colours_texture.c (FULL)
 void	check_colours(t_data *data, char *s);
-mlx_texture_t    *save_text(char *s);
+mlx_texture_t    *save_texture(char *s);
 
 //src/start_cub.c
 void	start_cub(t_data *data);

@@ -1,4 +1,4 @@
-NO ./textures/wolftextures1.png
+NO textures/wolftextures1.png
 SO    ./textures/wolftextures2.png
 WE   ./textures/wolftextures3.png
 EA            ./textures/wolftextures4.png

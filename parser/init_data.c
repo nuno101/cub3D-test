@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 15:35:00 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:46:34 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	save_param(t_data *data)
 	{
 		tex_code = find_path_type(data->raw_data[i]);
 		if (tex_code != NONE)
-			data->textures[tex_code] = save_text(data->raw_data[i]);
+			data->textures[tex_code] = save_texture(data->raw_data[i]);
 		else if (ft_strchr(data->raw_data[i], 'F') != NULL \
 		|| ft_strchr(data->raw_data[i], 'C') != NULL)
 			check_colours(data, data->raw_data[i]);
