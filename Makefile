@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/17 17:25:31 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/17 17:45:31 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,12 @@ LIBFT := $(LIBFT_DIR)/libft.a
 SRC :=	cub3d.c \
 		debugtools/print_all.c \
 		debugtools/error.c \
-		parser/checks.c \
+		parser/init_data.c \
+		parser/textures.c \
+		parser/colours.c \
+		parser/bools.c \
 		parser/player_check.c \
 		parser/wall_check.c \
-		parser/init_data.c \
-		parser/bools.c \
-		parser/colours_texture.c \
 		parser/player_pos.c \
 		src/start_cub.c \
 		src/hooks.c \
@@ -72,7 +72,7 @@ $(LIBFT):
 	make -C ./libft
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ_DIR)/*.o
 	rmdir $(OBJ_DIR)
 
 fclean: clean
