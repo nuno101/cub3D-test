@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 17:15:53 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:21:51 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,3 @@ void	map_data(char *map_path, t_data *data)
 	free(raw_data);
 }
 
-/*
- * initialise empty t_data structure
- */
-void	init_data(t_data *data)
-{
-	data->map = NULL;
-	data->textures[0] = NULL;
-	data->textures[1] = NULL;
-	data->textures[2] = NULL;
-	data->textures[3] = NULL;
-	data->tmp[0] = 0;
-	data->tmp[1] = 0;
-	data->tmp[2] = 0;
-	data->tmp[3] = 0;
-	data->f_colour = 0;
-	data->c_colour = 0;
-}
