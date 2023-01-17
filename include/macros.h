@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 23:58:12 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:26:09 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ enum	e_cub3d_errors
 	MAP_ERROR,
 	MLX_ERROR,
 	PNG_ERROR,
+	TEX_PRESENCE_ERROR,
 	TEX_PATH_ERROR,
+	TEX_MLX_LOAD_PNG_ERROR,
 	PLAYER_ERROR,
 	P_SURROUNDED_ERROR,
 	W_SURROUNDED_ERROR,
@@ -48,7 +50,7 @@ enum	e_cub3d_errors
  */
 #ifndef t_texture
 # define t_error
-enum	e_textures { NONE, NO, SO, WE, EA } t_texture;
+enum	e_textures { NONE = -1, NO, SO, WE, EA } t_texture;
 #endif
 
 #endif
