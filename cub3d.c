@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 23:04:07 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:15:42 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
  * validate filename ends with ".cub"
  * filename may include a dir: maps/42.cub
- * filename maps/.cub is fixed
  */
 int validate_map_filename(char *filename)
 {
@@ -41,7 +40,8 @@ int validate_map_filename(char *filename)
 /*
  * verify a single map filename is passed as parameter
  * validate map filename is valid by checking open returns a valid fd
- * initialise data from filename
+ * initialise data
+ * call map_data() to fill t_data from filename
  */
 int main(int argc, char **argv)
 {
@@ -51,9 +51,13 @@ int main(int argc, char **argv)
 		return (cub_error(ARG_ERROR));
 	if (!ft_ispath(argv[1]))
 		exit(cub_error(DIR_ERROR));
-	data = init_data(argv[1]);
+	data = malloc(sizeof(t_data));
+	if (data == NULL)
+		exit(cub_error(MALLOC_ERROR));
+	init_data(data);
+	map_data(argv[1], data);
 	start_cub(data);
 	free_data(data);
-	printf("exit cub3d\n");
+	printf("Exit cub3d\n");
 	return (0);
 }

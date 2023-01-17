@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 17:03:48 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:15:53 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static void	save_param(t_data *data, char **raw_data)
  * Check edgecases of map validation
  * raw_data stores the full content of the filename
  */
-static void	map_data(char *map_path, t_data *data)
+void	map_data(char *map_path, t_data *data)
 {
 	char	**raw_data;
 
@@ -104,15 +104,9 @@ static void	map_data(char *map_path, t_data *data)
 
 /*
  * initialise empty t_data structure
- * call map_data() to fill t_data
  */
-t_data	*init_data(char *map_path)
+void	init_data(t_data *data)
 {
-	t_data	*data;
-
-	data = malloc(sizeof(t_data));
-	if (data == NULL)
-		exit(cub_error(MALLOC_ERROR));
 	data->map = NULL;
 	data->textures[0] = NULL;
 	data->textures[1] = NULL;
@@ -124,6 +118,4 @@ t_data	*init_data(char *map_path)
 	data->tmp[3] = 0;
 	data->f_colour = 0;
 	data->c_colour = 0;
-	map_data(map_path, data);
-	return (data);
 }
