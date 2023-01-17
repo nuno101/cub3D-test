@@ -6,12 +6,16 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/15 01:26:48 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 11:33:47 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
+/*
+ * walk through the map raw_data
+ * TODO
+ */
 static void	find_map(t_data *data)
 {
 	int		i;
@@ -28,8 +32,7 @@ static void	find_map(t_data *data)
 		while (data->raw_data[i][j] && check_map(data->raw_data[i]) && len > 2)
 		{
 			flag = 1;
-			if (data->raw_data[i][j] != '1' && data->raw_data[i][j] != ' ' \
-			&& data->raw_data[i][j] != 9)
+			if (data->raw_data[i][j] != '1' && data->raw_data[i][j] != ' ')
 				exit(cub_error(INVALID_MAP));
 			j++;
 		}
@@ -41,9 +44,10 @@ static void	find_map(t_data *data)
 }
 
 /*
+ * textures and colours may be defined in any order
  * validates and initiliase texture filenames definition
  * validate Floor and Ceiling coulours are defined
- * call find_map()
+ * calls find_map() which must be last in the map file
  */
 static void	save_param(t_data *data)
 {
