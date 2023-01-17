@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:41:44 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 22:24:09 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/17 12:45:27 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ static int	player_bottop_surrounded(char *map, int j)
 static int	player_surrounded(char **map, int i, int j)
 {
 	if (!player_bottop_surrounded(map[i - 1], j))
-		exit(cub_error(P_SURROUNDED_ERROR));
+		return (1);
 	if (!player_mid_surrounded(map[i], j))
-		exit(cub_error(P_SURROUNDED_ERROR));
+		return (1);
 	if (!player_bottop_surrounded(map[i + 1], j))
-		exit(cub_error(P_SURROUNDED_ERROR));
-	return (1);
+		return (1);
+	return (0);
 }
 
 void	player_checks(t_data *data)
@@ -68,7 +68,7 @@ void	player_checks(t_data *data)
 		{
 			if (is_player(data->map[i][j]))
 			{
-				if (i == 0 || j == 0 || !player_surrounded(data->map, i, j))
+				if (i == 0 || j == 0 || player_surrounded(data->map, i, j))
 					exit(cub_error(P_SURROUNDED_ERROR));
 				count++;
 			}
