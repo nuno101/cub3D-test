@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 15:46:34 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 16:46:47 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,39 @@ static void	find_map(t_data *data)
 }
 
 /*
- * textures and colours may be defined in any order
- * validates and initiliase texture filenames definition
- * validate Floor and Ceiling coulours are defined
+ * textures and colours may be defined in any order but before the map
+ * validates presence and store texture filenames
+ * validate presence of Floor and Ceiling colours
  * calls find_map() -  map must be specified last in the file
  */
 static void	save_param(t_data *data)
 {
 	int		i;
 	int		tex_code;
+	int		tex_code_sum;
 
 	i = 0;
-	if (check_textures(data->raw_data, data->tmp))
-		exit(cub_error(TEX_PRESENCE_ERROR));
+	tex_code_sum = 0;
 	while (data->raw_data[i])
 	{
 		tex_code = find_path_type(data->raw_data[i]);
 		if (tex_code != NONE)
+		{
+			if (tex_code == NO)
+				tex_code_sum += 4;
+			else
+				tex_code_sum += tex_code;
 			data->textures[tex_code] = save_texture(data->raw_data[i]);
+		}
 		else if (ft_strchr(data->raw_data[i], 'F') != NULL \
 		|| ft_strchr(data->raw_data[i], 'C') != NULL)
 			check_colours(data, data->raw_data[i]);
-		if (data->c_colour > 0 && data->f_colour > 0)
+		if (data->c_colour > 0 && data->f_colour > 0 && tex_code_sum == 10)
 			break;
 		i++;
 	}
+	if (tex_code_sum != 10)
+		exit(cub_error(TEX_PRESENCE_ERROR));
 	if (data->c_colour == 0 || data->f_colour == 0)
 		exit(cub_error(COLOUR_ERROR));
 	find_map(data);

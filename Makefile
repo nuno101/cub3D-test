@@ -6,11 +6,12 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/17 12:35:16 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/17 16:00:17 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
+VERBOSE := 1
 
 #FIXME: use basic flags for final submission!
 #FLAGS := -Wall -Wextra -Werror
@@ -53,7 +54,7 @@ $(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
 	gcc $(FLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OBJS): $(SRC) $(OBJ_DIR)
-	gcc -c $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
+	gcc -c -D VERBOSE=$(VERBOSE) $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
 	mv *.o $(OBJ_DIR)
 
 $(OBJ_DIR):
