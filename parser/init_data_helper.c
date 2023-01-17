@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:51:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/15 00:34:02 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 11:09:17 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	**get_map(char *path)
 	char	*line;
 	int		i;
 	int		fd;
+	int		len;
 
 	map = malloc(sizeof(char *) * (count_lines(path)));
 	if (!map)
@@ -51,8 +52,9 @@ char	**get_map(char *path)
 	line = get_next_line(fd, 1);
 	while (line)
 	{
-		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = '\0';
+		len = ft_strlen(line) - 1;
+		if (line[len] == '\n')
+			line[len] = '\0';
 		map[i++] = line;
 		line = get_next_line(fd, 0);
 	}
