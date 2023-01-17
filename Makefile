@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/17 16:00:17 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/17 17:25:31 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRC :=	cub3d.c \
 		parser/player_check.c \
 		parser/wall_check.c \
 		parser/init_data.c \
-		parser/init_data_helper.c \
 		parser/bools.c \
 		parser/colours_texture.c \
 		parser/player_pos.c \
