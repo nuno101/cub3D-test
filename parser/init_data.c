@@ -6,12 +6,18 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 11:08:47 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:01:50 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
+/*
+ * walk through the map raw_data lines
+ * find top border of map and then walk through following rows
+ * to check only spaces or 1's are present 
+ * sets data->map as beginning of map
+ */
 static void	find_map(t_data *data)
 {
 	int		i;
@@ -25,11 +31,10 @@ static void	find_map(t_data *data)
 	while (data->raw_data[i] && flag != 1)
 	{
 		len = ft_strlen(data->raw_data[i]);
-		while (data->raw_data[i][j] && check_map(data->raw_data[i]) && len > 2)
+		while (data->raw_data[i][j] && valid_map_border(data->raw_data[i]) && len > 2)
 		{
 			flag = 1;
-			if (data->raw_data[i][j] != '1' && data->raw_data[i][j] != ' ' \
-			&& data->raw_data[i][j] != 9)
+			if (data->raw_data[i][j] != '1' && data->raw_data[i][j] != ' ')
 				exit(cub_error(INVALID_MAP));
 			j++;
 		}
@@ -41,9 +46,10 @@ static void	find_map(t_data *data)
 }
 
 /*
+ * textures and colours may be defined in any order
  * validates and initiliase texture filenames definition
  * validate Floor and Ceiling coulours are defined
- * call find_map()
+ * calls find_map() -  map must be specified last in the file
  */
 static void	save_param(t_data *data)
 {
