@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 22:03:13 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 12:41:33 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/17 12:52:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static int	wall_bottop_surrounded(char *map, int j)
 static int	wall_surrounded(char **map, int i, int j)
 {
 	if (!wall_bottop_surrounded(map[i - 1], j))
-		exit(cub_error(W_SURROUNDED_ERROR));
+		return (1);
 	if (!wall_mid_surrounded(map[i], j))
-		exit(cub_error(W_SURROUNDED_ERROR));
+		return (1);
 	if (!wall_bottop_surrounded(map[i + 1], j))
 		return (1);
 	return (0);
@@ -66,7 +66,6 @@ void	wall_check(t_data *data)
 		{
 			if (data->map[i][j] == '0')
 			{
-				printf("i = %i\nj = %i\nc = %s \n", i, j, data->map[i]);
 				if (i == 0 || j == 0 || wall_surrounded(data->map, i, j))
 					exit(cub_error(W_SURROUNDED_ERROR));
 			}
