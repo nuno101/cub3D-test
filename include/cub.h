@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/15 01:07:46 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 11:58:21 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**get_map(char *path);
 
 //parser/bools.c
 bool	validate_mapchars(char **map);
-bool	check_map(char *s);
+bool	valid_map_border(char *s);
 bool	is_mapchar(char c);
 bool	is_player(char c);
 
