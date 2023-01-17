@@ -45,12 +45,12 @@ static int	player_bottop_surrounded(char *map, int j)
 static int	player_surrounded(char **map, int i, int j)
 {
 	if (!player_bottop_surrounded(map[i - 1], j))
-		exit(cub_error(P_SURROUNDED_ERROR));
+		return (P_SURROUNDED_ERROR);
 	if (!player_mid_surrounded(map[i], j))
-		exit(cub_error(P_SURROUNDED_ERROR));
+		return (P_SURROUNDED_ERROR);
 	if (!player_bottop_surrounded(map[i + 1], j))
-		exit(cub_error(P_SURROUNDED_ERROR));
-	return (1);
+		return (P_SURROUNDED_ERROR);
+	return (0);
 }
 
 void	player_checks(t_data *data)
@@ -68,7 +68,7 @@ void	player_checks(t_data *data)
 		{
 			if (is_player(data->map[i][j]))
 			{
-				if (i == 0 || j == 0 || !player_surrounded(data->map, i, j))
+				if (i == 0 || j == 0 || player_surrounded(data->map, i, j))
 					exit(cub_error(P_SURROUNDED_ERROR));
 				count++;
 			}
