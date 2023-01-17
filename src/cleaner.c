@@ -14,7 +14,7 @@
 
 void	free_data(t_data *data)
 {
-	ft_cleansplit(data->map);
+	ft_cleansplit(data->raw_data);
 	free(data);
 }
 
