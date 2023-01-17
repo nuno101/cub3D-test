@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:39:05 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 11:29:56 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 11:49:13 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,17 @@ bool	is_mapchar(char c)
 	return (1);
 }
 
-static bool	map_wall(char c)
-{
-	if (c != '1' && c != ' ')
-		return (0);
-	return (1);
-}
-
 /*
- * checks one map line
+ * returns true if only 1's and spaces found
  */
-bool	check_map(char *row)
+bool	valid_map_border(char *row)
 {
 	int	i;
 
 	i = 0;
 	while (row[i])
 	{
-		if (!map_wall(row[i]))
+		if (row[i] != '1' && row[i] != ' ')
 			return (0);
 		i++;
 	}
