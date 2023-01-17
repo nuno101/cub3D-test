@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/17 17:21:10 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:30:40 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int validate_map_filename(char *filename)
 }
 
 /*
- * initialise empty t_data structure
+ * initialise t_data structure
  */
 void	init_data(t_data *data)
 {
