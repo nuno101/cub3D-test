@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/14 23:58:12 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/17 11:16:29 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ enum	e_cub3d_errors
  * EA - East texture
  */
 #ifndef t_texture
-# define t_error
+# define t_texture
 enum	e_textures { NONE, NO, SO, WE, EA } t_texture;
 #endif
 
