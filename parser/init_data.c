@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 11:04:22 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/14 15:26:17 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static void	save_param(t_data *data)
 
 /*
  * TODO
+ * Check edgecases of map validation
  */
 static void	map_data(char *map_path, t_data *data)
 {

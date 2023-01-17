@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 14:42:47 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:25:27 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	resize_screen(int32_t x, int32_t y, void *param)
 {
-	t_cub	*m;
+	t_cub	*cub;
 
-	m = (t_cub *)param;
-	m->s_width = x;
-	m->s_height = y;
-	skyline(m);
+	cub = (t_cub *)param;
+	cub->s_width = x;
+	cub->s_height = y;
+	skyline(cub);
 }
 
 void	cub_keys(mlx_key_data_t key, void *param)
 {
-	t_cub	*tmp;
+	t_cub	*cub;
 
 	(void)key;
-	tmp = (t_cub *)param;
-	if (mlx_is_key_down(tmp->mlx, MLX_KEY_ESCAPE))
+	cub = (t_cub *)param;
+	if (mlx_is_key_down(cub->mlx, MLX_KEY_ESCAPE))
 	{
-		clean_mlx(tmp); 
-		free_cub(tmp);
+		clean_mlx(cub); 
+		free_cub(cub);
 		write(1, "Exit cub3D\n", 11);
 		exit (0);
 	}
