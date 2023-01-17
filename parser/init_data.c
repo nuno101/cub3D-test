@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 15:26:17 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:08:47 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,47 @@ static void	find_map(t_data *data)
 	j = 0;
 	flag = 0;
 	i = 0;
-	while (data->map_data[i] && flag != 1)
+	while (data->raw_data[i] && flag != 1)
 	{
-		len = ft_strlen(data->map_data[i]);
-		while (data->map_data[i][j] && check_map(data->map_data[i]) && len > 2)
+		len = ft_strlen(data->raw_data[i]);
+		while (data->raw_data[i][j] && check_map(data->raw_data[i]) && len > 2)
 		{
 			flag = 1;
-			if (data->map_data[i][j] != '1' && data->map_data[i][j] != ' ' \
-			&& data->map_data[i][j] != 9)
+			if (data->raw_data[i][j] != '1' && data->raw_data[i][j] != ' ' \
+			&& data->raw_data[i][j] != 9)
 				exit(cub_error(INVALID_MAP));
 			j++;
 		}
 		if (flag == 1)
-			data->map = data->map_data + i;
+			data->map = data->raw_data + i;
 		j = 0;
 		i++;
 	}
 }
 
+/*
+ * validates and initiliase texture filenames definition
+ * validate Floor and Ceiling coulours are defined
+ * call find_map()
+ */
 static void	save_param(t_data *data)
 {
 	int		i;
-	int		ret;
+	int		texture;
 
 	i = 0;
-	if (check_text(data->map_data, data->tmp))
+	if (check_textures(data->raw_data, data->tmp))
 		exit(cub_error(TEX_PATH_ERROR));
-	while (data->map_data[i])
+	while (data->raw_data[i])
 	{
-		ret = find_path_type(data->map_data[i]);
-		if (ret)
-			init_texture(data, data->map_data[i], ret);
-		else if (ft_haschar(data->map_data[i], 'F') \
-		|| ft_haschar(data->map_data[i], 'C'))
-			check_colours(data, data->map_data[i]);
+		texture = find_path_type(data->raw_data[i]);
+		if (texture != NONE)
+			init_texture(data, data->raw_data[i], texture);
+		else if (ft_strchr(data->raw_data[i], 'F') != NULL \
+		|| ft_strchr(data->raw_data[i], 'C') != NULL)
+			check_colours(data, data->raw_data[i]);
+		if (data->c_colour > 0 && data->f_colour > 0)
+			break;
 		i++;
 	}
 	if (data->c_colour == 0 || data->f_colour == 0)
@@ -66,10 +73,11 @@ static void	save_param(t_data *data)
 /*
  * TODO
  * Check edgecases of map validation
+ * map_data has a representation of the full content of the filename
  */
 static void	map_data(char *map_path, t_data *data)
 {
-	data->map_data = get_map(map_path);
+	data->raw_data = get_map(map_path);
 	save_param(data);
 	if (ft_splitlen(data->map) < 3 || validate_mapchars(data->map))
 		exit(cub_error(MAP_ERROR));
@@ -88,7 +96,7 @@ t_data	*init_data(char *map_path)
 	data = malloc(sizeof(t_data));
 	if (data == NULL)
 		exit(cub_error(MALLOC_ERROR));
-	data->map_data = NULL;
+	data->raw_data = NULL;
 	data->map = NULL;
 	data->textures[0] = NULL;
 	data->textures[1] = NULL;
