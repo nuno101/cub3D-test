@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/17 15:37:39 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/18 10:14:05 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 enum	e_cub3d_errors
 {
 	ARG_ERROR = 256,
+	ARG_FILENAME_ERROR,
 	FILE_ERROR,
 	INVALID_MAP,
 	MALLOC_ERROR,

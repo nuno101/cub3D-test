@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/17 17:30:40 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/18 10:14:26 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ int main(int argc, char **argv)
 {
 	t_data	*data;
 
-	if (argc != 2 || validate_map_filename(argv[1]))
+	if (argc != 2)
 		return (cub_error(ARG_ERROR));
+	if (validate_map_filename(argv[1]))
+		return (cub_error(ARG_FILENAME_ERROR));
 	if (!ft_ispath(argv[1]))
 		exit(cub_error(DIR_ERROR));
 	data = malloc(sizeof(t_data));

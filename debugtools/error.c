@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 15:16:15 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/18 10:23:30 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ int	cub_error(int err)
 	if (err >= PNG_ERROR)
 		return(cub_error_2(err));
 	else if (err == ARG_ERROR)
-		printf("ARGS\n");
+		printf("Wrong arguments. Use: ./cub3D <path to map filename>\n");
+	else if (err == ARG_FILENAME_ERROR)
+		printf("Invalid map filename. Only *.cub format is accepted\n");
 	else if (err == FILE_ERROR)
 		printf("FILE invalid\n");
 	else if (err == INVALID_MAP)
 		printf("MAP broken\n");
 	else if (err == MALLOC_ERROR)
-		printf("Malloc\n");
+		printf("Malloc failed\n");
 	else if (err == DIR_ERROR)
 		printf("Path not valid\n");
 	else if (err == COLOUR_ERROR)
