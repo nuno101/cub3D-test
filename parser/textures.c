@@ -1,48 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/15 01:28:53 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/19 10:52:04 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
-
-/*
- * verify each texture file is present and defined exactly once
- */
-int	check_textures(char **map, int *tx)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (map[i])
-	{
-		while (map[i][j])
-		{
-			if (!ft_strncmp(map[i] + j, "NO ", 3))
-				tx[0] += 1;
-			else if (!ft_strncmp(map[i] + j, "SO ", 3))
-				tx[1] += 1;
-			else if (!ft_strncmp(map[i] + j, "EA ", 3))
-				tx[2] += 1;
-			else if (!ft_strncmp(map[i] + j, "WE ", 3))
-				tx[3] += 1;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	if (tx[0] != 1 || tx[1] != 1 || tx[2] != 1 || tx[3] != 1)
-		return (1);
-	return (0);
-}
 
 /*
  * find texture code
@@ -65,4 +33,34 @@ int	find_path_type(char *s)
 		i++;
 	}
 	return (NONE);
+}
+
+/*
+ * read line from i=3 since the first 3 characters have been validated
+ * 
+ */
+mlx_texture_t	*save_texture(char *s)
+{
+	mlx_texture_t	*texture;
+	int				i;
+
+	i = 3;
+	texture = NULL;
+	while (s[i])
+	{
+		if (s[i] != ' ' && s[i] != 9)
+		{
+			if (!ft_ispath(s + i))
+				exit(cub_error(TEX_PATH_ERROR));
+			else
+			{
+				texture = mlx_load_png(s + i);
+				if (!texture)
+					exit(cub_error(TEX_MLX_LOAD_PNG_ERROR));
+				break ;
+			}
+		}
+		i++;
+	}
+	return (texture);
 }

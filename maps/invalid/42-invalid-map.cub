@@ -1,0 +1,13 @@
+NO ./textures/wolftextures1.png
+SO ./textures/wolftextures2.png
+WE ./textures/wolftextures3.png
+EA ./textures/wolftextures4.png
+EA ./textures/wolftextures4.png
+
+F 220,100,0
+C 225,30,0
+
+1111
+10E1
+1001
+1111
