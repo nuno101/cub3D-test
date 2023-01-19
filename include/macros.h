@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/19 10:46:57 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/19 14:08:58 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
  * start at 256 to not overwrite OS error codes
  * need include guard for compiling in linux, because multiple definition if not.
  */
+#ifndef t_error
+# define t_error
 enum	e_cub3d_errors
 {
 	ARG_ERROR = 256,
@@ -37,7 +39,7 @@ enum	e_cub3d_errors
 	P_SURROUNDED_ERROR,
 	W_SURROUNDED_ERROR,
 }	t_error;
-
+#endif
 /*
  * define cub3d texture codes starting at 1 
  * NONE - not a texture
@@ -46,6 +48,9 @@ enum	e_cub3d_errors
  * WE - West texture
  * EA - East texture
  */
+#ifndef t_texture
+# define t_texture
 enum	e_textures { NONE = -1, NO, SO, WE, EA } t_texture;
+#endif
 
 #endif
