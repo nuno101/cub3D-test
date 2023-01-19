@@ -1,54 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colours_texture.c                                  :+:      :+:    :+:   */
+/*   colours.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 14:45:17 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:41:23 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
-
-static mlx_texture_t	*save_text(char *s)
-{
-	mlx_texture_t	*tmp;
-	int				i;
-
-	i = 0;
-	tmp = NULL;
-	while (s[i])
-	{
-		if (s[i] == '.')
-		{
-			if (!ft_ispath(s + i))
-				exit(cub_error(TEX_PATH_ERROR));
-			else
-			{
-				tmp = mlx_load_png(s + i);
-				if (!tmp)
-					exit(cub_error(TEX_PATH_ERROR));
-				break ;
-			}
-		}
-		i++;
-	}
-	return (tmp);
-}
-
-void	init_texture(t_data *data, char *s, int mod)
-{
-	if (mod == NO)
-		data->textures[0] = save_text(s);
-	if (mod == SO)
-		data->textures[1] = save_text(s);
-	if (mod == WE)
-		data->textures[2] = save_text(s);
-	if (mod == EA)
-		data->textures[3] = save_text(s);
-}
 
 static bool	valid_colour(char *s)
 {

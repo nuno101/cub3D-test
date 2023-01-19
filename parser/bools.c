@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:39:05 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 22:26:03 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:49:13 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,23 @@ bool	is_player(char c)
 
 bool	is_mapchar(char c)
 {
-	if (c != ' ' && c != 9 && c != '1' && c != '0' && !is_player(c))
+	if (c != ' ' && c != '1' && c != '0' && !is_player(c))
 		return (0);
 	return (1);
 }
 
-static bool	map_wall(char c)
-{
-	if (c != '1' && c != ' ' && c != 9)
-		return (0);
-	return (1);
-}
-
-bool	check_map(char *s)
+/*
+ * returns true if only 1's and spaces found
+ */
+bool	valid_map_border(char *row)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
+	while (row[i])
 	{
-		if (!map_wall(s[i]))
-		{
+		if (row[i] != '1' && row[i] != ' ')
 			return (0);
-		}
 		i++;
 	}
 	return (1);

@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 03:29:11 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/12/19 04:57:26 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/19 10:38:15 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 int	find_newline(char *str)
 {
