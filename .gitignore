@@ -7,3 +7,5 @@ cub3D
 cub3D_tester
 tester_cub3D
 cub3D.dSYM
+
+tests/test_colours

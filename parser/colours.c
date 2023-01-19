@@ -6,13 +6,15 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 15:12:50 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/19 16:02:29 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-static bool	valid_colour(char *s)
+//FIXME - temporarily remove static to allow unit testing
+//static bool	valid_colour(char *s)
+bool	valid_colour(char *s)
 {
 	int		i;
 	int		tmp;

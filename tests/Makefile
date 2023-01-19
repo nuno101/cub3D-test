@@ -9,7 +9,7 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 CLR_C_FILES := test_colours.c ../parser/colours.c
 
-CLR_O_FILES = $(CLR_C_FILES:%.c=%.o)
+CLR_O_FILES = $(notdir $(CLR_C_FILES:%.c=%.o) )
 
 #OBJ_DIR := objs
 #OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))
@@ -24,8 +24,11 @@ CLR_O_FILES = $(CLR_C_FILES:%.c=%.o)
 
 all: $(CLR)
 
+tc: $(CLR)
+	./$(CLR)
+
 $(CLR): $(CLR_O_FILES) $(LIBFT)
-	gcc $(C_FLAGS) $(OBJS) $(LIBFT) -o $@
+	gcc $(C_FLAGS) $(CLR_O_FILES) $(LIBFT) -o $@
 
 $(CLR_O_FILES): $(CLR_C_FILES)
 	gcc -c -D VERBOSE=$(VERBOSE) $(C_FLAGS) $(CLR_C_FILES) -I $(LIBFT_DIR)
