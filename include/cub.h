@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/15 01:07:46 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/18 15:17:06 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,8 @@ void	player_pos(t_cub *cub, t_data *data);
 void	free_data(t_data *data);
 void	clean_mlx(t_cub *cub);
 void	free_cub(t_cub *cub);
+
+//src/init_cub.c
+t_cub	*init_cub(t_data *data);
 
 #endif

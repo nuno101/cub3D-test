@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/17 12:35:16 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/18 17:47:20 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME := cub3D
 
 #FIXME: use basic flags for final submission!
 #FLAGS := -Wall -Wextra -Werror
-FLAGS := -g -Wall -Wextra -Werror #-fsanitize=address
+FLAGS := -g -Wall -Wextra #-Werror #-fsanitize=address
 MINILIBX_DIR := MLX42
 MINILIBX := $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR := libft
@@ -34,7 +34,8 @@ SRC :=	cub3d.c \
 		src/start_cub.c \
 		src/hooks.c \
 		src/keys.c \
-		src/cleaner.c
+		src/cleaner.c \
+		src/init_cub.c \
 
 OBJ_DIR := objs
 OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))
