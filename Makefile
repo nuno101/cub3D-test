@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/17 17:45:31 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/19 10:37:27 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ else
 	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 endif
 
-.PHONY: all libs cleanlibs clean fclean re
+.PHONY: all libs cleanlibs clean fclean re norm
 
 all: $(NAME)
 
@@ -79,3 +79,7 @@ fclean: clean
 	rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
+
+norm:
+	clear
+	norminette parser src include debugtools libft
