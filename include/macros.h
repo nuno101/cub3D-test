@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/18 10:14:05 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/19 14:08:58 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ enum	e_cub3d_errors
 	W_SURROUNDED_ERROR,
 }	t_error;
 #endif
-
 /*
  * define cub3d texture codes starting at 1 
  * NONE - not a texture

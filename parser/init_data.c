@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 17:24:19 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/19 10:53:31 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	find_map(t_data *data, char **raw_data)
  * validates presence and store texture filenames
  * validate presence of Floor and Ceiling colours
  * calls find_map() -  map must be specified last in the file
+ * FIXME: has more than 25 lines
  */
 static void	save_param(t_data *data, char **raw_data)
 {
@@ -74,7 +75,7 @@ static void	save_param(t_data *data, char **raw_data)
 		|| ft_strchr(raw_data[i], 'C') != NULL)
 			check_colours(data, raw_data[i]);
 		if (data->c_colour > 0 && data->f_colour > 0 && tex_code_sum == 10)
-			break;
+			break ;
 		i++;
 	}
 	if (tex_code_sum != 10)
@@ -106,7 +107,8 @@ static int	count_lines(char *path)
 }
 
 /*
- * read the user filename and return an array of strings representing each line of the file
+ * read the user filename and return an array of strings representing 
+ * each line of the file
  */
 static char	**get_map(char *path)
 {
@@ -152,4 +154,3 @@ void	map_data(char *map_path, t_data *data)
 	wall_check(data);
 	free(raw_data);
 }
-

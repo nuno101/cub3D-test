@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/18 10:23:30 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/19 10:48:59 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	cub_error(int err)
 {
 	printf("Error\n");
 	if (err >= PNG_ERROR)
-		return(cub_error_2(err));
+		return (cub_error_2(err));
 	else if (err == ARG_ERROR)
 		printf("Wrong arguments. Use: ./cub3D <path to map filename>\n");
 	else if (err == ARG_FILENAME_ERROR)
@@ -40,7 +40,7 @@ int	cub_error(int err)
 		printf("Map not valid\n");
 	else if (err == MLX_ERROR)
 		printf("MLX Malloc\n");
-  	else
+	else
 		printf("ERROR FIXME - unsupported error\n");
 	return (err);
 }
@@ -67,7 +67,7 @@ int	cub_error_2(int err)
 		printf("Player not surrounded\n");
 	else if (err == W_SURROUNDED_ERROR)
 		printf("Wall not surrounded\n");
-  	else
+	else
 		printf("ERROR FIXME - unsupported error\n");
 	return (err);
 }

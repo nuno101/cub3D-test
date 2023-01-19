@@ -6,12 +6,12 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 16:59:59 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/19 10:51:02 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
-#define STRUCTS_H
+# define STRUCTS_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -30,7 +30,7 @@ typedef struct s_coords
 	int		y;
 }	t_coords;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	float		cam;
 	int			hit;
