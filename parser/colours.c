@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colours.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 16:02:29 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/20 11:01:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ static uint32_t	get_colour(char *s)
 
 	j = 0;
 	i = 0;
-	tmp[0] = 0;
-	tmp[1] = 0;
-	tmp[2] = 0;
+	ft_bzero(tmp, 3);
 	while (s[i])
 	{
 		if (ft_isdigit(s[i]))
@@ -64,6 +62,7 @@ static uint32_t	get_colour(char *s)
 		}
 		i++;
 	}
+	printf("colour = %x\n", (uint32_t)(tmp[0] << 24 | tmp[1] << 16 | tmp[2] << 8 | 255));
 	return ((uint32_t)(tmp[0] << 24 | tmp[1] << 16 | tmp[2] << 8 | 255));
 }
 

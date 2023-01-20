@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cleansplit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 14:46:13 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/21 14:46:27 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:45:58 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

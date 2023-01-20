@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/18 10:14:26 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/20 11:14:09 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ void	init_data(t_data *data)
 	data->textures[1] = NULL;
 	data->textures[2] = NULL;
 	data->textures[3] = NULL;
-	data->tmp[0] = 0;
-	data->tmp[1] = 0;
-	data->tmp[2] = 0;
-	data->tmp[3] = 0;
+	ft_bzero(data->tmp, 4);
 	data->f_colour = 0;
 	data->c_colour = 0;
 }
