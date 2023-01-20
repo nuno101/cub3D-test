@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 18:00:53 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/19 10:41:51 by nlouro           ###   ########.fr       */
+/*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/19 13:59:53 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ bool			is_player(char c);
 
 //parser/colours.c
 void			check_colours(t_data *data, char *s);
+
 //parser/textures.c
 mlx_texture_t	*save_texture(char *s);
 
@@ -74,5 +75,8 @@ void			player_pos(t_cub *cub, t_data *data);
 void			free_data(t_data *data);
 void			clean_mlx(t_cub *cub);
 void			free_cub(t_cub *cub);
+
+//src/init_cub.c
+t_cub	*init_cub(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:22:18 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/12 14:04:19 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:02:34 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	player_pos(t_cub *cub, t_data *data)
 		{
 			if (is_player(data->map[i][j]))
 			{
+				cub->direction = data->map[i][j];
+				data->map[i][j] = '0';
 				cub->player_pos.x = j;
 				cub->player_pos.y = i;
 				return ;

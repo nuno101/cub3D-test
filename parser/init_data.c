@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 10:53:31 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/20 11:49:54 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
  * find top border of map and then walk through following rows
  * to check only spaces or 1's are present 
  * sets data->map as beginning of map
+ * free raw_data
  */
 static void	find_map(t_data *data, char **raw_data)
 {
@@ -39,10 +40,11 @@ static void	find_map(t_data *data, char **raw_data)
 			j++;
 		}
 		if (flag == 1)
-			data->map = raw_data + i;
+			data->map = ft_splitdup(raw_data + i);
 		j = 0;
 		i++;
 	}
+	ft_cleansplit(raw_data);
 }
 
 /*
@@ -152,5 +154,4 @@ void	map_data(char *map_path, t_data *data)
 		exit(cub_error(MAP_ERROR));
 	player_checks(data);
 	wall_check(data);
-	free(raw_data);
 }

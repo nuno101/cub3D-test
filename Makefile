@@ -15,7 +15,7 @@ VERBOSE := 1
 
 #FIXME: use basic flags for final submission!
 #FLAGS := -Wall -Wextra -Werror
-FLAGS := -g -Wall -Wextra -Werror #-fsanitize=address
+FLAGS := -g -Wall -Wextra #-Werror #-fsanitize=address
 MINILIBX_DIR := MLX42
 MINILIBX := $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR := libft
@@ -34,7 +34,8 @@ SRC :=	cub3d.c \
 		src/start_cub.c \
 		src/hooks.c \
 		src/keys.c \
-		src/cleaner.c
+		src/cleaner.c \
+		src/init_cub.c \
 
 OBJ_DIR := objs
 OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))
