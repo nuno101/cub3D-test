@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 11:49:54 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:52:58 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	find_map(t_data *data, char **raw_data)
 		j = 0;
 		i++;
 	}
-	ft_cleansplit(raw_data);
 }
 
 /*
@@ -150,6 +149,7 @@ void	map_data(char *map_path, t_data *data)
 
 	raw_data = get_map(map_path);
 	save_param(data, raw_data);
+	ft_cleansplit(raw_data);
 	if (ft_splitlen(data->map) < 3 || validate_mapchars(data->map))
 		exit(cub_error(MAP_ERROR));
 	player_checks(data);
