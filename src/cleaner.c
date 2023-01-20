@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:19:44 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 11:43:09 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:22:57 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	clean_mlx(t_cub *m)
 	mlx_delete_texture(m->d->textures[1]);
 	mlx_delete_texture(m->d->textures[2]);
 	mlx_delete_texture(m->d->textures[3]);
-	mlx_terminate(m->mlx);
+	//mlx_terminate(m->mlx);
 }
 
 void	free_cub(t_cub *cub)
