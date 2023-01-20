@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:06:10 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/18 15:56:33 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:12:25 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	start_cub(t_data *data)
 	t_cub	*cub;
 
 	cub = init_cub(data);
+	cub->exit = false;
 	if (mlx_image_to_window(cub->mlx, cub->image, 0, 0) < 0)
 		exit(cub_error(MLX_ERROR));
 	hooks(cub);

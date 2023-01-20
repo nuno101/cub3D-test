@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 16:53:06 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:40:58 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_ray
 
 typedef struct s_cub
 {
+	bool			exit;
 	t_data			*d;
 	mlx_t			*mlx;
 	int32_t			s_width;
