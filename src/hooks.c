@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:11:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 17:11:36 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:14:23 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_dist(t_ray *ray)
 	}
 }
 
-//TODOO 25lines FIX
+//TODO 25lines FIX
 void	dda(t_cub *cub, t_ray *ray)
 {
 	int is_x_side;

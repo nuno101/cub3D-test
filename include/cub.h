@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 15:12:48 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:10:21 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ mlx_texture_t	*save_texture(char *s);
 
 //src/start_cub.c
 void			start_cub(t_data *data);
-void			skyline(t_cub *cub);
 
 //src/hooks.c
 void			hooks(t_cub *cub);
