@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 16:20:03 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:08:59 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void	cub_keys(mlx_key_data_t key, void *param)
 	cub = (t_cub *)param;
 	if (key.key == 256)
 	{
-		cub->exit = true;
-		printf("cub_keys: Escape pressed!\n");
 		mlx_close_window(cub->mlx);
 		mlx_delete_image(cub->mlx, cub->image);
-		//mlx_terminate(cub->mlx);
 	}
 }

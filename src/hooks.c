@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:11:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 16:13:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:09:23 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	dda(t_cub *cub, t_ray *ray)
 	int is_x_side;
 	int is_negative;
 
-	while (ray->hit == 0 && !cub->exit)
+	while (ray->hit == 0)
 	{
 		if (ray->side_dist.x < ray->side_dist.y)
 		{
@@ -155,7 +155,7 @@ void	draw_ray(int x, t_cub *cub, t_ray *ray)
 		end = cub->s_height - 1;
 	texturize(cub, x, start, end);
 	i = 0;
-	while (i < cub->s_height && !cub->exit)
+	while (i < cub->s_height)
 	{
 		if (i < start)
 			mlx_put_pixel(cub->image, x, i, cub->c);
@@ -172,7 +172,7 @@ void	render_ray(void	*param)
 
 	x = 0;
 	cub = (t_cub *)param;
-	while (x < cub->s_width && !cub->exit)
+	while (x < cub->s_width)
 	{
 		set_ray(x, cub->ray, cub);
 		check_dist(cub->ray);
