@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 14:52:58 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/20 16:30:48 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ static char	**get_map(char *path)
 	while (line)
 	{
 		len = ft_strlen(line) - 1;
-		if (line[len] == '\n')
+		if (len > 0 && line[len] == '\n')
 			line[len] = '\0';
 		map[i++] = line;
 		line = get_next_line(fd, 0);
