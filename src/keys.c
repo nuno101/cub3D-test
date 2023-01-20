@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 11:50:21 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:14:35 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,9 @@ void	cub_keys(mlx_key_data_t key, void *param)
 
 	(void)key;
 	cub = (t_cub *)param;
-	printf("key = %i\n", key.key);
-	if (mlx_is_key_down(cub->mlx, MLX_KEY_ESCAPE))
+	if (key.key == 256)
 	{
-		clean_mlx(cub);
-		free_data(cub->d);
-		free_cub(cub);
-		printf("Exit cub3d\n");
-		exit (0);
+		mlx_close_window(cub->mlx);
+		mlx_delete_image(cub->mlx, cub->image);
 	}
 }

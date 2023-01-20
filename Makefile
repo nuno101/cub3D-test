@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/20 13:07:12 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/20 15:23:54 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ VERBOSE := 1
 
 #FIXME: use basic flags for final submission!
 #FLAGS := -Wall -Wextra -Werror
-FLAGS := -g -Wall -Wextra #-Werror #-fsanitize=address
+FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
 MINILIBX_DIR := MLX42
 MINILIBX := $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR := libft
@@ -77,7 +77,7 @@ $(LIBFT):
 
 clean:
 	rm -f $(OBJ_DIR)/*.o
-	rmdir $(OBJ_DIR)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -rf $(NAME) $(NAME).dSYM
