@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 10:53:31 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/19 15:53:04 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	find_map(t_data *data, char **raw_data)
 			j++;
 		}
 		if (flag == 1)
-			data->map = raw_data + i;
+			data->map = ft_splitdup(raw_data + i);
 		j = 0;
 		i++;
 	}

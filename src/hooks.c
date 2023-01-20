@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:11:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/18 18:12:45 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/19 17:59:05 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	screensize(t_cub *cub)
 
 void	set_ray(int x, t_ray *ray, t_cub *cub)
 {
-	ray->camera = (2 * x) / cub->s_width - 1;
+	ray->camera = (double)((2 * x) / (double)cub->s_width - 1);
 	ray->ray_dir.x = ray->dir.x + (ray->plane.x * ray->camera);
 	ray->ray_dir.y = ray->dir.y + (ray->plane.y * ray->camera);
 	if (ray->ray_dir.x == 0)
@@ -42,14 +42,14 @@ void	check_dist(t_ray *ray)
 {
 	ray->hit = 0;
 	ray->step.x = 1;
-	ray->side_dist.x = (ray->map.x + 1 - ray->pos.x) * ray->delta_dist.x;
+	ray->side_dist.x = (ray->map.x + 1.0 - ray->pos.x) * ray->delta_dist.x;
 	if (ray->ray_dir.x < 0)
 	{
 		ray->step.x = -1;
 		ray->side_dist.x = (ray->pos.x - ray->map.x) * ray->delta_dist.x;
 	}
 	ray->step.y = 1;
-	ray->side_dist.y = (ray->map.y + 1 - ray->pos.y) * ray->delta_dist.y;
+	ray->side_dist.y = (ray->map.y + 1.0 - ray->pos.y) * ray->delta_dist.y;
 	if (ray->ray_dir.y < 0)
 	{
 		ray->step.y = -1;
@@ -57,105 +57,109 @@ void	check_dist(t_ray *ray)
 	}
 }
 
-void	dda_check(t_cub *cub, t_ray *ray)
-{
-	if (ray->side_dist.x < ray->side_dist.y)
-	{
-		ray->side_dist.x += ray->delta_dist.x;
-		ray->map.x += ray->step.x;
-		if (ray->ray_dir.x < 0)
-			ray->side = NO;
-		else
-			ray->side = SO;
-	}
-	else
-	{
-		ray->side_dist.y += ray->delta_dist.y;
-		ray->map.y += ray->step.y;
-		if (ray->ray_dir.y < 0)
-			ray->side = WE;
-		else
-			ray->side = EA;
-	}
-	if (cub->d->map[ray->map.x][ray->map.y] > '0')
-		ray->hit = 1;
-}
-
+//TODOO 25lines FIX
 void	dda(t_cub *cub, t_ray *ray)
 {
+	int is_x_side;
+	int is_negative;
+
 	while (ray->hit == 0)
-		dda_check(cub, ray);
+	{
+		if (ray->side_dist.x < ray->side_dist.y)
+		{
+			ray->side_dist.x += ray->delta_dist.x;
+			ray->map.x += ray->step.x;
+			is_x_side = 1;
+			is_negative = ray->ray_dir.x < 0;
+		}
+		else
+		{
+			ray->side_dist.y += ray->delta_dist.y;
+			ray->map.y += ray->step.y;
+			is_x_side = 0;
+			is_negative = ray->ray_dir.y < 0;
+		}
+		if (is_x_side && is_negative)
+			ray->side = NO;
+		else if (is_x_side && !is_negative)
+			ray->side = SO;
+		else if (!is_x_side && is_negative)
+			ray->side = EA;
+		else
+			ray->side = WE;
+		if (cub->d->map[ray->map.x][ray->map.y] > '0')
+			ray->hit = 1;
+	}
 	if (ray->side == NO || ray->side == SO)
 		ray->perp_wall_dist = (ray->side_dist.x - ray->delta_dist.x);
 	else
 		ray->perp_wall_dist = (ray->side_dist.y - ray->delta_dist.y);
 }
 
+
 static int	get_tex_x(t_cub *cub)
 {
 	double	x;
+	int		tex_x;
 
 	if (cub->ray->side == 0 || cub->ray->side == 1)
 		x = cub->ray->pos.y + cub->ray->perp_wall_dist * cub->ray->ray_dir.y;
 	else
 		x = cub->ray->pos.x + cub->ray->perp_wall_dist * cub->ray->ray_dir.x;
 	x -= floor(x);
-	x = x * cub->d->textures[cub->ray->side - 1]->width;
+	tex_x = x * cub->d->textures[cub->ray->side]->width;
 	if ((cub->ray->side == 0 && cub->ray->ray_dir.x > 0) \
 	|| (cub->ray->side == 1 && cub->ray->ray_dir.y < 0))
-		x = cub->d->textures[cub->ray->side]->width - x - 1;
-	return (x);
+		tex_x = cub->d->textures[cub->ray->side]->width - tex_x - 1;
+	return (tex_x);
 }
 
-int	texturize(t_cub *cub, int x, int start, int end)
+void	texturize(t_cub *cub, int x, int start, int end)
 {
 	int				line_h;
-	float			step;
-	float			text_pos;
+	double			step;
+	double			text_pos;
 	mlx_texture_t	*texture;
-	
-	texture = cub->d->textures[cub->ray->side - 1];
-	ft_memset(cub->d->tmp, 0, 4);
+
+	step = 0;
+	texture = cub->d->textures[cub->ray->side];
 	cub->d->tmp[0] = get_tex_x(cub);
 	line_h = end - start;
+	start = fmax(0, cub->s_height / 2 - line_h / 2);
 	text_pos = (start - cub->s_height / 2 + line_h / 2) * step;
-	step = 1 * texture->height / line_h;
+	step = 1.0 * texture->height / line_h;
 	while (start < end)
 	{
-		cub->d->tmp[1] = text_pos & (texture->height - 1);
+		cub->d->tmp[1] = (int)text_pos & (texture->height - 1);
 		text_pos += step;
-		if (start >= 0 && start <= cub->s_height)
-		{
-			ft_memcpy(cub->image->pixels[((start * cub->image->width + x) * 4)],\
-			texture->pixels[((cub->d->tmp[1]) * texture->height + (cub->d->tmp[0]))])
-		}
+		ft_memcpy(&cub->image->pixels[((start * cub->image->width + x) * 4)],\
+		&texture->pixels[((cub->d->tmp[1]) * texture->height + (cub->d->tmp[0])) * 4], 4);
 		start++;
 	}
 }
 
+
 void	draw_ray(int x, t_cub *cub, t_ray *ray)
 {
 	int	line_height;
-	int	draw_start;
-	int	draw_end;
+	int	start;
+	int	end;
 	int	i;
 
 	line_height = 0;
 	if (ray->perp_wall_dist > 0)
-	{
-		line_height = (cub->s_height / ray->perp_wall_dist);
-	}
-	draw_start = cub->s_height / 2 + cub->s_height / 2;
-	draw_end = line_height / 2 + cub->s_height / 2;
-	if (draw_end >= cub->s_height)
-		draw_end = cub->s_height - 1;
-	texturize(cub, x, draw_start, draw_end);
+		line_height = (int)(cub->s_height / ray->perp_wall_dist);
+	start = cub->s_height / 2 - cub->s_height / 2;
+	end = line_height / 2 + cub->s_height / 2;
+	if (end >= cub->s_height)
+		end = cub->s_height - 1;
+	texturize(cub, x, start, end);
 	i = 0;
 	while (i < cub->s_height)
 	{
-		if (i < draw_start)
+		if (i < start)
 			mlx_put_pixel(cub->image, x, i, cub->c);
-		if (i > draw_end)
+		if (i > end)
 			mlx_put_pixel(cub->image, x, i, cub->f);
 		i++;
 	}

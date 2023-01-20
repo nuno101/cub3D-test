@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/18 16:03:33 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:38:30 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,35 @@ static t_cub	*init_ray(t_cub *cub)
 	cub->ray->old_plane.y = 0;
 	cub->ray->perp_wall_dist = 0;
 	cub->ray->plane.x = 0;
-	cub->ray->plane.y = 0;
-	cub->ray->pos.x = 0;
-	cub->ray->pos.y = 0;
-	cub->ray->ray_dir.x = 0;
+	cub->ray->plane.y = 0.66;
+	cub->ray->pos.x = (float)(cub->player_pos.y + 0.5);
+	cub->ray->pos.y = (float)(cub->player_pos.x + 0.5);
+	cub->ray->ray_dir.x = -1;
 	cub->ray->ray_dir.y = 0;
 	cub->ray->side = 0;
 	cub->ray->side_dist.x = 0;
 	cub->ray->side_dist.y = 0;
 	cub->ray->step.x = 0;
 	cub->ray->step.y = 0;
+	if (cub->direction == 'S')
+	{
+		cub->ray->dir.x = 1;
+		cub->ray->plane.y = -0.66;
+	}
+	else if (cub->direction == 'W')
+	{
+		cub->ray->ray_dir.x = 0;
+		cub->ray->ray_dir.y = -1;
+		cub->ray->plane.x = -0.66;
+		cub->ray->plane.y = 0;
+	}
+	else if (cub->direction == 'E')
+	{
+		cub->ray->dir.x = 0;
+		cub->ray->dir.y = 1;
+		cub->ray->plane.x = 0.66;
+		cub->ray->plane.y = 0;
+	}
 	return (cub);
 }
 

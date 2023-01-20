@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 13:57:28 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:53:06 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct i_coords
 
 typedef struct f_coords
 {
-	float		x;
-	float		y;
+	double		x;
+	double		y;
 }	f_coords;
 
 typedef struct s_ray
@@ -44,9 +44,9 @@ typedef struct s_ray
 	f_coords	plane;
 	f_coords	old_plane;
 	f_coords	ray_dir;
-	float		camera;
+	double		camera;
 	
-	float		perp_wall_dist;
+	double		perp_wall_dist;
 	f_coords	side_dist;
 	f_coords	delta_dist;
 	i_coords	map;
@@ -65,6 +65,7 @@ typedef struct s_cub
 	uint32_t		f;
 	uint32_t		c;
 	i_coords		player_pos;
+	char			direction;
 	t_ray			*ray;
 }	t_cub;
 

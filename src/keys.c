@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/14 15:25:27 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/19 17:23:22 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	resize_screen(int32_t x, int32_t y, void *param)
 	cub = (t_cub *)param;
 	cub->s_width = x;
 	cub->s_height = y;
-	skyline(cub);
 }
 
 void	cub_keys(mlx_key_data_t key, void *param)
