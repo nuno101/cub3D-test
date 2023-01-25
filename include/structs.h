@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 17:10:39 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/25 15:15:06 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,12 @@ typedef struct s_ray
 {
 	f_coords	pos;
 	f_coords	dir;
-	f_coords	old_dir;
+	//f_coords	old_dir;
 	f_coords	plane;
-	f_coords	old_plane;
+	//f_coords	old_plane;
 	f_coords	ray_dir;
 	double		camera;
-	
-	double		perp_wall_dist;
+	double		wall_distance;
 	f_coords	side_dist;
 	f_coords	delta_dist;
 	i_coords	map;

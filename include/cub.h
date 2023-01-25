@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 17:10:21 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:23:21 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void			start_cub(t_data *data);
 
 //src/hooks.c
 void			hooks(t_cub *cub);
-void			screensize(t_cub *cub);
 
 //src/keys.c
 void			cub_keys(mlx_key_data_t key, void *param);
@@ -76,5 +75,11 @@ void			free_cub(t_cub *cub);
 
 //src/init_cub.c
 t_cub	*init_cub(t_data *data);
+
+//src/raycast.c
+void	render_ray(void	*param);
+
+//src/draw.c
+void	draw_ray(int x, t_cub *cub, t_ray *ray);
 
 #endif

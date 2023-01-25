@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/20 15:23:54 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/25 15:20:42 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ SRC :=	cub3d.c \
 		src/keys.c \
 		src/cleaner.c \
 		src/init_cub.c \
+		src/raycast.c \
+		src/draw.c \
 
 OBJ_DIR := objs
 OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))

@@ -3,65 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 11:15:48 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:23:14 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
 /*
- * initializing all the fields of 't_cub' to zero.
- * FIXME TODOO 25lines
+ * FIXME NORMINETTE
+ * maybe put these arrays to marcos.h
 */
+t_cub	*ray_direction(t_cub *cub)
+{
+	const int ray_dir_x[] = {-1, 0, 1, 0};
+	const int ray_dir_y[] = {0, 1, 0, -1};
+	const double plane_x[] = {0, 0.66, 0, -0.66};
+	const double plane_y[] = {0.66, 0, -0.66, 0};
+
+	int dir_index = 0;
+	if (cub->direction == 'N')
+		dir_index = 0;
+	else if (cub->direction == 'E')
+		dir_index = 1;
+	else if (cub->direction == 'S')
+		dir_index = 2;
+	else if (cub->direction == 'W')
+		dir_index = 3;
+	cub->ray->dir.x = ray_dir_x[dir_index];
+	cub->ray->dir.y = ray_dir_y[dir_index];
+	cub->ray->plane.x = plane_x[dir_index];
+	cub->ray->plane.y = plane_y[dir_index];
+	return (cub);
+}
+
 static t_cub	*init_ray(t_cub *cub)
 {
 	cub->ray->camera = 0;
-	cub->ray->delta_dist.x = 0;
-	cub->ray->delta_dist.y = 0;
-	cub->ray->dir.x = 0;
-	cub->ray->dir.y = 0;
-	cub->ray->hit = 0;
-	cub->ray->map.x = 0;
-	cub->ray->map.y = 0;
-	cub->ray->old_dir.x = 0;
-	cub->ray->old_dir.y = 0;
-	cub->ray->old_plane.x = 0;
-	cub->ray->old_plane.y = 0;
-	cub->ray->perp_wall_dist = 0;
-	cub->ray->plane.x = 0;
-	cub->ray->plane.y = 0.66;
-	cub->ray->pos.x = (float)(cub->player_pos.y + 0.5);
-	cub->ray->pos.y = (float)(cub->player_pos.x + 0.5);
-	cub->ray->ray_dir.x = -1;
-	cub->ray->ray_dir.y = 0;
-	cub->ray->side = 0;
-	cub->ray->side_dist.x = 0;
-	cub->ray->side_dist.y = 0;
-	cub->ray->step.x = 0;
-	cub->ray->step.y = 0;
-	if (cub->direction == 'S')
-	{
-		cub->ray->dir.x = 1;
-		cub->ray->plane.y = -0.66;
-	}
-	else if (cub->direction == 'W')
-	{
-		cub->ray->ray_dir.x = 0;
-		cub->ray->ray_dir.y = -1;
-		cub->ray->plane.x = -0.66;
-		cub->ray->plane.y = 0;
-	}
-	else if (cub->direction == 'E')
-	{
-		cub->ray->dir.x = 0;
-		cub->ray->dir.y = 1;
-		cub->ray->plane.x = 0.66;
-		cub->ray->plane.y = 0;
-	}
+    cub->ray->dir.y = 0;
+    cub->ray->hit = 0;
+    cub->ray->map.x = 0;
+    cub->ray->map.y = 0;
+    cub->ray->wall_distance = 0;
+    cub->ray->plane.x = 0;
+    cub->ray->pos.x = (float)(cub->player_pos.y + 0.5);
+    cub->ray->pos.y = (float)(cub->player_pos.x + 0.5);
+    cub->ray->ray_dir.x = 0;
+    cub->ray->ray_dir.y = 0;
+    cub->ray->side = 0;
+	cub = ray_direction(cub);
 	return (cub);
+}
+
+static void	screensize(t_cub *cub)
+{
+	if (!cub->mlx)
+		exit(cub_error(MLX_ERROR));
+	mlx_get_monitor_size(0, &cub->s_width, &cub->s_height);
+	mlx_terminate(cub->mlx);
+	cub->mlx = mlx_init(cub->s_width, cub->s_height, "Cub3D", true);
 }
 
 t_cub	*init_cub(t_data *data)
