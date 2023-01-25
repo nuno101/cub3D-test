@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/25 15:20:42 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/25 16:31:14 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,9 +44,9 @@ OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))
 
 ifeq ($(USER), nlouro)
 	# Macbook
-	#LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/usr/local/Cellar/glfw/3.3.8/lib"
+	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/usr/local/Cellar/glfw/3.3.8/lib"
 	# School
-	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/goinfre/$(USER)/.brew/Cellar/glfw/3.3.8/lib/"
+	#LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/goinfre/$(USER)/.brew/Cellar/glfw/3.3.8/lib/"
 else
 	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 endif
