@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/25 16:31:14 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/26 10:51:25 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,14 +68,14 @@ $(OBJ_DIR):
 libs: $(MINILIBX) $(LIBFT)
 
 cleanlibs:
-	make -C ./libft fclean
-	make -C ./MLX42 fclean
+	make -C ./$(LIBFT_DIR) fclean
+	make -C ./$(MINILIBX_DIR) fclean
 
 $(MINILIBX):
-	make -C ./MLX42
+	make -C ./$(MINILIBX_DIR)
 
 $(LIBFT):
-	make -C ./libft
+	make -C ./$(LIBFT_DIR)
 
 clean:
 	rm -f $(OBJ_DIR)/*.o
@@ -88,4 +88,4 @@ re: fclean all
 
 norm:
 	clear
-	norminette parser src include debugtools libft
+	norminette parser src include debugtools $(LIBFT_DIR) 
