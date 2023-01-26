@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:17:53 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/25 15:19:55 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:26:13 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	calculate_ray_distance(t_ray *ray)
 }
 
 //TODO 25lines FIX
+//wall_distance = perpWallDist;
 void dda(t_cub *cub, t_ray *ray)
 {
     int is_x_side;
