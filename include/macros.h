@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/26 12:00:23 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/26 17:20:23 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ enum	e_cub3d_errors
 #ifndef t_texture
 # define t_texture
 enum	e_textures { NONE = -1, NO, SO, WE, EA } t_texture;
+#endif
+
+#ifndef ray_direction_consts
+#define ray_direction_consts
+static	const int RAY_DIR_X[] = {-1, 0, 1, 0};
+static	const int RAY_DIR_Y[] = {0, 1, 0, -1};
+static	const double PLANE_X[] = {0, 0.66, 0, -0.66};
+static	const double PLANE_Y[] = {0.66, 0, -0.66, 0};
 #endif
 
 #endif

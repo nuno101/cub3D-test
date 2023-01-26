@@ -6,24 +6,20 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/26 16:00:04 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:22:28 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
 /*
- * FIXME NORMINETTE
- * maybe put these arrays to marcos.h
-*/
+ * constant variables used here are defined in macros.h
+ */
 t_cub	*ray_direction(t_cub *cub)
 {
-	const int ray_dir_x[] = {-1, 0, 1, 0};
-	const int ray_dir_y[] = {0, 1, 0, -1};
-	const double plane_x[] = {0, 0.66, 0, -0.66};
-	const double plane_y[] = {0.66, 0, -0.66, 0};
+	int dir_index;
 
-	int dir_index = 0;
+	dir_index = 0;
 	if (cub->direction == 'N')
 		dir_index = 0;
 	else if (cub->direction == 'E')
@@ -32,10 +28,10 @@ t_cub	*ray_direction(t_cub *cub)
 		dir_index = 2;
 	else if (cub->direction == 'W')
 		dir_index = 3;
-	cub->ray->dir.x = ray_dir_x[dir_index];
-	cub->ray->dir.y = ray_dir_y[dir_index];
-	cub->ray->plane.x = plane_x[dir_index];
-	cub->ray->plane.y = plane_y[dir_index];
+	cub->ray->dir.x = RAY_DIR_X[dir_index];
+	cub->ray->dir.y = RAY_DIR_Y[dir_index];
+	cub->ray->plane.x = PLANE_X[dir_index];
+	cub->ray->plane.y = PLANE_Y[dir_index];
 	return (cub);
 }
 
