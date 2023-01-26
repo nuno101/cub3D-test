@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 17:14:35 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:54:25 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
+/*
+ * FIXME 
+ * image missing rendering , maybe with mlx_loop_hook(render_ray)
+*/
 void	resize_screen(int32_t x, int32_t y, void *param)
 {
 	t_cub	*cub;
@@ -19,6 +23,7 @@ void	resize_screen(int32_t x, int32_t y, void *param)
 	cub = (t_cub *)param;
 	cub->s_width = x;
 	cub->s_height = y;
+	//mlx_loop_hook(cub->mlx, &render_ray, cub);
 }
 
 /*
