@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 16:30:48 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/26 14:51:05 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,24 +86,32 @@ static void	save_param(t_data *data, char **raw_data)
 	find_map(data, raw_data);
 }
 
+/*
+ * return number of lines of filename path
+ */
 static int	count_lines(char *path)
 {
 	int		count;
 	int		fd;
 	char	*line;
 
+	count = 0;
 	fd = open(path, O_RDONLY);
-	count = 1;
 	line = get_next_line(fd, 1);
-	if (!line)
+	if (line == NULL)
 		exit(cub_error(FILE_ERROR));
 	while (line)
 	{
 		free(line);
-		count++;
 		line = get_next_line(fd, 0);
+		if (line)
+			count++;
 	}
 	close(fd);
+	if (count == 0)
+		exit(cub_error(EMPTY_FILE_ERROR));
+	else if (count < 9)
+		exit(cub_error(FILE_TOO_SHORT_ERROR));
 	return (count);
 }
 
@@ -119,7 +127,7 @@ static char	**get_map(char *path)
 	int		fd;
 	int		len;
 
-	map = malloc(sizeof(char *) * (count_lines(path)));
+	map = malloc(sizeof(char *) * (count_lines(path) + 2));
 	if (!map)
 		exit(cub_error(MALLOC_ERROR));
 	i = 0;
@@ -130,10 +138,11 @@ static char	**get_map(char *path)
 		len = ft_strlen(line) - 1;
 		if (len > 0 && line[len] == '\n')
 			line[len] = '\0';
-		map[i++] = line;
+		map[i] = line;
+		i++;
 		line = get_next_line(fd, 0);
 	}
-	map[i] = NULL;
+	map[i++] = NULL;
 	close(fd);
 	return (map);
 }

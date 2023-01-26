@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/26 11:23:25 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/26 14:18:21 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static uint32_t	get_colour(char *s)
 		}
 		i++;
 	}
-	return ((uint32_t)(tmp[0] << 24 | tmp[1] << 16 | tmp[2] << 8));
+	return ((uint32_t)(tmp[0] << 24 | tmp[1] << 16 | tmp[2] << 8 | 255));
 }
 
 void	check_colours(t_data *data, char *s)
