@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/26 11:11:20 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/26 11:23:25 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ bool	valid_colour(char *s)
 	return (1);
 }
 
+/*
+ * iterate through the the input string. if a digit is found, converts that character to an integer
+ * using ft_atoi and assign it to the next element in the "tmp" array (decimal part is discarded)
+ * continues until all digits in the input string have been processed.
+ * shifts the values in the "tmp" array to the left by 24, 16, and 8 bits respectively and ORs them together,
+ */
 static uint32_t	get_colour(char *s)
 {
 	int			i;
@@ -67,7 +73,7 @@ static uint32_t	get_colour(char *s)
 		}
 		i++;
 	}
-	return ((uint32_t)(tmp[0] << 24 | tmp[1] << 16 | tmp[2] << 8 | 255));
+	return ((uint32_t)(tmp[0] << 24 | tmp[1] << 16 | tmp[2] << 8));
 }
 
 void	check_colours(t_data *data, char *s)
