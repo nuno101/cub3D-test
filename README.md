@@ -25,18 +25,18 @@ Requirements summary:
   - map element must be last in map file
 
 4.1. Non map elements requirements:
-  - <type identifier> <any number of spaces> <definition>
+  - \<type identifier\> \<any number of spaces\> \<definition\>
   - For textures:
-    - <(NO|SO|WE|EA) <any number of spaces> <texture filepath>
+    - \<(NO|SO|WE|EA)\> \<any number of spaces\> \<texture filepath\>
   - For colors:
-    - <(F|C)> <any number of spaces> <R,G,B>
+    - <(F|C)> \<any number of spaces\> \<R,G,B\>
       - each R,G,B parameter must be in range [0,255]
 
 4.2 Map element requirements:
-  -  6 possible characters
-    - 0 for an empty space
-    - 1 for a wall
-    - N,S,E or W for the player’s start position and spawning orientation
+  - only 6 possible characters:
+  - 0 for an empty space
+  - 1 for a wall
+  - N,S,E or W for the player’s start position and spawning orientation
   - map must be closed/surrounded by walls
   - map must be parsed as it looks in the file
 
