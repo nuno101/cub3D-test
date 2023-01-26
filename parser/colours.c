@@ -6,15 +6,20 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/20 17:10:37 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:11:20 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
+/*
+ * check if a given string (s) is a valid color in the format "R, G, B"
+ * where R, G, and B are integers between 0 and 255 (inclusive)
+ * start at i = 1 to skip F or C specifier
+ */
+bool	valid_colour(char *s)
 //FIXME - temporarily remove static to allow unit testing
 //static bool	valid_colour(char *s)
-bool	valid_colour(char *s)
 {
 	int		i;
 	int		tmp;
@@ -24,7 +29,7 @@ bool	valid_colour(char *s)
 	i = 1;
 	while (s[i])
 	{
-		if (!ft_isdigit(s[i]) && s[i] != ',' && s[i] != ' ' && s[i] != 9)
+		if (!ft_isdigit(s[i]) && s[i] != ',' && s[i] != ' ')
 			return (0);
 		if (ft_isdigit(s[i]))
 		{
