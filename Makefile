@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 18:18:19 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 18:27:03 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC :=	src/cub3d.c \
 		src/parser/player_check.c \
 		src/parser/wall_check.c \
 		src/parser/player_pos.c \
-		src/window/keys.c \
+		src/window/event_handlers.c \
 		src/window/init_cub.c \
 		src/window/raycast.c \
 		src/window/draw.c \
