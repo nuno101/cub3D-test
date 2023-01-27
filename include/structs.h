@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/25 15:15:06 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:04:09 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,26 @@ typedef struct i_coords
 {
 	int		x;
 	int		y;
-}	i_coords;
+}	t_i_coords;
 
 typedef struct f_coords
 {
-	double		x;
-	double		y;
-}	f_coords;
+	double	x;
+	double	y;
+}	t_f_coords;
 
 typedef struct s_ray
 {
-	f_coords	pos;
-	f_coords	dir;
-	//f_coords	old_dir;
-	f_coords	plane;
-	//f_coords	old_plane;
-	f_coords	ray_dir;
+	t_f_coords	pos;
+	t_f_coords	dir;
+	t_f_coords	plane;
+	t_f_coords	ray_dir;
 	double		camera;
 	double		wall_distance;
-	f_coords	side_dist;
-	f_coords	delta_dist;
-	i_coords	map;
-	i_coords	step;
+	t_f_coords	side_dist;
+	t_f_coords	delta_dist;
+	t_i_coords	map;
+	t_i_coords	step;
 	int			hit;
 	int			side;
 }	t_ray;
@@ -63,7 +61,7 @@ typedef struct s_cub
 	mlx_image_t		*image;
 	uint32_t		f;
 	uint32_t		c;
-	i_coords		player_pos;
+	t_i_coords		player_pos;
 	char			direction;
 	t_ray			*ray;
 }	t_cub;

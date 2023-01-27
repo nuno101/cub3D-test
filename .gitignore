@@ -9,3 +9,4 @@ tester_cub3D
 cub3D.dSYM
 
 tests/test_colours
+venv

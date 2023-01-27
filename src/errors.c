@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 10:48:59 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:01:19 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ int	cub_error(int err)
 		printf("Wrong arguments. Use: ./cub3D <path to map filename>\n");
 	else if (err == ARG_FILENAME_ERROR)
 		printf("Invalid map filename. Only *.cub format is accepted\n");
+	else if (err == EMPTY_FILE_ERROR)
+		printf("File appears to be empty\n");
 	else if (err == FILE_ERROR)
-		printf("FILE invalid\n");
+		printf("File invalid.\n");
+	else if (err == FILE_TOO_SHORT_ERROR)
+		printf("File invalid. Check all required definitions are included.\n");
 	else if (err == INVALID_MAP)
 		printf("MAP broken\n");
 	else if (err == MALLOC_ERROR)
@@ -36,10 +40,6 @@ int	cub_error(int err)
 		printf("Path not valid\n");
 	else if (err == COLOUR_ERROR)
 		printf("Colour not valid\n");
-	else if (err == MAP_ERROR)
-		printf("Map not valid\n");
-	else if (err == MLX_ERROR)
-		printf("MLX Malloc\n");
 	else
 		printf("ERROR FIXME - unsupported error\n");
 	return (err);
@@ -50,7 +50,11 @@ int	cub_error(int err)
  */
 int	cub_error_2(int err)
 {
-	if (err == PNG_ERROR)
+	if (err == MAP_ERROR)
+		printf("Map not valid\n");
+	else if (err == MLX_ERROR)
+		printf("MLX Malloc\n");
+	else if (err == PNG_ERROR)
 		printf("PNG path not valid | MLX malloc\n");
 	else if (err == TEX_PRESENCE_ERROR)
 	{
