@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:57 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/26 15:47:30 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:56:12 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ static void	texturize(t_cub *cub, int x, int start, int end)
 {
 	int				line_h;
 	double			step;
-	double			text_p;
-	mlx_texture_t	*texture;
+	double			tex_p;
+	mlx_texture_t	*tex;
+	int				tmp;
 
 	step = 0;
-	texture = cub->d->textures[cub->ray->side];
-	cub->d->tmp[0] = tex_pos(cub);
+	tex = cub->d->textures[cub->ray->side];
 	line_h = end - start;
 	start = fmax(0, (cub->s_height - line_h) / 2);
-	text_p = (start - (cub->s_height + line_h) / 2) * step;
-	step = 1.0 * texture->height / line_h;
+	tex_p = (start - (cub->s_height + line_h) / 2) * step;
+	step = 1.0 * tex->height / line_h;
 	while (start < end)
 	{
-		cub->d->tmp[1] = (int)text_p & (texture->height - 1);
-		text_p += step;
-		ft_memcpy(&cub->image->pixels[((start * cub->image->width + x) * 4)],\
-		&texture->pixels[((cub->d->tmp[1]) * texture->height + (cub->d->tmp[0])) * 4], 4);
+		tmp = (int)tex_p & (tex->height - 1);
+		tex_p += step;
+		ft_memcpy(&cub->image->pixels[((start * cub->image->width + x) * 4)], \
+		&tex->pixels[(tmp * tex->height + tex_pos(cub)) * 4], 4);
 		start++;
 	}
 }

@@ -6,14 +6,15 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 11:32:58 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:15:07 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
 /*
- * constant variables defined in macros.h
+ * glaobal variables defined in macros.h must be prefixed with g_ and
+ * contain only lowercase chars to comply with norm
  */
 t_cub	*ray_direction(t_cub *cub)
 {
@@ -28,10 +29,10 @@ t_cub	*ray_direction(t_cub *cub)
 		dir_index = 2;
 	else if (cub->direction == 'W')
 		dir_index = 3;
-	cub->ray->dir.x = RAY_DIR_X[dir_index];
-	cub->ray->dir.y = RAY_DIR_Y[dir_index];
-	cub->ray->plane.x = PLANE_X[dir_index];
-	cub->ray->plane.y = PLANE_Y[dir_index];
+	cub->ray->dir.x = g_ray_dir_x[dir_index];
+	cub->ray->dir.y = g_ray_dir_y[dir_index];
+	cub->ray->plane.x = g_plane_x[dir_index];
+	cub->ray->plane.y = g_plane_y[dir_index];
 	return (cub);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/26 17:20:23 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:18:11 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
  * start at 256 to not overwrite OS error codes
  * need include guard for compiling in linux, because multiple definition if not.
  */
-#ifndef t_error
-# define t_error
+#ifndef E_ERRORS
+# define E_ERRORS
+
 enum	e_cub3d_errors
 {
 	ARG_ERROR = 256,
@@ -42,6 +43,7 @@ enum	e_cub3d_errors
 	W_SURROUNDED_ERROR,
 }	t_error;
 #endif
+
 /*
  * define cub3d texture codes starting at 1 
  * NONE - not a texture
@@ -50,17 +52,22 @@ enum	e_cub3d_errors
  * WE - West texture
  * EA - East texture
  */
-#ifndef t_texture
-# define t_texture
+#ifndef E_TEXTURES
+# define E_TEXTURES
+
 enum	e_textures { NONE = -1, NO, SO, WE, EA } t_texture;
 #endif
 
-#ifndef ray_direction_consts
-#define ray_direction_consts
-static	const int RAY_DIR_X[] = {-1, 0, 1, 0};
-static	const int RAY_DIR_Y[] = {0, 1, 0, -1};
-static	const double PLANE_X[] = {0, 0.66, 0, -0.66};
-static	const double PLANE_Y[] = {0.66, 0, -0.66, 0};
+/*
+ * constants for ray directions calculations
+ */
+#ifndef RAY_DIRECTION_CONSTS
+#define RAY_DIRECTION_CONSTS
+
+static const int	g_ray_dir_x[] = {-1, 0, 1, 0};
+static const int	g_ray_dir_y[] = {0, 1, 0, -1};
+static const double	g_plane_x[] = {0, 0.66, 0, -0.66};
+static const double	g_plane_y[] = {0.66, 0, -0.66, 0};
 #endif
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/26 11:59:00 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:01:19 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ int	cub_error(int err)
 		printf("Path not valid\n");
 	else if (err == COLOUR_ERROR)
 		printf("Colour not valid\n");
-	else if (err == MAP_ERROR)
-		printf("Map not valid\n");
-	else if (err == MLX_ERROR)
-		printf("MLX Malloc\n");
 	else
 		printf("ERROR FIXME - unsupported error\n");
 	return (err);
@@ -54,7 +50,11 @@ int	cub_error(int err)
  */
 int	cub_error_2(int err)
 {
-	if (err == PNG_ERROR)
+	if (err == MAP_ERROR)
+		printf("Map not valid\n");
+	else if (err == MLX_ERROR)
+		printf("MLX Malloc\n");
+	else if (err == PNG_ERROR)
 		printf("PNG path not valid | MLX malloc\n");
 	else if (err == TEX_PRESENCE_ERROR)
 	{

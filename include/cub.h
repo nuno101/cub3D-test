@@ -6,16 +6,16 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 11:17:36 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:22:54 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
 
-# include "structs.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
+# include "structs.h"
 # include "macros.h"
 # include <fcntl.h>
 # include <limits.h>
@@ -25,27 +25,20 @@
 # include <string.h>
 # include <unistd.h>
 
-//debugtools/print_all.c
-void			print_data(t_data *data);
-void			print_cub(t_cub *cub);
-int				cub_error(int err);
-int				cub_error_2(int err);
-
-//parser
+// parser/ - .cub map filenames parsing 
 void			parse_map_data(char *map_path, t_data *data);
 int				find_path_type(char *s);
 void			check_colours(t_data *data, char *s);
 mlx_texture_t	*save_texture(char *s);
 void			player_checks(t_data *data);
 void			wall_check(t_data *data);
-
-//parser/bools.c
+// parser/bools.c
 bool			validate_mapchars(char **map);
 bool			valid_map_border(char *s);
 bool			is_mapchar(char c);
 bool			is_player(char c);
 
-//src/
+// src/ - MLX window rendering
 void			start_cub(t_data *data);
 t_cub			*init_cub(t_cub *cub, t_data *data);
 
@@ -59,15 +52,21 @@ void			resize_screen(int32_t x, int32_t y, void *param);
 //src/player_pos.c
 void			player_pos(t_cub *cub, t_data *data);
 
+//src/raycast.c
+void			render_ray(void	*param);
+
+//src/draw.c
+void			draw_ray(int x, t_cub *cub, t_ray *ray);
+
+//debugtools/print_all.c
+void			print_data(t_data *data);
+void			print_cub(t_cub *cub);
+int				cub_error(int err);
+int				cub_error_2(int err);
+
 //src/cleaner.c
 void			free_data(t_data *data);
 void			clean_mlx(t_cub *cub);
 void			free_cub(t_cub *cub);
-
-//src/raycast.c
-void	render_ray(void	*param);
-
-//src/draw.c
-void	draw_ray(int x, t_cub *cub, t_ray *ray);
 
 #endif
