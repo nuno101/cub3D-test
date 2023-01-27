@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 12:41:17 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 13:01:22 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,9 +54,11 @@ endif
 all: $(NAME)
 
 $(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
+	@echo "\033[32mLinking object files...\033[0m"
 	gcc $(FLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OBJS): $(SRC) $(OBJ_DIR)
+	@echo "\033[34mCompiling $<...\033[0m"
 	gcc -c -D VERBOSE=$(VERBOSE) $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
 	mv *.o $(OBJ_DIR)
 
@@ -76,10 +78,11 @@ $(LIBFT):
 	make -C ./$(LIBFT_DIR)
 
 clean:
-	rm -f $(OBJ_DIR)/*.o
+	@echo "\033[33mRemoving object files directory...\033[0m"
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
+	@echo "\033[33mRemoving executable...\033[0m"
 	rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
