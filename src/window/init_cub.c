@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:36:11 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:18:52 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,32 @@ static t_cub	*init_ray(t_cub *cub)
 	return (cub);
 }
 
-static void	screensize(t_cub *cub)
+/*
+ * initialise a MLX window instance to get the current screensize
+ * width and height and terminate it
+ */
+static void	get_screensize(t_cub *cub)
 {
+	cub->mlx = mlx_init(100, 100, "dummy", true);
 	if (!cub->mlx)
 		exit(cub_error(MLX_ERROR));
 	mlx_get_monitor_size(0, &cub->s_width, &cub->s_height);
 	mlx_terminate(cub->mlx);
-	cub->mlx = mlx_init(cub->s_width, cub->s_height, "Cub3D", true);
 }
 
 /*
- * initialise window
+ * initialise MLX window
  */
 t_cub	*init_cub(t_cub *cub, t_data *data)
 {
 	cub->d = data;
-	cub->c = data->c_colour;
-	cub->f = data->f_colour;
+	cub->c_colour = data->c_colour;
+	cub->f_colour = data->f_colour;
 	player_pos(cub, data);
 	if (!cub->player_pos.x || !cub->player_pos.y)
 		exit(cub_error(P_SURROUNDED_ERROR));
-	cub->mlx = mlx_init(100, 100, "MLX", true);
-	screensize(cub);
+	get_screensize(cub);
+	cub->mlx = mlx_init(cub->s_width, cub->s_height, "Cub3D", true);
 	if (!cub->mlx)
 		exit(cub_error(MLX_ERROR));
 	cub->image = mlx_new_image(cub->mlx, cub->s_width, cub->s_height);

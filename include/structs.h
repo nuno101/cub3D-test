@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 15:47:17 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:03:42 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_cub
 	int32_t			s_width;
 	int32_t			s_height;
 	mlx_image_t		*image;
-	uint32_t		f;
-	uint32_t		c;
+	uint32_t		f_colour;
+	uint32_t		c_colour;
 	t_i_coords		player_pos;
 	char			direction;
 	t_ray			*ray;

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:57 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:37:44 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:06:56 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	draw_ray(int x, t_cub *cub, t_ray *ray)
 	while (i < cub->s_height)
 	{
 		if (i <= start)
-			mlx_put_pixel(cub->image, x, i, cub->c);
+			mlx_put_pixel(cub->image, x, i, cub->c_colour);
 		if (i >= end)
-			mlx_put_pixel(cub->image, x, i, cub->f);
+			mlx_put_pixel(cub->image, x, i, cub->f_colour);
 		i++;
 	}
 }

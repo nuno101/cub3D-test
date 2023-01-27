@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 15:31:25 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 16:16:02 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME := cub3D
 VERBOSE := 1
 
 #FIXME: use basic flags for final submission!
+
 #FLAGS := -Wall -Wextra -Werror
 FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
 MINILIBX_DIR := MLX42
@@ -72,8 +73,10 @@ cleanlibs:
 	make -C ./$(LIBFT_DIR) fclean
 	make -C ./$(MINILIBX_DIR) fclean
 
+#FIXME: remove DEBUG flag for final submission!
 $(MINILIBX):
-	make -C ./$(MINILIBX_DIR)
+	make DEBUG=1 -C ./$(MINILIBX_DIR)
+	#make -C ./$(MINILIBX_DIR)
 
 $(LIBFT):
 	make -C ./$(LIBFT_DIR)
