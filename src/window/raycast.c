@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:17:53 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 11:59:00 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:38:15 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 void	set_ray(int x, t_ray *ray, t_cub *cub)
 {

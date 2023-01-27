@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 22:03:13 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 12:52:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:40:50 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 static int	wall_mid_surrounded(char *map, int j)
 {

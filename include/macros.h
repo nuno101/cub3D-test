@@ -6,10 +6,12 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/27 12:18:11 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:27:52 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//FIXME: comply with norminette before submission. Required changes make 
+// compilation in Linux fail so do not change now.
 #ifndef MACROS_H
 # define MACROS_H
 

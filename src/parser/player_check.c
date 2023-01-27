@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:41:44 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 12:45:27 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:40:17 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 static int	player_mid_surrounded(char *map, int j)
 {

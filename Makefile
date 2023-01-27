@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 10:51:43 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 12:41:17 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,22 +21,21 @@ MINILIBX := $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
 
-SRC :=	cub3d.c \
-		debugtools/print_all.c \
-		debugtools/error.c \
-		parser/init_data.c \
-		parser/textures.c \
-		parser/colours.c \
-		parser/bools.c \
-		parser/player_check.c \
-		parser/wall_check.c \
-		parser/player_pos.c \
-		src/hooks.c \
-		src/keys.c \
+SRC :=	src/cub3d.c \
+		src/errors.c \
 		src/cleaner.c \
-		src/init_cub.c \
-		src/raycast.c \
-		src/draw.c \
+		src/parser/init_data.c \
+		src/parser/textures.c \
+		src/parser/colours.c \
+		src/parser/bools.c \
+		src/parser/player_check.c \
+		src/parser/wall_check.c \
+		src/parser/player_pos.c \
+		src/window/hooks.c \
+		src/window/keys.c \
+		src/window/init_cub.c \
+		src/window/raycast.c \
+		src/window/draw.c \
 
 OBJ_DIR := objs
 OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))

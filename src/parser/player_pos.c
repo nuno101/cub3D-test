@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:22:18 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 16:02:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:40:28 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 void	player_pos(t_cub *cub, t_data *data)
 {

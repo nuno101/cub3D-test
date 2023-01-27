@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_all.c                                        :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 06:59:32 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 16:58:39 by nlouro           ###   ########.fr       */
+/*   Created: 2023/01/07 21:11:23 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/27 12:37:53 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
-void	print_data(t_data *data)
+void	hooks(t_cub *cub)
 {
-	printf("f_colour = %x\n", data->f_colour);
-	printf("c_colour = %x\nthe whole file:\n", data->c_colour);
-	printf("\n");
-}
-
-void	print_cub(t_cub *cub)
-{
-	printf("c colour = %x\n", cub->c);
-	printf("f colour = %x\n", cub->f);
-	printf("player_pos = x(%i)y(%i)\n", cub->player_pos.x, cub->player_pos.y);
+	mlx_loop_hook(cub->mlx, &render_ray, cub);
+	mlx_key_hook(cub->mlx, &cub_keys, cub);
+	mlx_resize_hook(cub->mlx, &resize_screen, cub);
+	mlx_loop(cub->mlx);
 }

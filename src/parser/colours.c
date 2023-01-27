@@ -6,11 +6,11 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 11:46:32 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:39:54 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 /*
  * check if a given string (s) is a valid color in the format "R, G, B"

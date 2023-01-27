@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:57 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 11:56:12 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:37:44 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 /*
  * comments!

@@ -7,7 +7,7 @@ C_FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
 LIBFT_DIR := ../libft
 LIBFT := $(LIBFT_DIR)/libft.a
 
-CLR_C_FILES := test_colours.c ../parser/colours.c
+CLR_C_FILES := test_colours.c ../src/parser/colours.c
 
 CLR_O_FILES = $(notdir $(CLR_C_FILES:%.c=%.o) )
 

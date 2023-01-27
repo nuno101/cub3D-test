@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:15:07 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:36:11 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 /*
  * glaobal variables defined in macros.h must be prefixed with g_ and

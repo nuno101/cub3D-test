@@ -6,11 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:39:05 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 11:49:13 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:39:42 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 bool	is_player(char c)
 {
