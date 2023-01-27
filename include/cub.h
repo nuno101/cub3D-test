@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 16:48:16 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 18:17:38 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ bool			is_player(char c);
 void			start_cub(t_data *data);
 
 //src/keys.c
-void			cub_keys(mlx_key_data_t key, void *param);
-void			resize_screen(int32_t x, int32_t y, void *param);
+void			handle_keypress(mlx_key_data_t key, void *param);
+void			handle_screen_resize(int32_t x, int32_t y, void *param);
 
 //src/player_pos.c
 void			player_pos(t_cub *cub, t_data *data);
@@ -57,8 +57,5 @@ void			draw_ray(int x, t_cub *cub, t_ray *ray);
 // src/errors.c
 int				cub_error(int err);
 int				cub_error_2(int err);
-
-//src/cleaner.c
-void			clean_mlx(t_cub *cub);
 
 #endif

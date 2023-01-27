@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 16:50:55 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 18:18:19 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 SRC :=	src/cub3d.c \
 		src/errors.c \
-		src/cleaner.c \
 		src/parser/init_data.c \
 		src/parser/textures.c \
 		src/parser/colours.c \

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 16:49:55 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 18:19:41 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	get_screensize(t_cub *cub)
 
 /*
  * initialise struct parameters, get current screen size
- * initialise MLX window
+ * initialise MLX window 
  */
 static void	init_cub(t_cub *cub, t_data *data)
 {
@@ -111,10 +111,10 @@ void	start_cub(t_data *data)
 	if (mlx_image_to_window(cub->mlx, cub->image, 0, 0) < 0)
 		exit(cub_error(MLX_ERROR));
 	mlx_loop_hook(cub->mlx, &render_ray, cub);
-	mlx_key_hook(cub->mlx, &cub_keys, cub);
-	mlx_resize_hook(cub->mlx, &resize_screen, cub);
+	mlx_resize_hook(cub->mlx, &handle_screen_resize, cub);
+	mlx_key_hook(cub->mlx, &handle_keypress, cub);
 	mlx_loop(cub->mlx);
-	clean_mlx(cub);
+	mlx_terminate(cub->mlx);
 	free(cub->ray);
 	free(cub);
 }

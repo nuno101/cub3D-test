@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:38:03 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 18:11:19 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * FIXME 
  * image missing rendering , maybe with mlx_loop_hook(render_ray)
 */
-void	resize_screen(int32_t x, int32_t y, void *param)
+void	handle_screen_resize(int32_t x, int32_t y, void *param)
 {
 	t_cub	*cub;
 
@@ -46,7 +46,7 @@ void	move_fwd(void)
  * Left-arrow 263 - look left
  * Right-arrow 262
  */
-void	cub_keys(mlx_key_data_t key, void *param)
+void	handle_keypress(mlx_key_data_t key, void *param)
 {
 	t_cub	*cub;
 
