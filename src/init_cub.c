@@ -6,14 +6,14 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 11:13:09 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 11:32:58 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
 /*
- * constant variables used here are defined in macros.h
+ * constant variables defined in macros.h
  */
 t_cub	*ray_direction(t_cub *cub)
 {
