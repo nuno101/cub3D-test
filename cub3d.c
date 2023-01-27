@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/20 11:14:09 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:14:37 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 	if (data == NULL)
 		exit(cub_error(MALLOC_ERROR));
 	init_data(data);
-	map_data(argv[1], data);
+	parse_map_data(argv[1], data);
 	start_cub(data);
 	free_data(data);
 	printf("Exit cub3d\n");

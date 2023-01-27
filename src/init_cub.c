@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/26 17:22:28 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 11:13:09 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  */
 t_cub	*ray_direction(t_cub *cub)
 {
-	int dir_index;
+	int	dir_index;
 
 	dir_index = 0;
 	if (cub->direction == 'N')
@@ -38,17 +38,17 @@ t_cub	*ray_direction(t_cub *cub)
 static t_cub	*init_ray(t_cub *cub)
 {
 	cub->ray->camera = 0;
-    cub->ray->dir.y = 0;
-    cub->ray->hit = 0;
-    cub->ray->map.x = 0;
-    cub->ray->map.y = 0;
-    cub->ray->wall_distance = 0;
-    cub->ray->plane.x = 0;
-    cub->ray->pos.x = (float)(cub->player_pos.y + 0.5);
-    cub->ray->pos.y = (float)(cub->player_pos.x + 0.5);
-    cub->ray->ray_dir.x = 0;
-    cub->ray->ray_dir.y = 0;
-    cub->ray->side = 0;
+	cub->ray->dir.y = 0;
+	cub->ray->hit = 0;
+	cub->ray->map.x = 0;
+	cub->ray->map.y = 0;
+	cub->ray->wall_distance = 0;
+	cub->ray->plane.x = 0;
+	cub->ray->pos.x = (float)(cub->player_pos.y + 0.5);
+	cub->ray->pos.y = (float)(cub->player_pos.x + 0.5);
+	cub->ray->ray_dir.x = 0;
+	cub->ray->ray_dir.y = 0;
+	cub->ray->side = 0;
 	cub = ray_direction(cub);
 	return (cub);
 }
@@ -62,13 +62,11 @@ static void	screensize(t_cub *cub)
 	cub->mlx = mlx_init(cub->s_width, cub->s_height, "Cub3D", true);
 }
 
-t_cub	*init_cub(t_data *data)
+/*
+ * initialise window
+ */
+t_cub	*init_cub(t_cub *cub, t_data *data)
 {
-	t_cub	*cub;
-
-	cub = malloc(sizeof(t_cub));
-	if (!cub)
-		exit(cub_error(MALLOC_ERROR));
 	cub->d = data;
 	cub->c = data->c_colour;
 	cub->f = data->f_colour;
@@ -88,4 +86,25 @@ t_cub	*init_cub(t_data *data)
 	cub = init_ray(cub);
 	mlx_set_cursor_mode(cub->mlx, MLX_MOUSE_HIDDEN);
 	return (cub);
+}
+
+/*
+ * initialise cub struct
+ * start window
+ * set window hooks
+ * clean up before exiting
+ */
+void	start_cub(t_data *data)
+{
+	t_cub	*cub;
+
+	cub = malloc(sizeof(t_cub));
+	if (!cub)
+		exit(cub_error(MALLOC_ERROR));
+	init_cub(cub, data);
+	if (mlx_image_to_window(cub->mlx, cub->image, 0, 0) < 0)
+		exit(cub_error(MLX_ERROR));
+	hooks(cub);
+	clean_mlx(cub);
+	free_cub(cub);
 }

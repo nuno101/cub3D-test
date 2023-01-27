@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/26 10:51:25 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 10:51:43 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ SRC :=	cub3d.c \
 		parser/player_check.c \
 		parser/wall_check.c \
 		parser/player_pos.c \
-		src/start_cub.c \
 		src/hooks.c \
 		src/keys.c \
 		src/cleaner.c \

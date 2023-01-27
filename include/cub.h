@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/25 15:23:21 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:17:36 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,13 @@ void			print_cub(t_cub *cub);
 int				cub_error(int err);
 int				cub_error_2(int err);
 
-//parser/checks.c
+//parser
+void			parse_map_data(char *map_path, t_data *data);
 int				find_path_type(char *s);
-
-//parser/player_check.c
+void			check_colours(t_data *data, char *s);
+mlx_texture_t	*save_texture(char *s);
 void			player_checks(t_data *data);
-
-//parser/wall_check.c
 void			wall_check(t_data *data);
-
-//parser/init_data.c (FULL)
-void			map_data(char *map_path, t_data *data);
 
 //parser/bools.c
 bool			validate_mapchars(char **map);
@@ -49,14 +45,9 @@ bool			valid_map_border(char *s);
 bool			is_mapchar(char c);
 bool			is_player(char c);
 
-//parser/colours.c
-void			check_colours(t_data *data, char *s);
-
-//parser/textures.c
-mlx_texture_t	*save_texture(char *s);
-
-//src/start_cub.c
+//src/
 void			start_cub(t_data *data);
+t_cub			*init_cub(t_cub *cub, t_data *data);
 
 //src/hooks.c
 void			hooks(t_cub *cub);
@@ -72,9 +63,6 @@ void			player_pos(t_cub *cub, t_data *data);
 void			free_data(t_data *data);
 void			clean_mlx(t_cub *cub);
 void			free_cub(t_cub *cub);
-
-//src/init_cub.c
-t_cub	*init_cub(t_data *data);
 
 //src/raycast.c
 void	render_ray(void	*param);
