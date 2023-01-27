@@ -6,24 +6,31 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 18:11:19 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 18:41:06 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
 /*
- * FIXME 
- * image missing rendering , maybe with mlx_loop_hook(render_ray)
-*/
+ * update sreen sixe in cub struct
+ */
 void	handle_screen_resize(int32_t x, int32_t y, void *param)
 {
 	t_cub	*cub;
+	static	int i;
 
 	cub = (t_cub *)param;
+	if (VERBOSE > 0)
+	{
+		if (i >= 0)
+			i++;
+		else
+			i = 0;
+		printf("DEBUG: Resizing screen... %i \n", i);
+	}
 	cub->s_width = x;
 	cub->s_height = y;
-	//mlx_loop_hook(cub->mlx, &render_ray, cub);
 }
 
 /*
@@ -32,7 +39,8 @@ void	handle_screen_resize(int32_t x, int32_t y, void *param)
  */
 void	move_fwd(void)
 {
-	printf("TODO: move forward");
+	if (VERBOSE > 0)
+		printf("TODO: move forward");
 }
 
 /*
