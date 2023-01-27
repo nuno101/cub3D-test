@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 13:01:22 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 15:31:25 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,11 +58,12 @@ $(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
 	gcc $(FLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OBJS): $(SRC) $(OBJ_DIR)
-	@echo "\033[34mCompiling $<...\033[0m"
+	@echo "\033[34mCompiling source code...\033[0m"
 	gcc -c -D VERBOSE=$(VERBOSE) $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
 	mv *.o $(OBJ_DIR)
 
 $(OBJ_DIR):
+	@echo "\033[34mCreate objects placeholder directory objs/\033[0m"
 	mkdir -p $(OBJ_DIR)
 
 libs: $(MINILIBX) $(LIBFT)
@@ -78,7 +79,7 @@ $(LIBFT):
 	make -C ./$(LIBFT_DIR)
 
 clean:
-	@echo "\033[33mRemoving object files directory...\033[0m"
+	@echo "\033[33mRemoving object files & directory...\033[0m"
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
