@@ -6,17 +6,17 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 16:18:52 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:30:26 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
 /*
- * glaobal variables defined in macros.h must be prefixed with g_ and
+ * global variables defined in macros.h must be prefixed with g_ and
  * contain only lowercase chars to comply with norm
  */
-t_cub	*ray_direction(t_cub *cub)
+static void	set_ray_direction(t_cub *cub)
 {
 	int	dir_index;
 
@@ -33,25 +33,29 @@ t_cub	*ray_direction(t_cub *cub)
 	cub->ray->dir.y = g_ray_dir_y[dir_index];
 	cub->ray->plane.x = g_plane_x[dir_index];
 	cub->ray->plane.y = g_plane_y[dir_index];
-	return (cub);
 }
 
-static t_cub	*init_ray(t_cub *cub)
+static void	init_ray(t_cub *cub)
 {
-	cub->ray->camera = 0;
-	cub->ray->dir.y = 0;
-	cub->ray->hit = 0;
-	cub->ray->map.x = 0;
-	cub->ray->map.y = 0;
-	cub->ray->wall_distance = 0;
-	cub->ray->plane.x = 0;
-	cub->ray->pos.x = (float)(cub->player_pos.y + 0.5);
-	cub->ray->pos.y = (float)(cub->player_pos.x + 0.5);
-	cub->ray->ray_dir.x = 0;
-	cub->ray->ray_dir.y = 0;
-	cub->ray->side = 0;
-	cub = ray_direction(cub);
-	return (cub);
+	t_ray	*ray;
+
+	ray = malloc(sizeof(t_ray));
+	if (!ray)
+		exit (cub_error(MALLOC_ERROR));
+	ray->camera = 0;
+	ray->dir.y = 0;
+	ray->hit = 0;
+	ray->map.x = 0;
+	ray->map.y = 0;
+	ray->wall_distance = 0;
+	ray->plane.x = 0;
+	ray->pos.x = (float)(cub->player_pos.y + 0.5);
+	ray->pos.y = (float)(cub->player_pos.x + 0.5);
+	ray->ray_dir.x = 0;
+	ray->ray_dir.y = 0;
+	ray->side = 0;
+	cub->ray = ray;
+	set_ray_direction(cub);
 }
 
 /*
@@ -68,9 +72,10 @@ static void	get_screensize(t_cub *cub)
 }
 
 /*
+ * initialise struct parameters, get current screen size
  * initialise MLX window
  */
-t_cub	*init_cub(t_cub *cub, t_data *data)
+static void	init_cub(t_cub *cub, t_data *data)
 {
 	cub->d = data;
 	cub->c_colour = data->c_colour;
@@ -85,12 +90,8 @@ t_cub	*init_cub(t_cub *cub, t_data *data)
 	cub->image = mlx_new_image(cub->mlx, cub->s_width, cub->s_height);
 	if (!cub->image)
 		exit(cub_error(MLX_ERROR));
-	cub->ray = malloc(sizeof(t_ray));
-	if (!cub->ray)
-		exit (cub_error(MALLOC_ERROR));
-	cub = init_ray(cub);
+	init_ray(cub);
 	mlx_set_cursor_mode(cub->mlx, MLX_MOUSE_HIDDEN);
-	return (cub);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:22:54 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:31:02 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ bool			is_player(char c);
 
 // src/ - MLX window rendering
 void			start_cub(t_data *data);
-t_cub			*init_cub(t_cub *cub, t_data *data);
 
 //src/hooks.c
 void			hooks(t_cub *cub);
