@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 16:30:26 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:49:55 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static void	init_cub(t_cub *cub, t_data *data)
 /*
  * initialise cub struct
  * start window
- * set window hooks
+ * register MLX hooks and start mlx_loop()
  * clean up before exiting
  */
 void	start_cub(t_data *data)
@@ -110,7 +110,11 @@ void	start_cub(t_data *data)
 	init_cub(cub, data);
 	if (mlx_image_to_window(cub->mlx, cub->image, 0, 0) < 0)
 		exit(cub_error(MLX_ERROR));
-	hooks(cub);
+	mlx_loop_hook(cub->mlx, &render_ray, cub);
+	mlx_key_hook(cub->mlx, &cub_keys, cub);
+	mlx_resize_hook(cub->mlx, &resize_screen, cub);
+	mlx_loop(cub->mlx);
 	clean_mlx(cub);
-	free_cub(cub);
+	free(cub->ray);
+	free(cub);
 }

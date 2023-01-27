@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 16:31:02 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:48:16 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,8 @@ bool			valid_map_border(char *s);
 bool			is_mapchar(char c);
 bool			is_player(char c);
 
-// src/ - MLX window rendering
+// window/ - MLX window rendering
 void			start_cub(t_data *data);
-
-//src/hooks.c
-void			hooks(t_cub *cub);
 
 //src/keys.c
 void			cub_keys(mlx_key_data_t key, void *param);
@@ -57,15 +54,11 @@ void			render_ray(void	*param);
 //src/draw.c
 void			draw_ray(int x, t_cub *cub, t_ray *ray);
 
-//debugtools/print_all.c
-void			print_data(t_data *data);
-void			print_cub(t_cub *cub);
+// src/errors.c
 int				cub_error(int err);
 int				cub_error_2(int err);
 
 //src/cleaner.c
-void			free_data(t_data *data);
 void			clean_mlx(t_cub *cub);
-void			free_cub(t_cub *cub);
 
 #endif

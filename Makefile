@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 16:16:02 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 16:50:55 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ SRC :=	src/cub3d.c \
 		src/parser/player_check.c \
 		src/parser/wall_check.c \
 		src/parser/player_pos.c \
-		src/window/hooks.c \
 		src/window/keys.c \
 		src/window/init_cub.c \
 		src/window/raycast.c \
@@ -93,4 +92,4 @@ re: fclean all
 
 norm:
 	clear
-	norminette parser src include debugtools $(LIBFT_DIR) 
+	norminette src include $(LIBFT_DIR) 

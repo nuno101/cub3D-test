@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/27 15:46:49 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:39:56 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * validate filename ends with ".cub"
  * filename may include a dir: maps/42.cub
  */
-int validate_map_filename(char *filename)
+int	validate_map_filename(char *filename)
 {
 	int	i;
 	int	len;
@@ -57,7 +57,7 @@ void	init_data(t_data *data)
  * initialise data
  * call map_data() to fill t_data from filename
  */
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	*data;
 
@@ -73,7 +73,8 @@ int main(int argc, char **argv)
 	init_data(data);
 	parse_map_data(argv[1], data);
 	start_cub(data);
-	free_data(data);
+	ft_cleansplit(data->map);
+	free(data);
 	printf("Exit cub3d\n");
 	return (0);
 }
