@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/27 12:35:04 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 15:46:49 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	init_data(t_data *data)
 	data->textures[1] = NULL;
 	data->textures[2] = NULL;
 	data->textures[3] = NULL;
-	ft_bzero(data->tmp, 4);
 	data->f_colour = 0;
 	data->c_colour = 0;
 }

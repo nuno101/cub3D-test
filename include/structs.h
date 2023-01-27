@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:04:09 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 15:47:17 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_data
 	mlx_texture_t	*textures[4];
 	uint32_t		f_colour;
 	uint32_t		c_colour;
-	int				tmp[4];
 }	t_data;
 
 typedef struct i_coords
