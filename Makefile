@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 13:01:22 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/27 18:27:03 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME := cub3D
 VERBOSE := 1
 
 #FIXME: use basic flags for final submission!
+
 #FLAGS := -Wall -Wextra -Werror
 FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
 MINILIBX_DIR := MLX42
@@ -23,7 +24,6 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 SRC :=	src/cub3d.c \
 		src/errors.c \
-		src/cleaner.c \
 		src/parser/init_data.c \
 		src/parser/textures.c \
 		src/parser/colours.c \
@@ -31,8 +31,7 @@ SRC :=	src/cub3d.c \
 		src/parser/player_check.c \
 		src/parser/wall_check.c \
 		src/parser/player_pos.c \
-		src/window/hooks.c \
-		src/window/keys.c \
+		src/window/event_handlers.c \
 		src/window/init_cub.c \
 		src/window/raycast.c \
 		src/window/draw.c \
@@ -58,11 +57,12 @@ $(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
 	gcc $(FLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OBJS): $(SRC) $(OBJ_DIR)
-	@echo "\033[34mCompiling $<...\033[0m"
+	@echo "\033[34mCompiling source code...\033[0m"
 	gcc -c -D VERBOSE=$(VERBOSE) $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
 	mv *.o $(OBJ_DIR)
 
 $(OBJ_DIR):
+	@echo "\033[34mCreate objects placeholder directory objs/\033[0m"
 	mkdir -p $(OBJ_DIR)
 
 libs: $(MINILIBX) $(LIBFT)
@@ -71,14 +71,16 @@ cleanlibs:
 	make -C ./$(LIBFT_DIR) fclean
 	make -C ./$(MINILIBX_DIR) fclean
 
+#FIXME: remove DEBUG flag for final submission!
 $(MINILIBX):
-	make -C ./$(MINILIBX_DIR)
+	make DEBUG=1 -C ./$(MINILIBX_DIR)
+	#make -C ./$(MINILIBX_DIR)
 
 $(LIBFT):
 	make -C ./$(LIBFT_DIR)
 
 clean:
-	@echo "\033[33mRemoving object files directory...\033[0m"
+	@echo "\033[33mRemoving object files & directory...\033[0m"
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
@@ -89,4 +91,4 @@ re: fclean all
 
 norm:
 	clear
-	norminette parser src include debugtools $(LIBFT_DIR) 
+	norminette src include $(LIBFT_DIR) 

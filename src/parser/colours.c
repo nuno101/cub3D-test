@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:39:54 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/27 15:46:22 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +48,31 @@ int	valid_colours(char *s)
 /*
  * iterate through the the input string. if a digit is found, converts that 
  * character to an integer. Then use ft_atoi and assign it to the next element
- * in the "tmp" array (decimal part is discarded)
+ * in the "rgb" array (decimal part is discarded)
  * continue until all digits in the input string have been processed.
- * shifts the values in the "tmp" array to the left by 24, 16, and 8 bits
+ * shifts the values in the "rgb" array to the left by 24, 16, and 8 bits
  * respectively and ORs them together
  */
 static uint32_t	get_colour(char *s)
 {
 	int			i;
 	int			j;
-	int			tmp[3];
+	int			rgb[3];
 
 	j = 0;
 	i = 0;
-	ft_bzero(tmp, 3);
+	ft_bzero(rgb, 3);
 	while (s[i])
 	{
 		if (ft_isdigit(s[i]))
 		{
-			tmp[j++] = ft_atoi(s + i);
+			rgb[j++] = ft_atoi(s + i);
 			while (s[i] && ft_isdigit(s[i]))
 				i++;
 		}
 		i++;
 	}
-	return ((uint32_t)(tmp[0] << 24 | tmp[1] << 16 | tmp[2] << 8 | 255));
+	return ((uint32_t)(rgb[0] << 24 | rgb[1] << 16 | rgb[2] << 8 | 255));
 }
 
 void	check_colours(t_data *data, char *s)
