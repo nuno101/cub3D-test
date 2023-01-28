@@ -50,7 +50,7 @@ Requirements summary:
 - 'data->map' is not perfect because it will not identify the end of the map and it saved all rest inside like empty lines etc.
 
 2. Mlx:
-- Need to set up keys for movement and settings, when map is rendered.
+- WASD movement need optimizing there are some obvious bugs :D
 - Bonus stuff...
 
 3. Edgecases:
