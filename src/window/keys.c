@@ -6,11 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-<<<<<<< HEAD:src/keys.c
-/*   Updated: 2023/01/28 15:35:54 by jjesberg         ###   ########.fr       */
-=======
-/*   Updated: 2023/01/27 12:38:03 by nlouro           ###   ########.fr       */
->>>>>>> ad49248bab4489fe8af04a9903de9ee233ccb502:src/window/keys.c
+/*   Updated: 2023/01/28 15:40:57 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +57,6 @@ void	cub_keys(mlx_key_data_t key, void *param)
 		mlx_close_window(cub->mlx);
 		mlx_delete_image(cub->mlx, cub->image);
 	}
-<<<<<<< HEAD:src/keys.c
 	if (key.key == 87) 
 	{
 		if (cub->ray->wall_distance >= 1)
@@ -109,9 +104,4 @@ void	cub_keys(mlx_key_data_t key, void *param)
 		printf("hit = %f\n", cub->ray->wall_distance);
 	}
 	//printf("key = %i\n", key.key);
-=======
-	else if (key.key == 87)
-		move_fwd();
-	printf("DEBUG: key code: %i\n", key.key);
->>>>>>> ad49248bab4489fe8af04a9903de9ee233ccb502:src/window/keys.c
 }
