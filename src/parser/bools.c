@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:39:05 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:39:42 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/28 19:52:35 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 bool	is_player(char c)
 {
 	if (c == 'E' || c == 'S' || c == 'N' || c == 'W')
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
 bool	is_mapchar(char c)
 {
 	if (c != ' ' && c != '1' && c != '0' && !is_player(c))
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
 /*
@@ -37,10 +37,10 @@ bool	valid_map_border(char *row)
 	while (row[i])
 	{
 		if (row[i] != '1' && row[i] != ' ')
-			return (0);
+			return (false);
 		i++;
 	}
-	return (1);
+	return (true);
 }
 
 bool	validate_mapchars(char **map)
@@ -55,11 +55,11 @@ bool	validate_mapchars(char **map)
 		while (map[i][j])
 		{
 			if (!is_mapchar(map[i][j]))
-				return (1);
+				return (true);
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	return (0);
+	return (false);
 }

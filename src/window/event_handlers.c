@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/28 19:15:13 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/28 19:55:39 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ void	handle_keypress(mlx_key_data_t key, void *param)
 	{
 		mlx_close_window(cub->mlx);
 		mlx_delete_image(cub->mlx, cub->image);
+		return ;
 	}
-	if (key.key == 87) 
+	else if (key.key == 87) 
 	{
 		if (cub->ray->wall_distance >= 1)
 		{
@@ -111,5 +112,7 @@ void	handle_keypress(mlx_key_data_t key, void *param)
 		}
 		printf("hit = %f\n", cub->ray->wall_distance);
 	}
-	//printf("key = %i\n", key.key);
+	printf("key = %i\n", key.key);
+	//printf("Player pos x: %i y: %i\n", cub->player_pos.x, cub->player_pos.y);
+	printf("Player pos x: %f y: %f\n", cub->ray->dir.x, cub->ray->dir.y);
 }

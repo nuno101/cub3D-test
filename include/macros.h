@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:02:43 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/28 15:39:27 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:44:49 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ enum	e_cub3d_errors
 	PLAYER_ERROR,
 	P_SURROUNDED_ERROR,
 	W_SURROUNDED_ERROR,
+	PLAYER_NOT_FOUND_ERROR,
 }	t_error;
 #endif
 
