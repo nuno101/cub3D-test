@@ -3,12 +3,11 @@ SO ./textures/wolftextures2.png
 WE ./textures/wolftextures3.png
 EA ./textures/wolftextures4.png
 
-F 25,165,189
-C 105,150,150
+F 255,0,0
+C 0,0,255
 
 11111
 10001
-10S01
 10001
-10001
+10W01
 11111

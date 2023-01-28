@@ -6,54 +6,60 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/17 12:35:16 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/01/27 13:01:22 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
+VERBOSE := 1
 
 #FIXME: use basic flags for final submission!
 #FLAGS := -Wall -Wextra -Werror
-FLAGS := -g -Wall -Wextra -Werror #-fsanitize=address
+FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
 MINILIBX_DIR := MLX42
 MINILIBX := $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
 
-SRC :=	cub3d.c \
-		debugtools/print_all.c \
-		debugtools/error.c \
-		parser/checks.c \
-		parser/player_check.c \
-		parser/wall_check.c \
-		parser/init_data.c \
-		parser/init_data_helper.c \
-		parser/bools.c \
-		parser/colours_texture.c \
-		parser/player_pos.c \
-		src/start_cub.c \
-		src/hooks.c \
-		src/keys.c \
-		src/cleaner.c
+SRC :=	src/cub3d.c \
+		src/errors.c \
+		src/cleaner.c \
+		src/parser/init_data.c \
+		src/parser/textures.c \
+		src/parser/colours.c \
+		src/parser/bools.c \
+		src/parser/player_check.c \
+		src/parser/wall_check.c \
+		src/parser/player_pos.c \
+		src/window/hooks.c \
+		src/window/keys.c \
+		src/window/init_cub.c \
+		src/window/raycast.c \
+		src/window/draw.c \
 
 OBJ_DIR := objs
 OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))
 
 ifeq ($(USER), nlouro)
+	# Macbook
 	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/usr/local/Cellar/glfw/3.3.8/lib"
+	# School
+	#LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/goinfre/$(USER)/.brew/Cellar/glfw/3.3.8/lib/"
 else
 	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 endif
 
-.PHONY: all libs cleanlibs clean fclean re
+.PHONY: all libs cleanlibs clean fclean re norm
 
 all: $(NAME)
 
 $(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
+	@echo "\033[32mLinking object files...\033[0m"
 	gcc $(FLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OBJS): $(SRC) $(OBJ_DIR)
-	gcc -c $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
+	@echo "\033[34mCompiling $<...\033[0m"
+	gcc -c -D VERBOSE=$(VERBOSE) $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
 	mv *.o $(OBJ_DIR)
 
 $(OBJ_DIR):
@@ -62,20 +68,25 @@ $(OBJ_DIR):
 libs: $(MINILIBX) $(LIBFT)
 
 cleanlibs:
-	make -C ./libft fclean
-	make -C ./MLX42 fclean
+	make -C ./$(LIBFT_DIR) fclean
+	make -C ./$(MINILIBX_DIR) fclean
 
 $(MINILIBX):
-	make -C ./MLX42
+	make -C ./$(MINILIBX_DIR)
 
 $(LIBFT):
-	make -C ./libft
+	make -C ./$(LIBFT_DIR)
 
 clean:
-	rm -f $(OBJS)
-	rmdir $(OBJ_DIR)
+	@echo "\033[33mRemoving object files directory...\033[0m"
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
+	@echo "\033[33mRemoving executable...\033[0m"
 	rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
+
+norm:
+	clear
+	norminette parser src include debugtools $(LIBFT_DIR) 

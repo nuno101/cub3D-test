@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_dl.c                                    :+:      :+:    :+:   */
+/*   player_pos.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 03:30:14 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 10:38:03 by nlouro           ###   ########.fr       */
+/*   Created: 2022/11/29 00:22:18 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/27 12:40:28 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/cub.h"
 
-char	*ft_strjoin_dl(char *s1, char const *s2)
+void	player_pos(t_cub *cub, t_data *data)
 {
-	size_t	size;
-	size_t	i;
-	size_t	j;
-	char	*arr;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 0;
-	size = ft_strlen(s1) + ft_strlen(s2);
-	arr = malloc(sizeof(char) * (size + 1));
-	if (!arr)
-		return (NULL);
-	while (j < ft_strlen(s1))
+	while (data->map[i])
 	{
-		arr[j] = s1[j];
-		j++;
+		while (data->map[i][j])
+		{
+			if (is_player(data->map[i][j]))
+			{
+				cub->direction = data->map[i][j];
+				data->map[i][j] = '0';
+				cub->player_pos.x = j;
+				cub->player_pos.y = i;
+				return ;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
 	}
-	while (i < ft_strlen(s2))
-		arr[j++] = s2[i++];
-	arr[j] = '\0';
-	free(s1);
-	return (arr);
+	cub->player_pos.x = 0;
+	cub->player_pos.y = 0;
 }

@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_dl.c                                    :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 03:30:14 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 10:38:03 by nlouro           ###   ########.fr       */
+/*   Created: 2023/01/07 21:11:23 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/01/27 12:37:53 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/cub.h"
 
-char	*ft_strjoin_dl(char *s1, char const *s2)
+void	hooks(t_cub *cub)
 {
-	size_t	size;
-	size_t	i;
-	size_t	j;
-	char	*arr;
-
-	j = 0;
-	i = 0;
-	size = ft_strlen(s1) + ft_strlen(s2);
-	arr = malloc(sizeof(char) * (size + 1));
-	if (!arr)
-		return (NULL);
-	while (j < ft_strlen(s1))
-	{
-		arr[j] = s1[j];
-		j++;
-	}
-	while (i < ft_strlen(s2))
-		arr[j++] = s2[i++];
-	arr[j] = '\0';
-	free(s1);
-	return (arr);
+	mlx_loop_hook(cub->mlx, &render_ray, cub);
+	mlx_key_hook(cub->mlx, &cub_keys, cub);
+	mlx_resize_hook(cub->mlx, &resize_screen, cub);
+	mlx_loop(cub->mlx);
 }

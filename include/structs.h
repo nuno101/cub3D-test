@@ -6,18 +6,17 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/17 11:09:52 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:04:09 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
-#define STRUCTS_H
+# define STRUCTS_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_data
 {
-	char			**raw_data;
 	char			**map;
 	mlx_texture_t	*textures[4];
 	uint32_t		f_colour;
@@ -25,26 +24,32 @@ typedef struct s_data
 	int				tmp[4];
 }	t_data;
 
-typedef struct s_coords
+typedef struct i_coords
 {
 	int		x;
 	int		y;
-}	t_coords;
+}	t_i_coords;
 
-typedef	struct s_ray
+typedef struct f_coords
 {
-	float		cam;
+	double	x;
+	double	y;
+}	t_f_coords;
+
+typedef struct s_ray
+{
+	t_f_coords	pos;
+	t_f_coords	dir;
+	t_f_coords	plane;
+	t_f_coords	ray_dir;
+	double		camera;
+	double		wall_distance;
+	t_f_coords	side_dist;
+	t_f_coords	delta_dist;
+	t_i_coords	map;
+	t_i_coords	step;
 	int			hit;
 	int			side;
-	float		wall;
-	t_coords	c_ray;
-	t_coords	c_map;
-	t_coords	c_side;
-	t_coords	c_delta;
-	t_coords	c_step;
-	t_coords	c_p;
-	t_coords	c_d;
-	t_coords	c_w;
 }	t_ray;
 
 typedef struct s_cub
@@ -56,9 +61,8 @@ typedef struct s_cub
 	mlx_image_t		*image;
 	uint32_t		f;
 	uint32_t		c;
-	float			player_angle;
-	t_coords		player_pos;
-	float			fov;
+	t_i_coords		player_pos;
+	char			direction;
 	t_ray			*ray;
 }	t_cub;
 
