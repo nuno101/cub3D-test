@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/28 19:36:24 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/28 20:05:08 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ static void	init_cub(t_cub *cub, t_data *data)
 	cub->c_colour = data->c_colour;
 	cub->f_colour = data->f_colour;
 	set_player_pos(cub, data);
-	if (!cub->player_pos.x || !cub->player_pos.y)
-		exit(cub_error(P_SURROUNDED_ERROR));
 	get_screensize(cub);
 	cub->mlx = mlx_init(cub->s_width, cub->s_height, "Cub3D", true);
 	if (!cub->mlx)
