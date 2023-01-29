@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:17:53 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/29 21:40:05 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/29 21:44:44 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	calculate_ray_distance(t_ray *ray)
  * dda() helper to comply w/ norm
  * sets ray->side and ray->wall_distance
  */
-void	set_ray_side_and_wall_distance(t_ray *ray, int is_x_side, int is_negative)
+void	set_ray_side_and_w_distance(t_ray *ray, int is_x_side, int is_negative)
 {
 	if (is_x_side)
 	{
@@ -102,7 +102,7 @@ static void	dda(t_cub *cub, t_ray *ray)
 		if (cub->d->map[ray->map.x][ray->map.y] > '0')
 			ray->hit = 1;
 	}
-	set_ray_side_and_wall_distance(ray, is_x_side, is_negative);
+	set_ray_side_and_w_distance(ray, is_x_side, is_negative);
 }
 
 void	render_ray(void *param)
