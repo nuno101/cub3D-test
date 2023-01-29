@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:40:41 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/29 21:14:06 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
  * find texture code
  */
-int	find_path_type(char *s)
+int	get_texture_code(char *s)
 {
 	int		i;
 
@@ -33,6 +33,20 @@ int	find_path_type(char *s)
 		i++;
 	}
 	return (NONE);
+}
+
+/*
+ * parse_raw_data helper funtion to stay below 25 lines and comply
+ * with the norm
+ */
+int	add_text_code(int tex_code)
+{
+	if (tex_code == NONE)
+		return (0);
+	if (tex_code == NO)
+		return (4);
+	else
+		return (tex_code);
 }
 
 /*

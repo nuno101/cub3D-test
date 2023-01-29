@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:57:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/28 19:43:34 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/29 20:51:02 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 
 // parser/ - .cub map filenames parsing 
 void			parse_map_data(char *map_path, t_data *data);
-int				find_path_type(char *s);
+int				get_texture_code(char *s);
+int				add_tex_code(int code);
 void			check_colours(t_data *data, char *s);
 mlx_texture_t	*save_texture(char *s);
 void			player_checks(t_data *data);

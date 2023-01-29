@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/28 21:31:47 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/29 21:17:20 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
  */
 void	handle_screen_resize(int32_t x, int32_t y, void *param)
 {
-	t_cub	*cub;
-	static	int i;
+	t_cub		*cub;
+	static int	i;
 
 	cub = (t_cub *)param;
 	if (VERBOSE > 0)
@@ -51,12 +51,12 @@ void	move_fwd(void)
  */
 void	handle_keypress(mlx_key_data_t kd, void *param)
 {
-	t_cub	*cub;
-	t_ray	*ray;
-	static	int i;
+	t_cub		*cub;
+	t_ray		*ray;
+	static int	i;
 
 	if (kd.action != MLX_PRESS)
-		return;
+		return ;
 	cub = (t_cub *)param;
 	if (kd.key == MLX_KEY_ESCAPE)
 	{
@@ -65,7 +65,7 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 		return ;
 	}
 	ray = cub->ray;
-	if (kd.key == MLX_KEY_W) 
+	if (kd.key == MLX_KEY_W)
 	{
 		if (ray->wall_distance >= 1)
 		{
@@ -83,7 +83,7 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 		if (ray->wall_distance >= 1)
 		{
 			ray->dir.x += (cub->direction == 'N') * 0.04;
-			ray->dir.y += (cub->direction == 'W') * 0.04;	
+			ray->dir.y += (cub->direction == 'W') * 0.04;
 		}
 	}
 	else if (kd.key == MLX_KEY_D)
@@ -98,7 +98,6 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 	}
 	else if (kd.key == MLX_KEY_A)
 	{
-		
 		ray->dir.y -= (cub->direction == 'N') * 0.04;
 		ray->dir.x -= (cub->direction == 'E') * 0.04;
 		if (ray->wall_distance >= 1)

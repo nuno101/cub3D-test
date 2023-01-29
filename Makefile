@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/01/27 18:27:03 by nlouro           ###   ########.fr        #
+#    Updated: 2023/01/29 21:17:58 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ $(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
 	@echo "\033[32mLinking object files...\033[0m"
 	gcc $(FLAGS) $(OBJS) $(LIBS) -o $@
 
+o: $(OBJS)
 $(OBJS): $(SRC) $(OBJ_DIR)
 	@echo "\033[34mCompiling source code...\033[0m"
 	gcc -c -D VERBOSE=$(VERBOSE) $(FLAGS) $(SRC) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) 
