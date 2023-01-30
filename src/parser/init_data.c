@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:40:06 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/29 20:58:04 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ static void	find_map(t_data *data, char **raw_data)
  * validates presence and store texture filenames
  * validate presence of Floor and Ceiling colours
  * calls find_map() -  map must be specified last in the file
- * FIXME: has more than 25 lines
  */
-static void	save_param(t_data *data, char **raw_data)
+static void	parse_raw_data(t_data *data, char **raw)
 {
 	int		i;
 	int		tex_code;
@@ -61,20 +60,15 @@ static void	save_param(t_data *data, char **raw_data)
 
 	i = 0;
 	tex_code_sum = 0;
-	while (raw_data[i])
+	while (raw[i])
 	{
-		tex_code = find_path_type(raw_data[i]);
+		tex_code = get_texture_code(raw[i]);
+		tex_code_sum += add_tex_code(tex_code);
 		if (tex_code != NONE)
-		{
-			if (tex_code == NO)
-				tex_code_sum += 4;
-			else
-				tex_code_sum += tex_code;
-			data->textures[tex_code] = save_texture(raw_data[i]);
-		}
-		else if (ft_strchr(raw_data[i], 'F') != NULL \
-		|| ft_strchr(raw_data[i], 'C') != NULL)
-			check_colours(data, raw_data[i]);
+			data->textures[tex_code] = save_texture(raw[i]);
+		else if (ft_strchr(raw[i], 'F') != NULL || \
+			ft_strchr(raw[i], 'C') != NULL)
+			check_colours(data, raw[i]);
 		if (data->c_colour > 0 && data->f_colour > 0 && tex_code_sum == 10)
 			break ;
 		i++;
@@ -83,7 +77,7 @@ static void	save_param(t_data *data, char **raw_data)
 		exit(cub_error(TEX_PRESENCE_ERROR));
 	if (data->c_colour == 0 || data->f_colour == 0)
 		exit(cub_error(COLOUR_ERROR));
-	find_map(data, raw_data);
+	find_map(data, raw);
 }
 
 /*
@@ -157,7 +151,7 @@ void	parse_map_data(char *map_path, t_data *data)
 	char	**raw_data;
 
 	raw_data = get_map(map_path);
-	save_param(data, raw_data);
+	parse_raw_data(data, raw_data);
 	ft_cleansplit(raw_data);
 	if (ft_splitlen(data->map) < 3 || validate_mapchars(data->map))
 		exit(cub_error(MAP_ERROR));

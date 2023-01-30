@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/27 18:17:18 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/29 20:27:12 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,5 @@ int	main(int argc, char **argv)
 	ft_cleansplit(data->map);
 	free(data);
 	printf("Exit cub3d\n");
-	//FIXME: uncomment line below to check for leaks before program ends
-	//getchar();
 	return (0);
 }

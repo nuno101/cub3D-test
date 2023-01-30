@@ -6,13 +6,13 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:17:53 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:38:15 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/29 21:44:44 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
-void	set_ray(int x, t_ray *ray, t_cub *cub)
+static void	set_ray(int x, t_ray *ray, t_cub *cub)
 {
 	ray->camera = (double)((2 * x) / (double)cub->s_width - 1);
 	ray->ray_dir.x = ray->dir.x + (ray->plane.x * ray->camera);
@@ -29,7 +29,7 @@ void	set_ray(int x, t_ray *ray, t_cub *cub)
 	ray->map.y = ray->pos.y;
 }
 
-void	calculate_ray_distance(t_ray *ray)
+static void	calculate_ray_distance(t_ray *ray)
 {
 	ray->hit = 0;
 	ray->step.x = 1;
@@ -49,10 +49,36 @@ void	calculate_ray_distance(t_ray *ray)
 }
 
 /*
- * TODO 25lines FIX
+ * dda() helper to comply w/ norm
+ * sets ray->side and ray->wall_distance
+ */
+void	set_ray_side_and_w_distance(t_ray *ray, int is_x_side, int is_negative)
+{
+	if (is_x_side)
+	{
+		if (is_negative)
+			ray->side = NO;
+		else
+			ray->side = SO;
+	}
+	else
+	{
+		if (is_negative)
+			ray->side = EA;
+		else
+			ray->side = WE;
+	}
+	if (is_x_side)
+		ray->wall_distance = ray->side_dist.x - ray->delta_dist.x;
+	else
+		ray->wall_distance = ray->side_dist.y - ray->delta_dist.y;
+}
+
+/*
+ * Digital Differential Analysis
  * wall_distance = perpWallDist;
  */
-void	dda(t_cub *cub, t_ray *ray)
+static void	dda(t_cub *cub, t_ray *ray)
 {
 	int	is_x_side;
 	int	is_negative;
@@ -76,27 +102,10 @@ void	dda(t_cub *cub, t_ray *ray)
 		if (cub->d->map[ray->map.x][ray->map.y] > '0')
 			ray->hit = 1;
 	}
-	if (is_x_side)
-	{
-		if (is_negative)
-			ray->side = NO;
-		else
-			ray->side = SO;
-	}
-	else
-	{
-		if (is_negative)
-			ray->side = EA;
-		else
-			ray->side = WE;
-	}
-	if (is_x_side)
-		ray->wall_distance = (ray->side_dist.x - ray->delta_dist.x);
-	else
-		ray->wall_distance = (ray->side_dist.y - ray->delta_dist.y);
+	set_ray_side_and_w_distance(ray, is_x_side, is_negative);
 }
 
-void	render_ray(void	*param)
+void	render_ray(void *param)
 {
 	t_cub	*cub;
 	int		i;
@@ -110,5 +119,5 @@ void	render_ray(void	*param)
 		dda(cub, cub->ray);
 		draw_ray(i, cub, cub->ray);
 		i++;
-	}	
+	}
 }
