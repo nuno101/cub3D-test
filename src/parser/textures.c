@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/29 21:14:06 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/30 22:12:04 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	get_texture_code(char *s)
  * parse_raw_data helper funtion to stay below 25 lines and comply
  * with the norm
  */
-int	add_text_code(int tex_code)
+int	add_tex_code(int tex_code)
 {
 	if (tex_code == NONE)
 		return (0);
