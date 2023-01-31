@@ -49,8 +49,8 @@ static void	init_ray(t_cub *cub)
 	ray->map.y = 0;
 	ray->wall_distance = 0;
 	ray->plane.x = 0;
-	ray->pos.x = (float)(cub->player_pos.y + 0.5);
-	ray->pos.y = (float)(cub->player_pos.x + 0.5);
+	ray->pos.x = (double)(cub->player_pos.y + 0.5);
+	ray->pos.y = (double)(cub->player_pos.x + 0.5);
 	ray->ray_dir.x = 0;
 	ray->ray_dir.y = 0;
 	ray->side = 0;
