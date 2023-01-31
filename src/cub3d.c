@@ -52,6 +52,7 @@ void	init_data(t_data *data)
 }
 
 /*
+ * FIXME mlx_del_tex 
  * verify a single map filename is passed as parameter
  * validate map filename is valid by checking open returns a valid fd
  * initialise data
