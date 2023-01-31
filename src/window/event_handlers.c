@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/31 02:35:23 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/01/31 02:39:08 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,28 @@ int	wall_hit(t_ray *ray, t_cub *cub)
 	int x = ray->pos.x + ray->dir.x * 0.05;
 	int y = ray->pos.y + ray->dir.y * 0.05;
 	if (x > 0 && y > 0 && y < cub->d->map_height && cub->d->map[y][x] == '0')
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 void	wasd(t_cub *cub, t_ray *ray, int key)
 {
-	if (key == MLX_KEY_W && wall_hit(ray, cub))
+	if (key == MLX_KEY_W && !wall_hit(ray, cub))
 	{
 		ray->pos.x += ray->dir.x * 0.05;
 		ray->pos.y += ray->dir.y * 0.05;
 	}
-	else if (key == MLX_KEY_S && wall_hit(ray, cub))
+	else if (key == MLX_KEY_S && !wall_hit(ray, cub))
 	{
 		ray->pos.x -= ray->dir.x * 0.05;
 		ray->pos.y -= ray->dir.y * 0.05;
 	}
-	else if (key == MLX_KEY_D && wall_hit(ray, cub))
+	else if (key == MLX_KEY_D && !wall_hit(ray, cub))
 	{
 		ray->pos.x += ray->dir.y * 0.05;
 		ray->pos.y -= ray->dir.x * 0.05;
 	}
-	else if (key == MLX_KEY_A && wall_hit(ray, cub))
+	else if (key == MLX_KEY_A && !wall_hit(ray, cub))
 	{
 		ray->pos.x -= ray->dir.y * 0.05;
 		ray->pos.y += ray->dir.x * 0.05;
@@ -125,7 +125,7 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 	ray = cub->ray;
 	wasd(cub, ray, kd.key);
 	arrows(cub, ray, kd.key);
-	/*if (VERBOSE > 0)
+	if (VERBOSE > 0)
 	{
 		if (i >= 0)
 			i++;
@@ -133,5 +133,5 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 			i = 0;
 		printf("DEBUG: hit = %f\n", ray->wall_distance);
 		printf("DEBUG: i = %i, pos x: %f y: %f\n", i, ray->dir.x, ray->dir.y);
-	}*/
+	}
 }
