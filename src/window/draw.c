@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:57 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 16:06:56 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/31 23:26:21 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ static int	tex_pos(t_cub *cub)
 	return (tex_x);
 }
 
+/*
+ * step: how much to increase the texture coordinate per screen pixel 
+ * tex_p: texture coordinate
+ */
 static void	texturize(t_cub *cub, int x, int start, int end)
 {
 	int				line_h;
@@ -40,12 +44,11 @@ static void	texturize(t_cub *cub, int x, int start, int end)
 	mlx_texture_t	*tex;
 	int				tmp;
 
-	step = 0;
 	tex = cub->d->textures[cub->ray->side];
 	line_h = end - start;
 	start = fmax(0, (cub->s_height - line_h) / 2);
-	tex_p = (start - (cub->s_height + line_h) / 2) * step;
 	step = 1.0 * tex->height / line_h;
+	tex_p = (start - (cub->s_height + line_h) / 2) * step;
 	while (start < end)
 	{
 		tmp = (int)tex_p & (tex->height - 1);
