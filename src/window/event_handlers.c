@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/01 01:41:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/01 01:56:41 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,17 @@ void	move_fwd(void)
  * will check the char in the map array 
  * if there is a wall
  */
-
 int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
-	double	x;
-	double	y;
+	double x;
+    double y;
 
-	y = ray->pos.y + (ray->dir.y) * MOVE;
-	x = ray->pos.x + (ray->dir.x) * MOVE;
-	x = fabs(x + HIT_BOX * (double)x_val);
-	y = fabs(y + HIT_BOX * (double)y_val);
-	if (cub->d->map[(int)x][(int)ray->pos.y] == '1' \
-	|| cub->d->map[(int)(ray->pos.x)][(int)y] == '1')
-	{
-		//printf("found hit\n");
-		return (0);
-	}
-	return (1);
+    y = ray->pos.y + (ray->dir.y) * MOVE;
+    x = ray->pos.x + (ray->dir.x) * MOVE;
+    if (cub->d->map[(int)(x + HIT_BOX * x_val)][(int)ray->pos.y] == '1' || \
+    cub->d->map[(int)(ray->pos.x)][(int)(y + HIT_BOX * y_val)] == '1')
+        return 0;
+    return 1;
 }
 
 void	wasd(t_cub *cub, t_ray *ray, int key)
