@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/01 01:56:41 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:49:01 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,17 @@ void	arrows(t_cub *cub, t_ray *ray, int key)
 {
 	(void)ray;
 	(void)cub;
+	double	val;
+
+	val = -0.05;
 	if (key == MLX_KEY_LEFT)
-	{
-		printf("FIXME: look left\n");
-		return ;
-	}
-	else if (key == MLX_KEY_RIGHT)
-	{
-		printf("FIXME: look right\n");
-		return ;
-	}
+		val = 0.05;
+	ray->delta_dir.x = ray->dir.x;
+	ray->dir.x = ray->dir.x * cos(val) - ray->dir.y * sin(val);
+	ray->dir.y = ray->delta_dir.x * sin(val) + ray->dir.y * cos(val);
+	ray->delta_plane.x = ray->plane.x;
+	ray->plane.x = ray->plane.x * cos(val) - ray->plane.y * sin(val);
+	ray->plane.y = ray->delta_plane.x * sin(val) + ray->plane.y * cos(val);
 }
 
 /*
@@ -127,7 +128,8 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 	}
 	ray = cub->ray;
 	wasd(cub, ray, kd.key);
-	arrows(cub, ray, kd.key);
+	if (mlx_is_key_down(cub->mlx, MLX_KEY_LEFT) || mlx_is_key_down(cub->mlx, MLX_KEY_RIGHT))
+		arrows(cub, ray, kd.key);
 	if (VERBOSE > 0)
 	{
 		if (i >= 0)

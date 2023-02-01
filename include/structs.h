@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/31 02:31:45 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:19:43 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ typedef struct s_ray
 {
 	t_f_coords	pos;
 	t_f_coords	dir;
+	t_f_coords	delta_dir;
 	t_f_coords	plane;
+	t_f_coords	delta_plane;
 	t_f_coords	ray_dir;
 	double		camera;
 	double		wall_distance;
