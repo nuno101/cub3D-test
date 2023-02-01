@@ -15,6 +15,9 @@
 #ifndef MACROS_H
 # define MACROS_H
 
+#define MOVE 0.05
+#define HIT_BOX 0.4
+
 /*
  * define cub3d specific errors
  * start at 256 to not overwrite OS error codes
