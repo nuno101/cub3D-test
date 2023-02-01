@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/01 17:05:37 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/01 17:17:02 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
 	/*printf("index 1 = %i\nindex 2 = %i\n", (int)(ray->pos.x), (int)(y));
 	printf("cub->d->map1 = %i\n", cub->d->map[(int)(x)][(int)ray->pos.y]);
 	printf("cub->d->map2 = %i\n", cub->d->map[(int)(ray->pos.x)][(int)y]);*/
-	if (x < 1.2 || y < 1.2)
+	if (x < 1.2|| y < 1.2 || x + 1.2 > (double)cub->d->map_height)
 		return (0);
 	while (i < 2)
 	{
@@ -79,9 +79,9 @@ int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
 		{
 			return (0);
 		}
+		i += 1.0;
 		y *= i;
 		x *= i;
-		i += 1.0;
 	}
 	printf("allow move\n");
     return (1);
