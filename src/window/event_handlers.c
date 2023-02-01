@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/01 16:19:13 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/01 17:05:37 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,33 @@ void	move_fwd(void)
  */
 int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
-	double x;
-    double y;
+	double	x;
+    double	y;
+	double	i;
+	double	map_width;
 
+	i = 1;
     y = ray->pos.y + (ray->dir.y) * MOVE * y_val;
     x = ray->pos.x + (ray->dir.x) * MOVE * x_val;
+	/*map_width = (double)ft_strlen(cub->d->map[(int)y]) - 0.5;
+	printf("map_Width = %f\n", map_width);
+	if (x < 1.2 || y < 1.2 || x > (double)(cub->d->map_height - 0.5) || y > map_width)
+		return (0);*/
 	/*printf("index 1 = %i\nindex 2 = %i\n", (int)(ray->pos.x), (int)(y));
 	printf("cub->d->map1 = %i\n", cub->d->map[(int)(x)][(int)ray->pos.y]);
 	printf("cub->d->map2 = %i\n", cub->d->map[(int)(ray->pos.x)][(int)y]);*/
-	if (cub->d->map[(int)(x)][(int)ray->pos.y] == '1' || cub->d->map[(int)(ray->pos.x)][(int)(y)] == '1')
-    {
+	if (x < 1.2 || y < 1.2)
 		return (0);
+	while (i < 2)
+	{
+		printf("index 1 = %i\nindex 2 = %i\n", (int)(ray->pos.x), (int)(y));
+		if (cub->d->map[(int)(x)][(int)ray->pos.y] == '1' || cub->d->map[(int)(ray->pos.x)][(int)(y)] == '1')
+		{
+			return (0);
+		}
+		y *= i;
+		x *= i;
+		i += 1.0;
 	}
 	printf("allow move\n");
     return (1);
