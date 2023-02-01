@@ -46,12 +46,8 @@ Requirements summary:
 
 # TODOs:
 
-1. Map checks:
-- 'data->map' is not perfect because it will not identify the end of the map and it saved all rest inside like empty lines etc.
-
 2. Mlx:
-- WASD movement need optimizing there are some obvious bugs :D
-- Bonus stuff...
+- Player Rotation
 
 3. Edgecases:
 - search and fix edgecases!
