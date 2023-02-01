@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/31 02:39:08 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/01 01:41:34 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,44 +46,53 @@ void	move_fwd(void)
 	if (VERBOSE > 0)
 		printf("TODO: move forward");
 }
-
-/* TODOO 
- * Check if player would hit wall after that move 
- * segerror if
- * atm we stuck in wall before entering segfaults
+/*
+ * 0.4 is like a hitbox
+ * xval & yval are +- operators which came from movement
+ * because moving forward is increasing instead moving backwards will decrease
+ * will check the char in the map array 
+ * if there is a wall
  */
-int	wall_hit(t_ray *ray, t_cub *cub)
+
+int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
-	(void)cub;
-	(void)ray;
-	int x = ray->pos.x + ray->dir.x * 0.05;
-	int y = ray->pos.y + ray->dir.y * 0.05;
-	if (x > 0 && y > 0 && y < cub->d->map_height && cub->d->map[y][x] == '0')
+	double	x;
+	double	y;
+
+	y = ray->pos.y + (ray->dir.y) * MOVE;
+	x = ray->pos.x + (ray->dir.x) * MOVE;
+	x = fabs(x + HIT_BOX * (double)x_val);
+	y = fabs(y + HIT_BOX * (double)y_val);
+	if (cub->d->map[(int)x][(int)ray->pos.y] == '1' \
+	|| cub->d->map[(int)(ray->pos.x)][(int)y] == '1')
+	{
+		//printf("found hit\n");
 		return (0);
+	}
 	return (1);
 }
 
 void	wasd(t_cub *cub, t_ray *ray, int key)
 {
-	if (key == MLX_KEY_W && !wall_hit(ray, cub))
+	if (key == MLX_KEY_W && wall_hit(ray, cub, 1, 1))
 	{
-		ray->pos.x += ray->dir.x * 0.05;
-		ray->pos.y += ray->dir.y * 0.05;
+		ray->pos.x += ray->dir.x * MOVE;
+		ray->pos.y += ray->dir.y * MOVE;
 	}
-	else if (key == MLX_KEY_S && !wall_hit(ray, cub))
+	else if (key == MLX_KEY_S && wall_hit(ray, cub, -1, -1))
 	{
-		ray->pos.x -= ray->dir.x * 0.05;
-		ray->pos.y -= ray->dir.y * 0.05;
+		ray->pos.x -= ray->dir.x * MOVE;
+		ray->pos.y -= ray->dir.y * MOVE;
 	}
-	else if (key == MLX_KEY_D && !wall_hit(ray, cub))
+	else if (key == MLX_KEY_D && wall_hit(ray, cub, 1, -1))
 	{
-		ray->pos.x += ray->dir.y * 0.05;
-		ray->pos.y -= ray->dir.x * 0.05;
+		ray->pos.x += ray->dir.y * MOVE;
+		ray->pos.y -= ray->dir.x * MOVE;
 	}
-	else if (key == MLX_KEY_A && !wall_hit(ray, cub))
+	else if (key == MLX_KEY_A && wall_hit(ray, cub, -1, 1))
 	{
-		ray->pos.x -= ray->dir.y * 0.05;
-		ray->pos.y += ray->dir.x * 0.05;
+		ray->pos.x -= ray->dir.y * MOVE;
+		ray->pos.y += ray->dir.x * MOVE;
 	}
 }
 
