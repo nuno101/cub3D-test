@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/01 15:49:01 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:19:13 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,17 @@ int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
 	double x;
     double y;
 
-    y = ray->pos.y + (ray->dir.y) * MOVE;
-    x = ray->pos.x + (ray->dir.x) * MOVE;
-    if (cub->d->map[(int)(x + HIT_BOX * x_val)][(int)ray->pos.y] == '1' || \
-    cub->d->map[(int)(ray->pos.x)][(int)(y + HIT_BOX * y_val)] == '1')
-        return 0;
-    return 1;
+    y = ray->pos.y + (ray->dir.y) * MOVE * y_val;
+    x = ray->pos.x + (ray->dir.x) * MOVE * x_val;
+	/*printf("index 1 = %i\nindex 2 = %i\n", (int)(ray->pos.x), (int)(y));
+	printf("cub->d->map1 = %i\n", cub->d->map[(int)(x)][(int)ray->pos.y]);
+	printf("cub->d->map2 = %i\n", cub->d->map[(int)(ray->pos.x)][(int)y]);*/
+	if (cub->d->map[(int)(x)][(int)ray->pos.y] == '1' || cub->d->map[(int)(ray->pos.x)][(int)(y)] == '1')
+    {
+		return (0);
+	}
+	printf("allow move\n");
+    return (1);
 }
 
 void	wasd(t_cub *cub, t_ray *ray, int key)
@@ -130,7 +135,7 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 	wasd(cub, ray, kd.key);
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_LEFT) || mlx_is_key_down(cub->mlx, MLX_KEY_RIGHT))
 		arrows(cub, ray, kd.key);
-	if (VERBOSE > 0)
+	if (VERBOSE > 2)
 	{
 		if (i >= 0)
 			i++;
