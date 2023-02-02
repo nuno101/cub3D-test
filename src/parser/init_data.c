@@ -6,46 +6,42 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/31 02:33:32 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/02 23:25:40 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
 /*
- * walk through the raw_data lines
+ * walk through the raw data lines
  * find top border of map and then walk through following rows
  * to check only spaces or 1's are present 
  * sets data->map as beginning of map
- * free raw_data
  */
-static void	find_map(t_data *data, char **raw_data)
+static void	find_map(t_data *data, char **raw)
 {
 	int		i;
 	int		j;
 	int		flag;
-	int		len;
 
-	j = 0;
-	flag = 0;
 	i = 0;
-	while (raw_data[i])
+	flag = 0;
+	while (raw[i])
 	{
-		len = ft_strlen(raw_data[i]);
-		while (raw_data[i][j] && valid_map_border(raw_data[i]) && len > 2)
+		j = 0;
+		while (raw[i][j] && valid_map_border(raw[i]) && ft_strlen(raw[i]) > 2)
 		{
 			if (flag != 2)
 				flag = 1;
-			if (raw_data[i][j] != '1' && raw_data[i][j] != ' ')
+			if (raw[i][j] != '1' && raw[i][j] != ' ')
 				exit(cub_error(INVALID_MAP));
 			j++;
 		}
 		if (flag == 1)
 		{
 			flag = 2;
-			data->map = ft_splitdup(raw_data + i);
+			data->map = ft_splitdup(raw + i);
 		}
-		j = 0;
 		i++;
 	}
 }
