@@ -16,7 +16,7 @@ VERBOSE := 1
 #FIXME: use basic flags for final submission!
 
 #FLAGS := -Wall -Wextra -Werror
-FLAGS := -g -Wall -Wextra #-Werror -fsanitize=address
+FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
 MINILIBX_DIR := MLX42
 MINILIBX := $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR := libft
