@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/02 13:32:30 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:56:31 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	move_fwd(void)
 	if (VERBOSE > 0)
 		printf("TODO: move forward");
 }
+
 /*
  * xval & yval are +- operators which came from movement
  * because moving forward is increasing instead moving backwards will decrease
@@ -122,9 +123,9 @@ void	arrows(t_ray *ray, int key)
 }
 
 /*
- * TODO implement look to left and right [arrows]
  * ESC - exit
  * movement [W|A|S|D]
+ * arrows	[<-|->]
  * ignore key release and key repeat (hold)
  */
 void	handle_keypress(mlx_key_data_t kd, void *param)
