@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/29 20:27:12 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/31 00:20:13 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_data(t_data *data)
 }
 
 /*
+ * FIXME mlx_del_tex 
  * verify a single map filename is passed as parameter
  * validate map filename is valid by checking open returns a valid fd
  * initialise data
@@ -74,6 +75,10 @@ int	main(int argc, char **argv)
 	parse_map_data(argv[1], data);
 	start_cub(data);
 	ft_cleansplit(data->map);
+	mlx_delete_texture(data->textures[0]);
+	mlx_delete_texture(data->textures[1]);
+	mlx_delete_texture(data->textures[2]);
+	mlx_delete_texture(data->textures[3]);
 	free(data);
 	printf("Exit cub3d\n");
 	return (0);

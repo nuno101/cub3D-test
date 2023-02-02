@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/29 21:17:20 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/02 13:56:31 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 /*
  * update sreen sixe in cub struct
+ * TODOO CHECK:
+ * In Linux "DEBUG: Resizing screen..." is
+ * always printed, so 'i' should be higher then 1, maybe in MAc too??
  */
 void	handle_screen_resize(int32_t x, int32_t y, void *param)
 {
@@ -27,7 +30,8 @@ void	handle_screen_resize(int32_t x, int32_t y, void *param)
 			i++;
 		else
 			i = 0;
-		printf("DEBUG: Resizing screen... %i \n", i);
+		if (i != 1)
+			printf("DEBUG: Resizing screen... %i \n", i);
 	}
 	cub->s_width = x;
 	cub->s_height = y;
@@ -44,9 +48,84 @@ void	move_fwd(void)
 }
 
 /*
- * TODO implement look to left and right [arrows]
+ * xval & yval are +- operators which came from movement
+ * because moving forward is increasing instead moving backwards will decrease
+ * will check the char in the map array 
+ * if there is a wall
+ */
+int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
+{
+	double	x;
+    double	y;
+	double	i;
+
+	i = 1.0;
+	while (i < 5)
+	{
+		y = ray->pos.y + (ray->dir.y) * y_val * i * MOVE;
+  		x = ray->pos.x + (ray->dir.x) * x_val * i * MOVE;
+		if (x < 1.2|| y < 1.2 || x + 1.2 > (double)cub->d->map_height)
+			return (0);
+		if (cub->d->map[(int)(x)][(int)ray->pos.y] == '1' \
+		|| cub->d->map[(int)(ray->pos.x)][(int)(y)] == '1')
+			return (0);
+		i += 1.0;
+	}
+    return (1);
+}
+
+void	wasd(t_cub *cub, t_ray *ray, int key)
+{
+	double	move;
+
+	move = MOVE;
+	if (key == MLX_KEY_W && wall_hit(ray, cub, 1, 1))
+	{
+		ray->pos.x += ray->dir.x * move;
+		ray->pos.y += ray->dir.y * move;
+	}
+	else if (key == MLX_KEY_S && wall_hit(ray, cub, -1, -1))
+	{
+		ray->pos.x -= ray->dir.x * move;
+		ray->pos.y -= ray->dir.y * move;
+	}
+	else if (key == MLX_KEY_D && wall_hit(ray, cub, 1, -1))
+	{
+		ray->pos.x += ray->dir.y * move;
+		ray->pos.y -= ray->dir.x * move;
+	}
+	else if (key == MLX_KEY_A && wall_hit(ray, cub, -1, 1))
+	{
+		ray->pos.x -= ray->dir.y * move;
+		ray->pos.y += ray->dir.x * move;
+	}
+}
+
+void	arrows(t_ray *ray, int key)
+{
+	double	val;
+	double	cos_val;
+	double	sin_val;
+	double	delta_dir_x;
+	double	delta_plane_x;
+
+	val = -0.05;
+	if (key == MLX_KEY_LEFT)
+		val = 0.05;
+	cos_val = cos(val);
+	sin_val = sin(val);
+	delta_dir_x = ray->dir.x;
+	ray->dir.x = ray->dir.x * cos_val - ray->dir.y * sin_val;
+	ray->dir.y = delta_dir_x * sin_val + ray->dir.y * cos_val;
+	delta_plane_x = ray->plane.x;
+	ray->plane.x = ray->plane.x * cos_val - ray->plane.y * sin_val;
+	ray->plane.y = delta_plane_x * sin_val + ray->plane.y * cos_val;
+}
+
+/*
  * ESC - exit
  * movement [W|A|S|D]
+ * arrows	[<-|->]
  * ignore key release and key repeat (hold)
  */
 void	handle_keypress(mlx_key_data_t kd, void *param)
@@ -55,68 +134,18 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 	t_ray		*ray;
 	static int	i;
 
-	if (kd.action != MLX_PRESS)
-		return ;
 	cub = (t_cub *)param;
 	if (kd.key == MLX_KEY_ESCAPE)
 	{
-		mlx_close_window(cub->mlx);
 		mlx_delete_image(cub->mlx, cub->image);
+		mlx_close_window(cub->mlx);
 		return ;
 	}
 	ray = cub->ray;
-	if (kd.key == MLX_KEY_W)
-	{
-		if (ray->wall_distance >= 1)
-		{
-			ray->dir.y += (cub->direction == 'E') * 0.04;
-			ray->dir.x += (cub->direction == 'S') * 0.04;
-		}
-		ray->dir.x -= (cub->direction == 'N') * 0.04;
-		ray->dir.y -= (cub->direction == 'W') * 0.04;
-		//printf("dir x = %f\nray dir y = %f\n", ray->dir.x, ray->dir.y);
-	}
-	else if (kd.key == MLX_KEY_S)
-	{
-		ray->dir.y -= (cub->direction == 'E') * 0.04;
-		ray->dir.x -= (cub->direction == 'S') * 0.04;
-		if (ray->wall_distance >= 1)
-		{
-			ray->dir.x += (cub->direction == 'N') * 0.04;
-			ray->dir.y += (cub->direction == 'W') * 0.04;
-		}
-	}
-	else if (kd.key == MLX_KEY_D)
-	{
-		if (ray->wall_distance >= 1)
-		{
-			ray->dir.y += (cub->direction == 'N') * 0.04;
-			ray->dir.x += (cub->direction == 'E') * 0.04;
-		}
-		ray->dir.y -= (cub->direction == 'S') * 0.04;
-		ray->dir.x -= (cub->direction == 'W') * 0.04;
-	}
-	else if (kd.key == MLX_KEY_A)
-	{
-		ray->dir.y -= (cub->direction == 'N') * 0.04;
-		ray->dir.x -= (cub->direction == 'E') * 0.04;
-		if (ray->wall_distance >= 1)
-		{
-			ray->dir.y += (cub->direction == 'S') * 0.04;
-			ray->dir.x += (cub->direction == 'W') * 0.04;
-		}
-	}
-	else if (kd.key == MLX_KEY_LEFT)
-	{
-		printf("FIXME: look left\n");
-		return ;
-	}
-	else if (kd.key == MLX_KEY_RIGHT)
-	{
-		printf("FIXME: look right\n");
-		return ;
-	}
-	if (VERBOSE > 0)
+	wasd(cub, ray, kd.key);
+	if (mlx_is_key_down(cub->mlx, MLX_KEY_LEFT) || mlx_is_key_down(cub->mlx, MLX_KEY_RIGHT))
+		arrows(ray, kd.key);
+	if (VERBOSE > 2)
 	{
 		if (i >= 0)
 			i++;

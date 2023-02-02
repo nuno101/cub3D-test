@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/29 20:58:04 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/01/31 02:33:32 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,22 @@ static void	find_map(t_data *data, char **raw_data)
 	j = 0;
 	flag = 0;
 	i = 0;
-	while (raw_data[i] && flag != 1)
+	while (raw_data[i])
 	{
 		len = ft_strlen(raw_data[i]);
 		while (raw_data[i][j] && valid_map_border(raw_data[i]) && len > 2)
 		{
-			flag = 1;
+			if (flag != 2)
+				flag = 1;
 			if (raw_data[i][j] != '1' && raw_data[i][j] != ' ')
 				exit(cub_error(INVALID_MAP));
 			j++;
 		}
 		if (flag == 1)
+		{
+			flag = 2;
 			data->map = ft_splitdup(raw_data + i);
+		}
 		j = 0;
 		i++;
 	}
@@ -157,4 +161,5 @@ void	parse_map_data(char *map_path, t_data *data)
 		exit(cub_error(MAP_ERROR));
 	player_checks(data);
 	wall_check(data);
+	data->map_height = ft_splitlen(data->map);
 }

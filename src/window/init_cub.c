@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:16:33 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/28 20:05:08 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/01 15:20:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,15 @@ static void	init_ray(t_cub *cub)
 	ray->map.y = 0;
 	ray->wall_distance = 0;
 	ray->plane.x = 0;
-	ray->pos.x = (float)(cub->player_pos.y + 0.5);
-	ray->pos.y = (float)(cub->player_pos.x + 0.5);
+	ray->pos.x = (double)(cub->player_pos.y + 0.5);
+	ray->pos.y = (double)(cub->player_pos.x + 0.5);
 	ray->ray_dir.x = 0;
 	ray->ray_dir.y = 0;
 	ray->side = 0;
+	ray->delta_dir.x = 0;
+	ray->delta_dir.y = 0;
+	ray->delta_plane.x = 0;
+	ray->delta_plane.y = 0;
 	cub->ray = ray;
 	set_ray_direction(cub);
 }

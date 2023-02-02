@@ -6,12 +6,17 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:17:53 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/29 21:44:44 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/02 13:45:59 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
+/*
+ * This function sets up a single ray,
+ * ready to be cast into the cub3D world 
+ * and determine what is visible to the player.
+*/
 static void	set_ray(int x, t_ray *ray, t_cub *cub)
 {
 	ray->camera = (double)((2 * x) / (double)cub->s_width - 1);
@@ -29,6 +34,10 @@ static void	set_ray(int x, t_ray *ray, t_cub *cub)
 	ray->map.y = ray->pos.y;
 }
 
+/*
+ * calculates the distance the ray must travel in the x and y directions 
+ * in order to determine what objects it will hit in the game world.
+*/
 static void	calculate_ray_distance(t_ray *ray)
 {
 	ray->hit = 0;
@@ -50,7 +59,9 @@ static void	calculate_ray_distance(t_ray *ray)
 
 /*
  * dda() helper to comply w/ norm
- * sets ray->side and ray->wall_distance
+ * sets the side and wall distance of the ray,
+ * based on whether the x-side or y-side of the map was hit,
+ * and whether the direction of the ray was negative or positive.
  */
 void	set_ray_side_and_w_distance(t_ray *ray, int is_x_side, int is_negative)
 {
@@ -77,6 +88,9 @@ void	set_ray_side_and_w_distance(t_ray *ray, int is_x_side, int is_negative)
 /*
  * Digital Differential Analysis
  * wall_distance = perpWallDist;
+ * DDA algorithm 
+ * to trace the path of a ray 
+ * and determine the closest wall it intersects.
  */
 static void	dda(t_cub *cub, t_ray *ray)
 {
@@ -105,6 +119,14 @@ static void	dda(t_cub *cub, t_ray *ray)
 	set_ray_side_and_w_distance(ray, is_x_side, is_negative);
 }
 
+/*
+ * rendering the rays and determining 
+ * what is visible to the player in the game world. 
+ * It loops through the screen width and for each column, 
+ * sets up the ray, calculates the distance, 
+ * and performs the DDA algorithm to find the first wall intersection. 
+ * Finally, it draws the ray on the screen.
+*/
 void	render_ray(void *param)
 {
 	t_cub	*cub;
