@@ -6,14 +6,15 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:57 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 16:06:56 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/02 13:51:08 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
 /*
- * comments!
+ * Calculates the texture position 
+ * for the current ray based on the wall distance and ray direction.
 */
 static int	tex_pos(t_cub *cub)
 {
@@ -32,6 +33,14 @@ static int	tex_pos(t_cub *cub)
 	return (tex_x);
 }
 
+/*
+ * texturizes the wall by taking in a ray casting structure, 
+ * screen width position, start and end positions of the wall, 
+ * and a texture structure. It calculates the step size, 
+ * texture position, and the line height of the wall. 
+ * Then, it uses these values to map the wall texture onto the screen 
+ * by copying the pixel values from the texture to the image buffer.
+ */
 static void	texturize(t_cub *cub, int x, int start, int end)
 {
 	int				line_h;
@@ -56,6 +65,10 @@ static void	texturize(t_cub *cub, int x, int start, int end)
 	}
 }
 
+/*
+ * It calculates the line height and starts/ends based on the wall distance, 
+ * then applies textures to the walls, and finally colours the floor and ceiling.
+ */
 void	draw_ray(int x, t_cub *cub, t_ray *ray)
 {
 	int	line_height;
