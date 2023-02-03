@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/02/03 17:27:30 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/03 19:27:53 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	main(int argc, char **argv)
 	mlx_delete_texture(data->textures[2]);
 	mlx_delete_texture(data->textures[3]);
 	free(data);
-	system("leaks cub3D");
 	printf("Exit cub3d\n");
 	return (0);
 }
