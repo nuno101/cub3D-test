@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 09:34:49 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 11:55:13 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,15 @@ int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
  */
 bool	is_stuck(t_ray *ray, t_cub *cub)
 {
+	bool	stuck;
+
+	stuck = false;
 	if (!wall_hit(ray, cub, 1, 1) && !wall_hit(ray, cub, -1, -1) && \
 		!wall_hit(ray, cub, 1, -1) && !wall_hit(ray, cub, -1, 1))
-	{
-		printf("DEBUG: Is stuck!\n");
-		return true;
-	}
-	else
-	{
-		printf("DEBUG: Is not stuck!\n");
-		return false;
-	}
+		stuck = true;
+	if (VERBOSE > 0)
+		printf("DEBUG: Is %s\n", stuck ? "stuck" : "not stuck");
+	return stuck;
 }
 
 void	wasd(t_cub *cub, t_ray *ray, int key)
