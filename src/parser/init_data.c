@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/02 23:25:40 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/02 23:28:55 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static void	find_map(t_data *data, char **raw)
 		{
 			if (flag != 2)
 				flag = 1;
-			if (raw[i][j] != '1' && raw[i][j] != ' ')
-				exit(cub_error(INVALID_MAP));
 			j++;
 		}
 		if (flag == 1)

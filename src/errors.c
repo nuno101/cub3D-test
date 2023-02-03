@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 12:01:19 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/02 23:30:14 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	cub_error(int err)
 		printf("File invalid.\n");
 	else if (err == FILE_TOO_SHORT_ERROR)
 		printf("File invalid. Check all required definitions are included.\n");
-	else if (err == INVALID_MAP)
-		printf("MAP broken\n");
 	else if (err == MALLOC_ERROR)
 		printf("Malloc failed\n");
 	else if (err == DIR_ERROR)
