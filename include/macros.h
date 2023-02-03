@@ -1,17 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macros.h                                           :+:      :+:    :+:   */
+/*   macros_linux.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/01 10:52:08 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/02 13:52:50 by jjesberg         ###   ########.fr       */
+/*   Created: 2023/02/01 15:53:59 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/02/02 13:52:54 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//FIXME: comply with norminette before submission. Required changes make 
-// compilation in Linux fail so do not change now.
 #ifndef MACROS_H
 # define MACROS_H
 
@@ -22,8 +20,8 @@
  * start at 256 to not overwrite OS error codes
  * need include guard for compiling in linux, because multiple definition if not.
  */
-#ifndef E_ERRORS
-# define E_ERRORS
+#ifndef t_error
+# define t_error
 
 enum	e_cub3d_errors
 {
@@ -57,8 +55,8 @@ enum	e_cub3d_errors
  * WE - West texture
  * EA - East texture
  */
-#ifndef E_TEXTURES
-# define E_TEXTURES
+#ifndef t_texture
+# define t_texture
 
 enum	e_textures { NONE = -1, NO, SO, WE, EA } t_texture;
 #endif
