@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/27 15:46:22 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:25:04 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
  * where R, G, and B are integers between 0 and 255 (inclusive)
  * start at i = 1 to skip F or C specifier
  * return nr of colors which should be 3 for a valid R,G,B color
-//FIXME - temporarily remove static to allow unit testing
-//static int	valid_colour(char *s)
+ * NOTE: this function is not declared static to allow unit testing
  */
 int	valid_colours(char *s)
 {
