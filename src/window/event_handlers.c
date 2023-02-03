@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/02 13:56:31 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/03 09:34:49 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,6 @@ void	handle_screen_resize(int32_t x, int32_t y, void *param)
 }
 
 /*
- * TODO: prepare image for display in new position
- * may need several images to reach the new postion in smal steps
- */
-void	move_fwd(void)
-{
-	if (VERBOSE > 0)
-		printf("TODO: move forward");
-}
-
-/*
  * xval & yval are +- operators which came from movement
  * because moving forward is increasing instead moving backwards will decrease
  * will check the char in the map array 
@@ -74,6 +64,24 @@ int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
     return (1);
 }
 
+/*
+ * determine whether wall_hit() causes the player to be stuck
+ */
+bool	is_stuck(t_ray *ray, t_cub *cub)
+{
+	if (!wall_hit(ray, cub, 1, 1) && !wall_hit(ray, cub, -1, -1) && \
+		!wall_hit(ray, cub, 1, -1) && !wall_hit(ray, cub, -1, 1))
+	{
+		printf("DEBUG: Is stuck!\n");
+		return true;
+	}
+	else
+	{
+		printf("DEBUG: Is not stuck!\n");
+		return false;
+	}
+}
+
 void	wasd(t_cub *cub, t_ray *ray, int key)
 {
 	double	move;
@@ -89,15 +97,21 @@ void	wasd(t_cub *cub, t_ray *ray, int key)
 		ray->pos.x -= ray->dir.x * move;
 		ray->pos.y -= ray->dir.y * move;
 	}
-	else if (key == MLX_KEY_D && wall_hit(ray, cub, 1, -1))
+	else if (key == MLX_KEY_D)
 	{
-		ray->pos.x += ray->dir.y * move;
-		ray->pos.y -= ray->dir.x * move;
+		if (wall_hit(ray, cub, 1, -1) || is_stuck(ray, cub))
+		{
+			ray->pos.x += ray->dir.y * move;
+			ray->pos.y -= ray->dir.x * move;
+		}
 	}
-	else if (key == MLX_KEY_A && wall_hit(ray, cub, -1, 1))
+	else if (key == MLX_KEY_A)
 	{
-		ray->pos.x -= ray->dir.y * move;
-		ray->pos.y += ray->dir.x * move;
+		if (wall_hit(ray, cub, -1, 1) || is_stuck(ray, cub))
+		{
+			ray->pos.x -= ray->dir.y * move;
+			ray->pos.y += ray->dir.x * move;
+		}
 	}
 }
 
