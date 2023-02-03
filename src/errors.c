@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/02 23:30:14 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:25:46 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	cub_error(int err)
 	else if (err == COLOUR_ERROR)
 		printf("Colour not valid\n");
 	else
-		printf("ERROR FIXME - unsupported error\n");
+		printf("ERROR - unsupported error\n");
 	return (err);
 }
 
@@ -70,6 +70,6 @@ int	cub_error_2(int err)
 	else if (err == W_SURROUNDED_ERROR)
 		printf("Wall not surrounded\n");
 	else
-		printf("ERROR FIXME - unsupported error\n");
+		printf("ERROR - unsupported error\n");
 	return (err);
 }

@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/02/01 15:47:20 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/02/03 15:27:52 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME := cub3D
 VERBOSE := 1
 
 #FIXME: use basic flags for final submission!
-
 #FLAGS := -Wall -Wextra -Werror
 FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
 MINILIBX_DIR := MLX42
@@ -39,6 +38,7 @@ SRC :=	src/cub3d.c \
 OBJ_DIR := objs
 OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))
 
+#FIXME: remove this statement before submitting
 ifeq ($(USER), nlouro)
 	# Macbook
 	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/usr/local/Cellar/glfw/3.3.8/lib"
@@ -72,10 +72,10 @@ cleanlibs:
 	make -C ./$(LIBFT_DIR) fclean
 	make -C ./$(MINILIBX_DIR) fclean
 
-#FIXME: remove DEBUG flag for final submission!
 $(MINILIBX):
-	make DEBUG=1 -C ./$(MINILIBX_DIR)
-	#make -C ./$(MINILIBX_DIR)
+	make -C ./$(MINILIBX_DIR)
+	#NOTE: for debugging use:
+	#make DEBUG=1 -C ./$(MINILIBX_DIR)
 
 $(LIBFT):
 	make -C ./$(LIBFT_DIR)

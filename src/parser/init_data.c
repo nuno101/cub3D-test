@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/02 23:28:55 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:29:55 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ static char	**get_map(char *path)
 }
 
 /*
- * TODO
+ * TODO: this function could be better documented
  * Check edgecases of map validation
  * raw_data stores the full content of the filename
  */

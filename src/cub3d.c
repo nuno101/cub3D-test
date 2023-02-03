@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:53:21 by ezpiro-m          #+#    #+#             */
-/*   Updated: 2023/01/31 00:20:13 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:23:27 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ void	init_data(t_data *data)
 }
 
 /*
- * FIXME mlx_del_tex 
  * verify a single map filename is passed as parameter
  * validate map filename is valid by checking open returns a valid fd
  * initialise data
  * call map_data() to fill t_data from filename
+ * callign mlx_delete_texture() is optional according to the MLX docs but 
+ * is added here to avoid warnings in Linux 
  */
 int	main(int argc, char **argv)
 {

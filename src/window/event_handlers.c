@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 15:20:26 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:32:04 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * will check the char in the map array 
  * if there is a wall
  */
-int	wall_hit_ad(t_ray *ray, t_cub *cub, int x_val, int y_val)
+static int	wall_hit_ad(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
 	int	x_check;
 	int	y_check;
@@ -37,7 +37,7 @@ int	wall_hit_ad(t_ray *ray, t_cub *cub, int x_val, int y_val)
 	return (1);
 }
 
-int	wall_hit_ws(t_ray *ray, t_cub *cub, int x_val, int y_val)
+static int	wall_hit_ws(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
 	int	x_check;
 	int	y_check;
@@ -57,9 +57,10 @@ int	wall_hit_ws(t_ray *ray, t_cub *cub, int x_val, int y_val)
 }
 
 /*
- * TODO: save lines by merging the repated if statements
+ * handle WASD key events which simulate the player
+ * movement by changing the POV
  */
-void	wasd(t_cub *cub, t_ray *ray, int key)
+static void	wasd(t_cub *cub, t_ray *ray, int key)
 {
 	double	move;
 
@@ -86,7 +87,7 @@ void	wasd(t_cub *cub, t_ray *ray, int key)
 	}
 }
 
-void	arrows(t_ray *ray, int key)
+static void	arrows(t_ray *ray, int key)
 {
 	double	val;
 	double	cos_val;
