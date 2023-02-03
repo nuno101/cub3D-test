@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 12:07:07 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 14:55:15 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,34 @@
  * will check the char in the map array 
  * if there is a wall
  */
-int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
+int	wall_hit_ad(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
-	double	x;
-	double	y;
-	double	i;
-
-	i = 1.0;
-	while (i < 5.0)
+	int i = 1;
+	
+	while (i < 5)
 	{
-		y = ray->pos.y + (ray->dir.y) * y_val * i * MOVE;
-		x = ray->pos.x + (ray->dir.x) * x_val * i * MOVE;
-		if (x < 1.2 || y < 1.2 || x + 1.2 > (double)cub->d->map_height)
+		int x_check = (int)(ray->pos.x + ray->dir.y * MOVE * x_val * i);
+		int y_check = (int)(ray->pos.y + ray->dir.x * MOVE * y_val * i);
+		if (cub->d->map[x_check][(int)ray->pos.y] == '1' || cub->d->map[(int)ray->pos.x][y_check] == '1')
 			return (0);
-		if (cub->d->map[(int)(x)][(int)ray->pos.y] == '1' \
-		|| cub->d->map[(int)(ray->pos.x)][(int)(y)] == '1')
-			return (0);
-		i += 1.0;
+		i++;
 	}
-	return (1);
+    return (1);	
 }
 
-/*
- * determine whether wall_hit() causes the player to be stuck
- */
-bool	is_stuck(t_ray *ray, t_cub *cub)
+int	wall_hit_ws(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
-	bool	stuck;
-
-	stuck = false;
-	if (!wall_hit(ray, cub, 1, 1) && !wall_hit(ray, cub, -1, -1) && \
-		!wall_hit(ray, cub, 1, -1) && !wall_hit(ray, cub, -1, 1))
-		stuck = true;
-	if (VERBOSE > 0)
+	int i = 1;
+	
+	while (i < 5)
 	{
-		if (stuck)
-			printf("DEBUG: Is stuck!\n");
-		else
-			printf("DEBUG: Is not stuck!\n");
+		int x_check = (int)(ray->pos.x + ray->dir.x * MOVE * x_val * i);
+		int y_check = (int)(ray->pos.y + ray->dir.y * MOVE * y_val * i);
+		if (cub->d->map[x_check][(int)ray->pos.y] == '1' || cub->d->map[(int)ray->pos.x][y_check] == '1')
+			return (0);
+		i++;
 	}
-	return (stuck);
+	return (1);
 }
 
 /*
@@ -68,34 +56,27 @@ void	wasd(t_cub *cub, t_ray *ray, int key)
 	double	move;
 
 	move = MOVE;
-	if (key == MLX_KEY_W && wall_hit(ray, cub, 1, 1))
+	if (key == MLX_KEY_W && wall_hit_ws(ray, cub, 1, 1))
 	{
 		ray->pos.x += ray->dir.x * move;
 		ray->pos.y += ray->dir.y * move;
 	}
-	else if (key == MLX_KEY_S && wall_hit(ray, cub, -1, -1))
+	else if (key == MLX_KEY_S && wall_hit_ws(ray, cub, -1, -1))
 	{
 		ray->pos.x -= ray->dir.x * move;
 		ray->pos.y -= ray->dir.y * move;
 	}
-	else if (key == MLX_KEY_D)
+	else if (key == MLX_KEY_D && wall_hit_ad(ray, cub, 1, -1))
 	{
-		if (wall_hit(ray, cub, 1, -1) || is_stuck(ray, cub))
-		{
-			ray->pos.x += ray->dir.y * move;
-			ray->pos.y -= ray->dir.x * move;
-		}
+		ray->pos.x += ray->dir.y * move;
+		ray->pos.y -= ray->dir.x * move;
 	}
-	else if (key == MLX_KEY_A)
+	else if (key == MLX_KEY_A && wall_hit_ad(ray, cub, -1, 1))
 	{
-		if (wall_hit(ray, cub, -1, 1) || is_stuck(ray, cub))
-		{
-			ray->pos.x -= ray->dir.y * move;
-			ray->pos.y += ray->dir.x * move;
-		}
+		ray->pos.x -= ray->dir.y * move;
+		ray->pos.y += ray->dir.x * move;
 	}
 }
-
 void	arrows(t_ray *ray, int key)
 {
 	double	val;
