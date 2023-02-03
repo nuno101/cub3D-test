@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:53:59 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 17:24:18 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/03 20:12:43 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ enum	e_textures { NONE = -1, NO, SO, WE, EA } t_texture;
 
 /*
  * constants for ray directions calculations
+ * TODOO GLOBAL! NORM FIXME
  */
 #ifndef RAY_DIRECTION_CONSTS
 #define RAY_DIRECTION_CONSTS
