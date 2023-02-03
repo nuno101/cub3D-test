@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 14:55:15 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:58:46 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@
  */
 int	wall_hit_ad(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
-	int i = 1;
-	
+	int x_check;
+	int y_check;
+	int i;
+
+	i = 1;
 	while (i < 5)
 	{
-		int x_check = (int)(ray->pos.x + ray->dir.y * MOVE * x_val * i);
-		int y_check = (int)(ray->pos.y + ray->dir.x * MOVE * y_val * i);
+		x_check = (int)(ray->pos.x + ray->dir.y * MOVE * x_val * i);
+		y_check = (int)(ray->pos.y + ray->dir.x * MOVE * y_val * i);
 		if (cub->d->map[x_check][(int)ray->pos.y] == '1' || cub->d->map[(int)ray->pos.x][y_check] == '1')
 			return (0);
 		i++;
@@ -35,12 +38,15 @@ int	wall_hit_ad(t_ray *ray, t_cub *cub, int x_val, int y_val)
 
 int	wall_hit_ws(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
-	int i = 1;
-	
+	int x_check;
+	int y_check;
+	int i;
+
+	i = 1;
 	while (i < 5)
 	{
-		int x_check = (int)(ray->pos.x + ray->dir.x * MOVE * x_val * i);
-		int y_check = (int)(ray->pos.y + ray->dir.y * MOVE * y_val * i);
+		x_check = (int)(ray->pos.x + ray->dir.x * MOVE * x_val * i);
+		y_check = (int)(ray->pos.y + ray->dir.y * MOVE * y_val * i);
 		if (cub->d->map[x_check][(int)ray->pos.y] == '1' || cub->d->map[(int)ray->pos.x][y_check] == '1')
 			return (0);
 		i++;
@@ -77,6 +83,7 @@ void	wasd(t_cub *cub, t_ray *ray, int key)
 		ray->pos.y += ray->dir.x * move;
 	}
 }
+
 void	arrows(t_ray *ray, int key)
 {
 	double	val;
@@ -85,9 +92,9 @@ void	arrows(t_ray *ray, int key)
 	double	delta_dir_x;
 	double	delta_plane_x;
 
-	val = -0.05;
+	val = -MOVE;
 	if (key == MLX_KEY_LEFT)
-		val = 0.05;
+		val = MOVE;
 	cos_val = cos(val);
 	sin_val = sin(val);
 	delta_dir_x = ray->dir.x;
