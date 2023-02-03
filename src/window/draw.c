@@ -6,11 +6,33 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:57 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/02 13:51:08 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:07:48 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
+
+/*
+ * update sreen sixe in cub struct
+ */
+void	handle_screen_resize(int32_t x, int32_t y, void *param)
+{
+	t_cub		*cub;
+	static int	i;
+
+	cub = (t_cub *)param;
+	if (VERBOSE > 0)
+	{
+		if (i >= 0)
+			i++;
+		else
+			i = 0;
+		if (i != 1)
+			printf("DEBUG: Resizing screen... %i \n", i);
+	}
+	cub->s_width = x;
+	cub->s_height = y;
+}
 
 /*
  * Calculates the texture position 

@@ -6,36 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:16:40 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 11:55:13 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 12:07:07 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
-
-/*
- * update sreen sixe in cub struct
- * TODOO CHECK:
- * In Linux "DEBUG: Resizing screen..." is
- * always printed, so 'i' should be higher then 1, maybe in MAc too??
- */
-void	handle_screen_resize(int32_t x, int32_t y, void *param)
-{
-	t_cub		*cub;
-	static int	i;
-
-	cub = (t_cub *)param;
-	if (VERBOSE > 0)
-	{
-		if (i >= 0)
-			i++;
-		else
-			i = 0;
-		if (i != 1)
-			printf("DEBUG: Resizing screen... %i \n", i);
-	}
-	cub->s_width = x;
-	cub->s_height = y;
-}
 
 /*
  * xval & yval are +- operators which came from movement
@@ -46,22 +21,22 @@ void	handle_screen_resize(int32_t x, int32_t y, void *param)
 int	wall_hit(t_ray *ray, t_cub *cub, int x_val, int y_val)
 {
 	double	x;
-    double	y;
+	double	y;
 	double	i;
 
 	i = 1.0;
-	while (i < 5)
+	while (i < 5.0)
 	{
 		y = ray->pos.y + (ray->dir.y) * y_val * i * MOVE;
-  		x = ray->pos.x + (ray->dir.x) * x_val * i * MOVE;
-		if (x < 1.2|| y < 1.2 || x + 1.2 > (double)cub->d->map_height)
+		x = ray->pos.x + (ray->dir.x) * x_val * i * MOVE;
+		if (x < 1.2 || y < 1.2 || x + 1.2 > (double)cub->d->map_height)
 			return (0);
 		if (cub->d->map[(int)(x)][(int)ray->pos.y] == '1' \
 		|| cub->d->map[(int)(ray->pos.x)][(int)(y)] == '1')
 			return (0);
 		i += 1.0;
 	}
-    return (1);
+	return (1);
 }
 
 /*
@@ -76,10 +51,18 @@ bool	is_stuck(t_ray *ray, t_cub *cub)
 		!wall_hit(ray, cub, 1, -1) && !wall_hit(ray, cub, -1, 1))
 		stuck = true;
 	if (VERBOSE > 0)
-		printf("DEBUG: Is %s\n", stuck ? "stuck" : "not stuck");
-	return stuck;
+	{
+		if (stuck)
+			printf("DEBUG: Is stuck!\n");
+		else
+			printf("DEBUG: Is not stuck!\n");
+	}
+	return (stuck);
 }
 
+/*
+ * TODO: save lines by merging the repated if statements
+ */
 void	wasd(t_cub *cub, t_ray *ray, int key)
 {
 	double	move;
@@ -155,7 +138,8 @@ void	handle_keypress(mlx_key_data_t kd, void *param)
 	}
 	ray = cub->ray;
 	wasd(cub, ray, kd.key);
-	if (mlx_is_key_down(cub->mlx, MLX_KEY_LEFT) || mlx_is_key_down(cub->mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(cub->mlx, MLX_KEY_LEFT) || \
+		mlx_is_key_down(cub->mlx, MLX_KEY_RIGHT))
 		arrows(ray, kd.key);
 	if (VERBOSE > 2)
 	{
