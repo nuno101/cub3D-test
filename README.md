@@ -46,8 +46,7 @@ Requirements summary:
 
 # TODOs:
 
-2. Mlx:
-- Player Rotation
+1. Leaks at some exitpoints found
 
-3. Edgecases:
+2. Edgecases:
 - search and fix edgecases!

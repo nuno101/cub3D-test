@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/02/03 15:27:52 by nlouro           ###   ########.fr        #
+#    Updated: 2023/02/03 17:27:53 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ VERBOSE := 1
 
 #FIXME: use basic flags for final submission!
 #FLAGS := -Wall -Wextra -Werror
-FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
+FLAGS := -g -Wall -Wextra -Werror #-fsanitize=address
 MINILIBX_DIR := MLX42
 MINILIBX := $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR := libft

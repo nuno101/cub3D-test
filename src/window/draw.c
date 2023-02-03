@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:57 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 12:07:48 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:23:26 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	handle_screen_resize(int32_t x, int32_t y, void *param)
 	static int	i;
 
 	cub = (t_cub *)param;
-	if (VERBOSE > 0)
+	if (VERBOSE > 2)
 	{
 		if (i >= 0)
 			i++;

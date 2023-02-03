@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 15:25:46 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:29:57 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	cub_error(int err)
 		printf("Colour not valid\n");
 	else
 		printf("ERROR - unsupported error\n");
+	system("leaks cub3D");
 	return (err);
 }
 
@@ -71,5 +72,6 @@ int	cub_error_2(int err)
 		printf("Wall not surrounded\n");
 	else
 		printf("ERROR - unsupported error\n");
+	system("leaks cub3D");
 	return (err);
 }
