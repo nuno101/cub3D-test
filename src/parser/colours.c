@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:44:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 15:25:04 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/04 12:55:33 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,25 @@ static uint32_t	get_colour(char *s)
 
 void	check_colours(t_data *data, char *s)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (s[i])
 	{
 		if (!ft_strncmp(s + i, "F ", 2) && valid_colours(s + i) == 3)
-			data->f_colour = get_colour(s + i);
+		{
+			if (data->f_colour > 0)
+				exit(cub_error(COLOUR_PRESENCE_ERROR));
+			else
+				data->f_colour = get_colour(s + i);
+		}
 		else if (!ft_strncmp(s + i, "C ", 2) && valid_colours(s + i) == 3)
-			data->c_colour = get_colour(s + i);
+		{
+			if (data->c_colour > 0)
+				exit(cub_error(COLOUR_PRESENCE_ERROR));
+			else
+				data->c_colour = get_colour(s + i);
+		}
 		i++;
 	}
 }

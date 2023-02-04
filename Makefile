@@ -6,16 +6,16 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/02/04 11:19:22 by nlouro           ###   ########.fr        #
+#    Updated: 2023/02/04 12:27:00 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
-VERBOSE := 1
+VERBOSE := 0
 
-#FIXME: use basic flags for final submission!
-#FLAGS := -Wall -Wextra -Werror
-FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
+#Note: use basic flags for final submission!
+FLAGS := -Wall -Wextra -Werror
+#FLAGS := -g -Wall -Wextra -Werror -fsanitize=address
 MINILIBX_DIR := MLX42
 MINILIBX := $(MINILIBX_DIR)/libmlx42.a
 LIBFT_DIR := libft

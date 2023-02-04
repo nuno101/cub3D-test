@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:53:59 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/04 11:28:27 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/04 12:36:36 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ enum	e_cub3d_errors
 	MALLOC_ERROR,
 	DIR_ERROR,
 	COLOUR_ERROR,
+	COLOUR_PRESENCE_ERROR,
 	MAP_ERROR,
 	MLX_ERROR,
 	PNG_ERROR,

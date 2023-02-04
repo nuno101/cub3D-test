@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/04 08:43:30 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/04 12:35:41 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	cub_error(int err)
 		printf("Path not valid\n");
 	else if (err == COLOUR_ERROR)
 		printf("Colour not valid\n");
+	else if (err == COLOUR_PRESENCE_ERROR)
+		printf("Colour definition found repeated\n");
 	else
 		return (cub_error_2(err));
 	return (err);
