@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:16:04 by jjesberg          #+#    #+#              #
-#    Updated: 2023/02/03 20:16:32 by jjesberg         ###   ########.fr        #
+#    Updated: 2023/02/04 11:19:22 by nlouro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,15 +38,15 @@ SRC :=	src/cub3d.c \
 OBJ_DIR := objs
 OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o) ))
 
-#FIXME: remove this statement before submitting
-ifeq ($(USER), nlouro)
+# Different libs for different work environemnts
+#ifeq ($(USER), nlouro)
 	# Macbook
-	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/usr/local/Cellar/glfw/3.3.8/lib"
-	# School
-	#LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/goinfre/$(USER)/.brew/Cellar/glfw/3.3.8/lib/"
-else
-	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/Users/$(USER)/.brew/opt/glfw/lib/"
-endif
+#	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/usr/local/Cellar/glfw/3.3.8/lib"
+#else
+#	LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+#endif
+# School
+LIBS :=  $(MINILIBX) $(LIBFT) -I include -lglfw -lm -L "/goinfre/$(USER)/.brew/Cellar/glfw/3.3.8/lib/"
 
 .PHONY: all libs cleanlibs clean fclean re norm
 
