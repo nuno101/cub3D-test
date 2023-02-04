@@ -1,13 +1,12 @@
-NO ./textures/wolftextures1.png
-SO ./textures/wolftextures2.png
-WE ./textures/wolftextures3.png
+NO ./textures/bricks.png
+SO ./textures/dots.png
+WE ./textures/goodbricks.png
 EA ./textures/wolftextures4.png
 
-F 120,100,50
+F 25,165,189
 C 105,150,150
 
 11111
-10011
 10001
-10E01
+10S01
 11111

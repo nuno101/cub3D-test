@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:10:41 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/19 10:51:02 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/01 15:19:43 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,40 @@
 typedef struct s_data
 {
 	char			**map;
+	int				map_height;
 	mlx_texture_t	*textures[4];
 	uint32_t		f_colour;
 	uint32_t		c_colour;
-	int				tmp[4];
 }	t_data;
 
-typedef struct s_coords
+typedef struct i_coords
 {
 	int		x;
 	int		y;
-}	t_coords;
+}	t_i_coords;
+
+typedef struct f_coords
+{
+	double	x;
+	double	y;
+}	t_f_coords;
 
 typedef struct s_ray
 {
-	float		cam;
+	t_f_coords	pos;
+	t_f_coords	dir;
+	t_f_coords	delta_dir;
+	t_f_coords	plane;
+	t_f_coords	delta_plane;
+	t_f_coords	ray_dir;
+	double		camera;
+	double		wall_distance;
+	t_f_coords	side_dist;
+	t_f_coords	delta_dist;
+	t_i_coords	map;
+	t_i_coords	step;
 	int			hit;
 	int			side;
-	float		wall;
-	t_coords	c_ray;
-	t_coords	c_map;
-	t_coords	c_side;
-	t_coords	c_delta;
-	t_coords	c_step;
-	t_coords	c_p;
-	t_coords	c_d;
-	t_coords	c_w;
 }	t_ray;
 
 typedef struct s_cub
@@ -53,11 +61,10 @@ typedef struct s_cub
 	int32_t			s_width;
 	int32_t			s_height;
 	mlx_image_t		*image;
-	uint32_t		f;
-	uint32_t		c;
-	float			player_angle;
-	t_coords		player_pos;
-	float			fov;
+	uint32_t		f_colour;
+	uint32_t		c_colour;
+	t_i_coords		player_pos;
+	char			direction;
 	t_ray			*ray;
 }	t_cub;
 
