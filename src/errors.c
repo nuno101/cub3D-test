@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:27:46 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 19:27:45 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/04 08:43:30 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	cub_error(int err)
 	else if (err == COLOUR_ERROR)
 		printf("Colour not valid\n");
 	else
-		printf("ERROR - unsupported error\n");
+		return (cub_error_2(err));
 	return (err);
 }
 
