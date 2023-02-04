@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:23:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/01/30 22:12:04 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/03 19:33:06 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ mlx_texture_t	*save_texture(char *s)
 {
 	mlx_texture_t	*texture;
 	int				i;
+	static int		count;
 
 	i = 3;
 	texture = NULL;
@@ -66,8 +67,9 @@ mlx_texture_t	*save_texture(char *s)
 		{
 			if (!ft_ispath(s + i))
 				exit(cub_error(TEX_PATH_ERROR));
-			else
+			else if (count < 4)
 			{
+				count++;
 				texture = mlx_load_png(s + i);
 				if (!texture)
 					exit(cub_error(TEX_MLX_LOAD_PNG_ERROR));

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 14:00:25 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/08/01 19:26:57 by jjesberg         ###   ########.fr       */
+/*   Created: 2021/02/03 20:19:53 by jjesberg          #+#    #+#             */
+/*   Updated: 2023/02/03 20:19:58 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "libft.h"
 

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macros_linux.h                                     :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:53:59 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/02 13:52:54 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/03 20:12:43 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACROS_H
 # define MACROS_H
 
-#define MOVE 0.05
+#define MOVE 0.1
 
 /*
  * define cub3d specific errors
@@ -63,6 +63,7 @@ enum	e_textures { NONE = -1, NO, SO, WE, EA } t_texture;
 
 /*
  * constants for ray directions calculations
+ * TODOO GLOBAL! NORM FIXME
  */
 #ifndef RAY_DIRECTION_CONSTS
 #define RAY_DIRECTION_CONSTS
