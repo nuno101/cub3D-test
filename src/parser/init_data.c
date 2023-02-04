@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 02:26:29 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 15:29:55 by nlouro           ###   ########.fr       */
+/*   Updated: 2023/02/04 10:15:48 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	parse_raw_data(t_data *data, char **raw)
 		else if (ft_strchr(raw[i], 'F') != NULL || \
 			ft_strchr(raw[i], 'C') != NULL)
 			check_colours(data, raw[i]);
-		if (data->c_colour > 0 && data->f_colour > 0 && tex_code_sum == 10)
+		if (data->c_colour > 0 && data->f_colour > 0 && tex_code_sum >= 10)
 			break ;
 		i++;
 	}

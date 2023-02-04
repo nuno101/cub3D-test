@@ -6,10 +6,9 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 20:21:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2023/02/03 20:21:17 by jjesberg         ###   ########.fr       */
+/*   Updated: 2023/02/03 22:54:17 by nlouro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../include/cub.h"
 
